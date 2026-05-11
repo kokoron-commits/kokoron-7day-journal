@@ -117,19 +117,23 @@ body {
 .day-nav {
   position: sticky; top: 0; z-index: 100;
   display: flex; justify-content: center; gap: 6px;
-  padding: 10px 12px;
+  padding: 10px 16px;
   background: rgba(224,216,240,.92);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
   margin-bottom: 12px;
 }
+.day-nav::-webkit-scrollbar { display: none; }
 .day-nav-btn {
-  padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--border);
+  padding: 6px 13px; border-radius: 20px; border: 1.5px solid var(--border);
   font-size: 12px; cursor: pointer; background: white; color: var(--text-mid);
   font-family: 'Zen Maru Gothic', sans-serif; transition: all .2s;
   -webkit-tap-highlight-color: transparent;
-  min-height: 36px;
+  min-height: 36px; white-space: nowrap; flex-shrink: 0;
 }
 .day-nav-btn:hover, .day-nav-btn.active {
   background: var(--lav-dark); color: white; border-color: var(--lav-dark);
@@ -370,7 +374,7 @@ textarea.write-area::placeholder { color: #c8bfe0; font-size: 11px; }
   .theme-text { font-size: 15px; }
 
   /* ナビをコンパクトに */
-  .day-nav { gap: 5px; padding: 8px 8px; }
+  .day-nav { gap: 5px; padding: 8px 12px; justify-content: flex-start; }
   .day-nav-btn { padding: 6px 10px; font-size: 11px; }
 }
 </style>
