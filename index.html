@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>こころんと整える 7日間ジャーナル</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Shippori+Mincho:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+/* ===== CSS変数 ===== */
+:root {
+  --cream:      #faf8f4;
+  --lav:        #ede8f7;
+  --lav-mid:    #c9bfe8;
+  --lav-dark:   #7b68c4;
+  --lav-deep:   #5a4aa0;
+  --sage:       #8aaa7e;
+  --sage-light: #d4e8ce;
+  --gold:       #e8c84a;
+  --text:       #3a2e4a;
+  --text-mid:   #6a5a7a;
+  --text-light: #9888b0;
+  --border:     #ddd4f0;
+  --white:      #ffffff;
+  --morning-bg: #fff9f5;
+  --evening-bg: #f5f0fa;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  background: #e0d8f0;
+  color: var(--text);
+}
+
+/* ===== 印刷設定 ===== */
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
+  .spread { box-shadow: none !important; page-break-after: always; break-after: page; }
+  .cover  { page-break-after: always; break-after: page; }
+}
+@page { size: A4 landscape; margin: 8mm; }
+
+/* ===== サイズ切り替えボタン ===== */
+.size-switcher {
+  position: fixed; top: 16px; right: 16px; z-index: 200;
+  display: flex; gap: 8px; no-print;
+}
+.size-btn {
+  padding: 6px 14px; border-radius: 20px; border: none; cursor: pointer;
+  font-size: 12px; font-family: 'Zen Maru Gothic', sans-serif;
+  background: var(--lav-mid); color: var(--lav-deep); font-weight: 700;
+  transition: background .2s;
+}
+.size-btn.active, .size-btn:hover { background: var(--lav-dark); color: white; }
+
+/* ===== 表紙 ===== */
+.cover {
+  width: 100%; max-width: 900px; margin: 32px auto 24px;
+  background: linear-gradient(135deg, var(--lav) 0%, var(--sage-light) 60%, var(--cream) 100%);
+  border-radius: 16px;
+  box-shadow: 0 8px 40px rgba(90,74,160,.2);
+  padding: 60px 48px;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; position: relative; overflow: hidden;
+  min-height: 320px;
+}
+.cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(201,191,232,.4) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(138,170,126,.3) 0%, transparent 50%);
+}
+.cover-kokoron {
+  width: 120px; height: 120px; object-fit: contain;
+  mix-blend-mode: multiply; margin-bottom: 16px; position: relative;
+}
+.cover-title-en {
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px; color: var(--lav-dark); margin-bottom: 8px; position: relative;
+}
+.cover-title {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 32px; font-weight: 600; color: var(--text);
+  line-height: 1.5; margin-bottom: 12px; position: relative;
+}
+.cover-title span { color: var(--lav-deep); }
+.cover-sub {
+  font-size: 13px; color: var(--text-mid); line-height: 2; position: relative;
+}
+.cover-deco {
+  position: absolute; font-size: 24px; opacity: .4;
+}
+.cover-deco.d1 { top: 20px; left: 30px; }
+.cover-deco.d2 { top: 16px; right: 40px; font-size: 18px; }
+.cover-deco.d3 { bottom: 24px; left: 24px; font-size: 16px; }
+.cover-deco.d4 { bottom: 20px; right: 30px; }
+.cover-how {
+  margin-top: 24px; padding: 16px 24px;
+  background: rgba(255,255,255,.65); border-radius: 12px;
+  font-size: 12px; color: var(--text-mid); line-height: 2;
+  position: relative; max-width: 480px;
+}
+.cover-how strong { color: var(--lav-deep); }
+
+/* ===== 見開きスプレッド ===== */
+.spread {
+  display: flex; width: 100%; max-width: 900px;
+  margin: 0 auto 28px;
+  box-shadow: 0 6px 32px rgba(90,74,160,.16);
+  border-radius: 4px; overflow: hidden;
+}
+.spine {
+  width: 10px;
+  background: linear-gradient(to bottom, var(--lav-mid), var(--sage), var(--lav-mid));
+  flex-shrink: 0;
+}
+
+/* ===== ページ共通 ===== */
+.page {
+  flex: 1; padding: 22px 20px 70px; position: relative;
+  min-height: 580px;
+}
+.page-morning { background: var(--morning-bg); border-right: 1px solid var(--border); }
+.page-evening { background: var(--evening-bg); }
+
+/* ===== ページヘッダー ===== */
+.page-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px; padding-bottom: 8px;
+  border-bottom: 1.5px solid var(--border);
+}
+.page-label {
+  font-family: 'Dancing Script', cursive;
+  font-size: 18px; color: var(--lav-dark);
+}
+.day-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--lav-mid); color: var(--lav-deep);
+  font-size: 10px; font-weight: 700;
+  flex-direction: column; line-height: 1.2;
+}
+.day-badge .num { font-size: 13px; font-weight: 700; }
+
+/* DATE行 */
+.date-row {
+  display: flex; align-items: center; gap: 6px;
+  margin-bottom: 8px; font-size: 10px; color: var(--text-mid);
+}
+.date-field {
+  border-bottom: 1px solid var(--lav-mid);
+  width: 72px; padding-bottom: 2px; font-size: 11px;
+}
+.dow-pills { display: flex; gap: 2px; }
+.dow {
+  border: 1px solid var(--border); border-radius: 20px;
+  padding: 1px 5px; font-size: 9px; color: var(--text-light);
+}
+
+/* テーマバナー */
+.theme-banner {
+  background: linear-gradient(90deg, var(--lav) 0%, var(--sage-light) 100%);
+  border-radius: 8px; padding: 7px 12px;
+  margin-bottom: 10px;
+}
+.theme-day { font-size: 9px; font-weight: 700; color: var(--lav-deep); letter-spacing: .08em; }
+.theme-text {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 13px; font-weight: 600; color: var(--text);
+}
+
+/* セクション */
+.section { margin-bottom: 10px; }
+.section-label {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 700; color: var(--lav-deep);
+  margin-bottom: 5px; letter-spacing: .04em;
+}
+.section-label .en { font-size: 8px; color: var(--text-light); font-weight: 400; margin-left: 2px; }
+
+/* 天気・心もようアイコン */
+.weather-row { display: flex; gap: 5px; flex-wrap: wrap; }
+.weather-item {
+  display: flex; flex-direction: column; align-items: center;
+  font-size: 16px; cursor: pointer; opacity: .45; transition: opacity .2s, transform .2s;
+}
+.weather-item span { font-size: 8px; color: var(--text-light); margin-top: 1px; }
+.weather-item:hover, .weather-item.sel { opacity: 1; transform: scale(1.12); }
+
+/* 気分チップ */
+.mood-chips { display: flex; flex-wrap: wrap; gap: 4px; }
+.chip {
+  border: 1.5px solid var(--border); border-radius: 20px;
+  padding: 2px 8px; font-size: 10px; color: var(--text-mid);
+  cursor: pointer; transition: background .2s, border-color .2s;
+}
+.chip:hover, .chip.active {
+  background: var(--lav); border-color: var(--lav-dark); color: var(--lav-deep);
+}
+
+/* ライン */
+.write-line {
+  border-bottom: 1px solid var(--border);
+  min-height: 20px; margin-bottom: 4px; width: 100%;
+}
+
+/* ボックス系 */
+.step-box {
+  border: 1.5px dashed var(--sage); border-radius: 8px;
+  padding: 6px 10px; background: rgba(138,170,126,.07);
+}
+.step-box .step-label { font-size: 9px; color: var(--sage); font-weight: 700; margin-bottom: 3px; display: block; }
+
+.affirmation-box {
+  background: var(--lav); border-radius: 8px; padding: 6px 10px;
+}
+.affirmation-box .af-label { font-size: 9px; color: var(--lav-deep); font-weight: 700; margin-bottom: 3px; display: block; }
+
+/* 夜ページ */
+.evening-accent { width: 28px; height: 3px; background: linear-gradient(90deg, var(--lav-dark), var(--sage)); border-radius: 2px; margin-bottom: 10px; }
+
+.checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+.check-item { display: flex; align-items: center; gap: 5px; font-size: 10px; color: var(--text-mid); }
+.check-box {
+  width: 13px; height: 13px; border: 1.5px solid var(--lav-mid);
+  border-radius: 3px; flex-shrink: 0; background: var(--white);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 9px; transition: background .15s;
+}
+.check-box.checked { background: var(--lav-dark); color: white; }
+
+.gratitude-box { border-left: 2.5px solid var(--gold); padding-left: 8px; margin-bottom: 4px; }
+.gratitude-box .write-line { border-bottom-color: rgba(232,200,74,.35); }
+
+.heart-moment {
+  background: var(--lav); border-radius: 8px; padding: 6px 10px;
+}
+.heart-moment .hm-label { font-size: 9px; color: var(--lav-deep); font-weight: 700; margin-bottom: 3px; display: block; }
+.heart-moment .write-line { border-bottom-color: var(--lav-mid); }
+
+.self-message {
+  border: 1.5px solid var(--border); border-radius: 8px;
+  padding: 6px 10px; background: var(--white);
+}
+.self-message .sm-label { font-size: 9px; color: var(--lav-deep); font-weight: 700; margin-bottom: 4px; display: block; }
+
+/* スター */
+.mood-stars { display: flex; gap: 3px; }
+.star { font-size: 15px; color: var(--border); cursor: pointer; transition: color .15s; }
+.star.lit { color: var(--gold); }
+
+/* こころんメッセージフッター */
+.kokoron-msg {
+  position: absolute; bottom: 14px; left: 20px; right: 20px;
+  background: linear-gradient(90deg, rgba(237,232,247,.85), rgba(212,232,206,.65));
+  border-radius: 10px; padding: 6px 10px;
+  display: flex; align-items: center; gap: 8px;
+}
+.kokoron-img {
+  width: 44px; height: 44px; object-fit: contain;
+  mix-blend-mode: multiply; flex-shrink: 0;
+}
+.msg-text {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 10px; color: var(--text-mid);
+  line-height: 1.7; font-style: italic;
+}
+
+/* ===== デイナビゲーション ===== */
+.day-nav {
+  display: flex; justify-content: center; gap: 8px;
+  margin-bottom: 16px; flex-wrap: wrap;
+}
+.day-nav-btn {
+  padding: 4px 12px; border-radius: 20px; border: 1.5px solid var(--border);
+  font-size: 11px; cursor: pointer; background: white; color: var(--text-mid);
+  font-family: 'Zen Maru Gothic', sans-serif; transition: all .2s;
+}
+.day-nav-btn:hover, .day-nav-btn.active {
+  background: var(--lav-dark); color: white; border-color: var(--lav-dark);
+}
+
+/* スプレッド表示/非表示 */
+.spread { display: flex; }
+
+/* ===== レスポンシブ ===== */
+@media (max-width: 700px) {
+  .spread { flex-direction: column; }
+  .spine { width: 100%; height: 8px; background: linear-gradient(to right, var(--lav-mid), var(--sage), var(--lav-mid)); }
+  .checklist { grid-template-columns: 1fr; }
+  .page { min-height: auto; padding-bottom: 80px; }
+}
+</style>
+</head>
+<body>
+
+<!-- サイズ切り替え -->
+<div class="size-switcher no-print">
+  <button class="size-btn active" onclick="setSize('screen')">🖥 画面</button>
+  <button class="size-btn" onclick="window.print()">🖨 印刷/PDF</button>
+</div>
+
+<!-- ===== 表紙 ===== -->
+<div class="cover no-print">
+  <span class="cover-deco d1">🌿</span>
+  <span class="cover-deco d2">✦</span>
+  <span class="cover-deco d3">✧</span>
+  <span class="cover-deco d4">🌿</span>
+  <img class="cover-kokoron" src="images/kokoron_cover.png" alt="こころん">
+  <div class="cover-title-en">Kokoron's Mindful Journal</div>
+  <div class="cover-title"><span>こころん</span>と整える<br>7日間ジャーナル</div>
+  <div class="cover-sub">
+    🌿 朝と夜、1日2ページ · 7日間テーマ付き<br>
+    瞑想 × ジャーナリング × セルフケア
+  </div>
+  <div class="cover-how">
+    <strong>このノートの使い方</strong><br>
+    朝ページ → 今日の気持ちを整える<br>
+    夜ページ → 今日を振り返り、自分をねぎらう<br>
+    書けない日があっても大丈夫🦥
+  </div>
+</div>
+
+<!-- ===== デイナビゲーション ===== -->
+<div class="day-nav no-print" id="dayNav"></div>
+
+<!-- ===== 7日分スプレッド (JSで生成) ===== -->
+<div id="journal"></div>
+
+<!-- ブランドフッター -->
+<div style="text-align:center;padding:12px 0 32px;font-size:11px;color:#9888b0;" class="no-print">
+  🦥 Loves Life｜モカ&こころん — こころんと整える7日間ジャーナル
+</div>
+
+<script>
+// ===== データ定義 =====
+const IMAGES = [
+  'kokoron_01.png',
+  'kokoron_02.png',
+  'kokoron_03.png',
+  'kokoron_04.png',
+  'kokoron_05.png',
+  'kokoron_06.png',
+  'kokoron_07.png'
+];
+const IMG_BASE = 'images/';
+
+const DAYS = [
+  {
+    day: 1,
+    theme: 'いまの自分を感じる',
+    morning_msg: 'ちゃんと感じられてるよ。\nそれだけで、十分だよ🌿',
+    evening_msg: '今日はここまででも大丈夫。\nおやすみなさい🌙'
+  },
+  {
+    day: 2,
+    theme: '安心できる時間',
+    morning_msg: 'あなたのペースで\n整えばいいよ🌿',
+    evening_msg: '今日も生きてくれて\nありがとう🌙'
+  },
+  {
+    day: 3,
+    theme: '呼吸を感じる',
+    morning_msg: '深呼吸、それだけで\n十分だよ🌿',
+    evening_msg: '書けない日があっても\nいいんだよ🌙'
+  },
+  {
+    day: 4,
+    theme: '頭の中を休ませる',
+    morning_msg: '頭を空っぽにして\nいいんだよ🌿',
+    evening_msg: 'ゆっくり休んでね。\nおやすみ🌙'
+  },
+  {
+    day: 5,
+    theme: '本当はどうしたい？',
+    morning_msg: '答えは急がなくて\nいいよ🌿',
+    evening_msg: '今日の自分を\nそのまま受け取って🌙'
+  },
+  {
+    day: 6,
+    theme: '好きなものを思い出す',
+    morning_msg: '好きを感じる時間、\n大切にしてね🌿',
+    evening_msg: '自分を好きでいて\nくれてありがとう🌙'
+  },
+  {
+    day: 7,
+    theme: '7日間の自分をねぎらう',
+    morning_msg: '7日間、ここまで\nよく来たね🌿',
+    evening_msg: 'おつかれさま。\nあなたはすごいよ🌙'
+  }
+];
+
+const WEATHER_MORNING = [
+  {e:'☀️', l:'すっきり'}, {e:'🌤', l:'まあまあ'},
+  {e:'☁️', l:'もやもや'}, {e:'🌧', l:'しんどい'}, {e:'🌙', l:'しずか'}
+];
+const WEATHER_EVENING = [
+  {e:'🌙', l:'おだやか'}, {e:'✨', l:'すっきり'},
+  {e:'😴', l:'ねむい'}, {e:'☁️', l:'もやもや'}, {e:'🫧', l:'ほっとした'}
+];
+const MOOD_CHIPS = ['😊 おだやか', '✨ わくわく', '😶 もやもや', '😴 つかれた', '💪 がんばれそう', '🫧 その他___'];
+const SELF_CARE = ['水を飲んだ','深呼吸した','外の空気を吸った','ちゃんと休んだ','誰かと話した','ジャーナリングした','自分を責めなかった','___________'];
+
+// ===== HTML生成 =====
+function weatherItems(arr, prefix) {
+  return arr.map((w,i) =>
+    `<div class="weather-item" onclick="selWeather(this,'${prefix}')" data-group="${prefix}">
+      ${w.e}<span>${w.l}</span>
+    </div>`
+  ).join('');
+}
+
+function moodChips(dayNum) {
+  return MOOD_CHIPS.map(c =>
+    `<div class="chip" onclick="this.classList.toggle('active')">${c}</div>`
+  ).join('');
+}
+
+function checkItems(dayNum) {
+  return SELF_CARE.map((item, i) =>
+    `<div class="check-item">
+      <div class="check-box" onclick="toggleCheck(this)"></div>${item}
+    </div>`
+  ).join('');
+}
+
+function stars(dayNum) {
+  return Array(5).fill(0).map((_,i) =>
+    `<span class="star" data-idx="${i}" data-day="${dayNum}" onclick="setStars(this,${dayNum})"  >★</span>`
+  ).join('');
+}
+
+function buildSpread(d, idx) {
+  const img = IMG_BASE + IMAGES[idx % IMAGES.length];
+  const mMsg = d.morning_msg.replace(/\n/g,'<br>');
+  const eMsg = d.evening_msg.replace(/\n/g,'<br>');
+  const mpfx = `m${d.day}`, epfx = `e${d.day}`;
+
+  return `
+<div class="spread" id="day${d.day}">
+
+  <!-- ===== 朝ページ ===== -->
+  <div class="page page-morning">
+    <div class="page-header">
+      <div class="page-label">☀️ Morning</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div style="font-size:9px;color:var(--text-light);">DATE</div>
+        <div class="date-field"></div>
+        <div class="day-badge"><span class="num">${d.day}</span><span style="font-size:7px;font-weight:400;">Day</span></div>
+      </div>
+    </div>
+    <div class="date-row">
+      <div class="dow-pills">
+        <div class="dow">Sun</div><div class="dow">Mon</div><div class="dow">Tue</div>
+        <div class="dow">Wed</div><div class="dow">Thu</div><div class="dow">Fri</div><div class="dow">Sat</div>
+      </div>
+    </div>
+    <div class="theme-banner">
+      <div class="theme-day">DAY ${d.day} · TODAY'S THEME</div>
+      <div class="theme-text">「 ${d.theme} 」</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">🌤 今日の空もよう <span class="en">/ How's the weather in your heart?</span></div>
+      <div class="weather-row">${weatherItems(WEATHER_MORNING, mpfx)}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">💭 今日の心に近いのは？</div>
+      <div class="mood-chips">${moodChips(d.day)}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">🌱 今日のありがとう <span class="en">/ Gratitude</span></div>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">🌿 今日どう過ごしたい？</div>
+      <div class="write-line"></div>
+    </div>
+
+    <div class="section">
+      <div class="step-box">
+        <span class="step-label">🐾 今日の小さな一歩 — これだけできればOK</span>
+        <div class="write-line"></div>
+      </div>
+    </div>
+
+    <div class="section" style="margin-bottom:0;">
+      <div class="affirmation-box">
+        <span class="af-label">🕯️ 今日のアファメーション</span>
+        <div class="write-line" style="border-bottom-color:var(--lav-mid);"></div>
+      </div>
+    </div>
+
+    <div class="kokoron-msg">
+      <img class="kokoron-img" src="${img}" alt="こころん">
+      <div class="msg-text">${mMsg}</div>
+    </div>
+  </div>
+
+  <div class="spine"></div>
+
+  <!-- ===== 夜ページ ===== -->
+  <div class="page page-evening">
+    <div class="page-header">
+      <div class="page-label">🌙 Evening</div>
+      <div style="font-size:9px;color:var(--text-light);">今日もおつかれさまでした🌿</div>
+    </div>
+    <div class="evening-accent"></div>
+
+    <div class="section">
+      <div class="section-label">🫧 今日のセルフケア <span class="en">/ Self-Care Check</span></div>
+      <div class="checklist">${checkItems(d.day)}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">💛 今日ありがとうと思ったこと</div>
+      <div class="gratitude-box">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="heart-moment">
+        <span class="hm-label">🫀 心が動いた瞬間</span>
+        <div class="write-line" style="border-bottom-color:var(--lav-mid);"></div>
+        <div class="write-line" style="border-bottom-color:var(--lav-mid);"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="self-message">
+        <span class="sm-label">✍️ 今日の自分へひとこと</span>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">⭐ 今日の自分に点数をつけるなら</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <div class="mood-stars" id="stars${d.day}">${stars(d.day)}</div>
+        <span style="font-size:9px;color:var(--text-light);">どんな点数でも、今日のあなたはよくやった</span>
+      </div>
+    </div>
+
+    <div class="section" style="margin-bottom:0;">
+      <div class="section-label">🌙 いまの心もよう <span class="en">/ How's your heart right now?</span></div>
+      <div class="weather-row">${weatherItems(WEATHER_EVENING, epfx)}</div>
+    </div>
+
+    <div class="kokoron-msg">
+      <img class="kokoron-img" src="${img}" alt="こころん">
+      <div class="msg-text">${eMsg}</div>
+    </div>
+  </div>
+
+</div>`;
+}
+
+// ===== レンダリング =====
+const journal = document.getElementById('journal');
+const nav = document.getElementById('dayNav');
+
+DAYS.forEach((d, idx) => {
+  // スプレッド生成
+  journal.innerHTML += buildSpread(d, idx);
+  // ナビボタン
+  const btn = document.createElement('button');
+  btn.className = 'day-nav-btn' + (idx === 0 ? ' active' : '');
+  btn.textContent = `Day ${d.day}`;
+  btn.onclick = () => {
+    document.querySelectorAll('.day-nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`day${d.day}`).scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+  nav.appendChild(btn);
+});
+
+// ===== インタラクション =====
+function selWeather(el, group) {
+  document.querySelectorAll(`[data-group="${group}"]`).forEach(e => e.classList.remove('sel'));
+  el.classList.add('sel');
+}
+
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  el.textContent = el.classList.contains('checked') ? '✓' : '';
+}
+
+function setStars(el, dayNum) {
+  const idx = parseInt(el.dataset.idx);
+  document.querySelectorAll(`#stars${dayNum} .star`).forEach((s, i) => {
+    s.classList.toggle('lit', i <= idx);
+  });
+}
+
+function setSize(mode) {
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+}
+</script>
+</body>
+</html>
