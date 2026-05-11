@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>7-Day Mindful Journal with Kokoron 🦥</title>
+
+<!-- PWA -->
+<link rel="manifest" href="../manifest.json">
+<meta name="theme-color" content="#7b68c4">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Kokoron Journal">
+<link rel="apple-touch-icon" href="../images/kokoron_cover.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream:      #faf8f4;
+  --lav:        #ede8f7;
+  --lav-mid:    #c9bfe8;
+  --lav-dark:   #7b68c4;
+  --lav-deep:   #5a4aa0;
+  --sage:       #8aaa7e;
+  --sage-light: #d4e8ce;
+  --gold:       #e8c84a;
+  --text:       #3a2e4a;
+  --text-mid:   #6a5a7a;
+  --text-light: #9888b0;
+  --border:     #ddd4f0;
+  --white:      #ffffff;
+  --morning-bg: #fff9f5;
+  --evening-bg: #f5f0fa;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: #e0d8f0;
+  color: var(--text);
+  -webkit-text-size-adjust: 100%;
+}
+
+@media print {
+  body { background: white; }
+  .no-print { display: none !important; }
+  .spread { box-shadow: none !important; page-break-after: always; break-after: page; flex-direction: row !important; }
+  .cover  { page-break-after: always; break-after: page; }
+  textarea { border: none !important; border-bottom: 1px solid #ddd !important; }
+}
+@page { size: A4 landscape; margin: 8mm; }
+
+/* ===== Top buttons ===== */
+.size-switcher {
+  position: fixed; top: 12px; right: 12px; z-index: 200;
+  display: flex; gap: 8px;
+}
+.size-btn {
+  padding: 8px 16px; border-radius: 20px; border: none; cursor: pointer;
+  font-size: 12px; font-family: 'Nunito', sans-serif;
+  background: var(--lav-mid); color: var(--lav-deep); font-weight: 700;
+  transition: background .2s; box-shadow: 0 2px 8px rgba(90,74,160,.15);
+  -webkit-tap-highlight-color: transparent;
+}
+.size-btn.active, .size-btn:hover { background: var(--lav-dark); color: white; }
+
+/* ===== Cover ===== */
+.cover {
+  width: 100%; max-width: 700px; margin: 64px auto 20px;
+  background: linear-gradient(135deg, var(--lav) 0%, var(--sage-light) 60%, var(--cream) 100%);
+  border-radius: 20px;
+  box-shadow: 0 8px 40px rgba(90,74,160,.2);
+  padding: 48px 32px 40px;
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; position: relative; overflow: hidden;
+}
+.cover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(201,191,232,.4) 0%, transparent 50%),
+              radial-gradient(circle at 80% 70%, rgba(138,170,126,.3) 0%, transparent 50%);
+}
+.cover-kokoron {
+  width: 130px; height: 130px; object-fit: contain;
+  mix-blend-mode: multiply; margin-bottom: 16px; position: relative;
+}
+.cover-eyebrow {
+  font-family: 'Dancing Script', cursive;
+  font-size: 17px; color: var(--lav-dark); margin-bottom: 10px; position: relative;
+  letter-spacing: .02em;
+}
+.cover-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px; font-weight: 600; color: var(--text);
+  line-height: 1.4; margin-bottom: 6px; position: relative;
+}
+.cover-title em { font-style: italic; color: var(--lav-deep); }
+.cover-subtitle {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; color: var(--lav-deep); margin-bottom: 12px;
+  letter-spacing: .06em; position: relative;
+}
+.cover-tagline {
+  font-size: 12px; color: var(--text-mid); line-height: 2; position: relative;
+}
+.cover-deco { position: absolute; font-size: 24px; opacity: .4; }
+.cover-deco.d1 { top: 20px; left: 24px; }
+.cover-deco.d2 { top: 16px; right: 32px; font-size: 18px; }
+.cover-deco.d3 { bottom: 20px; left: 20px; font-size: 16px; }
+.cover-deco.d4 { bottom: 16px; right: 24px; }
+.cover-how {
+  margin-top: 20px; padding: 14px 20px;
+  background: rgba(255,255,255,.65); border-radius: 12px;
+  font-size: 12px; color: var(--text-mid); line-height: 2.2;
+  position: relative; max-width: 360px;
+}
+.cover-how strong { color: var(--lav-deep); font-weight: 700; }
+
+/* ===== Day Navigation ===== */
+.day-nav {
+  position: sticky; top: 0; z-index: 100;
+  display: flex; justify-content: center; gap: 6px;
+  padding: 10px 12px;
+  background: rgba(224,216,240,.92);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  flex-wrap: wrap; margin-bottom: 12px;
+}
+.day-nav-btn {
+  padding: 6px 14px; border-radius: 20px; border: 1.5px solid var(--border);
+  font-size: 12px; cursor: pointer; background: white; color: var(--text-mid);
+  font-family: 'Nunito', sans-serif; font-weight: 700; transition: all .2s;
+  -webkit-tap-highlight-color: transparent; min-height: 36px;
+}
+.day-nav-btn:hover, .day-nav-btn.active {
+  background: var(--lav-dark); color: white; border-color: var(--lav-dark);
+}
+
+/* ===== Spread ===== */
+.spread {
+  display: flex; width: 100%; max-width: 900px;
+  margin: 0 auto 24px;
+  box-shadow: 0 6px 32px rgba(90,74,160,.16);
+  border-radius: 12px; overflow: hidden;
+}
+.spine {
+  width: 10px;
+  background: linear-gradient(to bottom, var(--lav-mid), var(--sage), var(--lav-mid));
+  flex-shrink: 0;
+}
+
+/* ===== Pages ===== */
+.page {
+  flex: 1; padding: 20px 18px 76px; position: relative;
+  min-height: 560px;
+}
+.page-morning { background: var(--morning-bg); }
+.page-evening { background: var(--evening-bg); }
+
+.page-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 10px; padding-bottom: 8px;
+  border-bottom: 1.5px solid var(--border);
+}
+.page-label {
+  font-family: 'Dancing Script', cursive;
+  font-size: 19px; color: var(--lav-dark);
+}
+.day-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--lav-mid); color: var(--lav-deep);
+  font-size: 10px; font-weight: 700; flex-direction: column; line-height: 1.2; flex-shrink: 0;
+}
+.day-badge .num { font-size: 13px; font-weight: 700; }
+
+/* Date row */
+.date-row {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 8px; font-size: 11px; color: var(--text-mid); flex-wrap: wrap;
+}
+input.date-input {
+  border: none; border-bottom: 1px solid var(--lav-mid);
+  background: transparent; font-size: 12px; color: var(--text);
+  font-family: 'Nunito', sans-serif; padding: 2px 4px; outline: none; width: 130px;
+}
+.dow-pills { display: flex; gap: 3px; flex-wrap: wrap; }
+.dow {
+  border: 1px solid var(--border); border-radius: 20px;
+  padding: 2px 7px; font-size: 10px; font-weight: 600; color: var(--text-light);
+  cursor: pointer; transition: all .15s; -webkit-tap-highlight-color: transparent;
+}
+.dow.sel { background: var(--lav-mid); border-color: var(--lav-dark); color: var(--lav-deep); }
+
+/* Theme banner */
+.theme-banner {
+  background: linear-gradient(90deg, var(--lav) 0%, var(--sage-light) 100%);
+  border-radius: 8px; padding: 8px 12px; margin-bottom: 12px;
+}
+.theme-day { font-size: 9px; font-weight: 700; color: var(--lav-deep); letter-spacing: .1em; }
+.theme-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px; font-weight: 600; color: var(--text); font-style: italic;
+}
+
+/* Sections */
+.section { margin-bottom: 12px; }
+.section-label {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 10px; font-weight: 700; color: var(--lav-deep);
+  margin-bottom: 6px; letter-spacing: .05em; text-transform: uppercase;
+}
+.section-label .sub { font-size: 9px; color: var(--text-light); font-weight: 400;
+  text-transform: none; letter-spacing: 0; margin-left: 2px; }
+
+/* Weather */
+.weather-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.weather-item {
+  display: flex; flex-direction: column; align-items: center;
+  font-size: 20px; cursor: pointer; opacity: .45; transition: opacity .2s, transform .2s;
+  -webkit-tap-highlight-color: transparent; min-width: 36px; padding: 4px;
+}
+.weather-item span { font-size: 9px; color: var(--text-light); margin-top: 2px; font-weight: 600; }
+.weather-item.sel { opacity: 1; transform: scale(1.15); }
+
+/* Mood chips */
+.mood-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  border: 1.5px solid var(--border); border-radius: 20px;
+  padding: 5px 11px; font-size: 11px; font-weight: 600; color: var(--text-mid);
+  cursor: pointer; transition: background .2s, border-color .2s;
+  -webkit-tap-highlight-color: transparent;
+}
+.chip:hover, .chip.active {
+  background: var(--lav); border-color: var(--lav-dark); color: var(--lav-deep);
+}
+
+/* Textareas */
+textarea.write-area {
+  width: 100%; border: none;
+  border-bottom: 1.5px solid var(--border);
+  background: transparent;
+  font-family: 'Nunito', sans-serif;
+  font-size: 13px; color: var(--text);
+  resize: none; outline: none;
+  padding: 5px 2px; line-height: 1.9;
+  display: block; margin-bottom: 4px;
+  -webkit-appearance: none;
+}
+textarea.write-area:focus {
+  border-bottom-color: var(--lav-dark);
+  background: rgba(237,232,247,.2);
+  border-radius: 4px 4px 0 0;
+}
+textarea.write-area::placeholder { color: #c8bfe0; font-size: 11px; }
+
+/* Boxes */
+.step-box {
+  border: 1.5px dashed var(--sage); border-radius: 8px;
+  padding: 8px 10px; background: rgba(138,170,126,.07);
+}
+.step-box .step-label { font-size: 10px; font-weight: 700; color: var(--sage); margin-bottom: 4px; display: block; }
+
+.affirmation-box { background: var(--lav); border-radius: 8px; padding: 8px 10px; }
+.affirmation-box .af-label { font-size: 10px; font-weight: 700; color: var(--lav-deep); margin-bottom: 4px; display: block; }
+.affirmation-box textarea.write-area { border-bottom-color: var(--lav-mid); }
+
+.evening-accent { width: 28px; height: 3px; background: linear-gradient(90deg, var(--lav-dark), var(--sage)); border-radius: 2px; margin-bottom: 12px; }
+
+.checklist { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+.check-item { display: flex; align-items: center; gap: 6px; font-size: 11px; font-weight: 600; color: var(--text-mid); }
+.check-box {
+  width: 18px; height: 18px; border: 1.5px solid var(--lav-mid);
+  border-radius: 4px; flex-shrink: 0; background: var(--white);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 11px; transition: background .15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.check-box.checked { background: var(--lav-dark); color: white; border-color: var(--lav-dark); }
+
+.gratitude-box { border-left: 2.5px solid var(--gold); padding-left: 8px; }
+.gratitude-box textarea.write-area { border-bottom-color: rgba(232,200,74,.4); }
+
+.heart-moment { background: var(--lav); border-radius: 8px; padding: 8px 10px; }
+.heart-moment .hm-label { font-size: 10px; font-weight: 700; color: var(--lav-deep); margin-bottom: 4px; display: block; }
+.heart-moment textarea.write-area { border-bottom-color: var(--lav-mid); }
+
+.self-message { border: 1.5px solid var(--border); border-radius: 8px; padding: 8px 10px; background: var(--white); }
+.self-message .sm-label { font-size: 10px; font-weight: 700; color: var(--lav-deep); margin-bottom: 4px; display: block; }
+
+/* Stars */
+.mood-stars { display: flex; gap: 4px; }
+.star { font-size: 22px; color: var(--border); cursor: pointer; transition: color .15s; -webkit-tap-highlight-color: transparent; }
+.star.lit { color: var(--gold); }
+
+/* Kokoron message footer */
+.kokoron-msg {
+  position: absolute; bottom: 12px; left: 16px; right: 16px;
+  background: linear-gradient(90deg, rgba(237,232,247,.9), rgba(212,232,206,.7));
+  border-radius: 10px; padding: 8px 12px;
+  display: flex; align-items: center; gap: 8px;
+}
+.kokoron-img { width: 44px; height: 44px; object-fit: contain; mix-blend-mode: multiply; flex-shrink: 0; }
+.msg-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px; font-style: italic; color: var(--text-mid); line-height: 1.7;
+}
+
+/* Reset */
+.reset-bar { text-align: center; padding: 8px; margin-bottom: 8px; }
+.reset-btn {
+  background: none; border: 1px solid var(--border); border-radius: 20px;
+  font-size: 11px; color: var(--text-light); padding: 4px 14px;
+  cursor: pointer; font-family: 'Nunito', sans-serif;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 680px) {
+  .cover { margin-top: 56px; padding: 36px 20px 32px; }
+  .cover-title { font-size: 26px; }
+  .spread { flex-direction: column; border-radius: 12px; margin: 0 8px 20px; }
+  .spine { width: 100%; height: 6px; background: linear-gradient(to right, var(--lav-mid), var(--sage), var(--lav-mid)); }
+  .page { min-height: auto; padding: 20px 16px 80px; }
+  .checklist { grid-template-columns: 1fr; }
+  textarea.write-area { font-size: 15px; padding: 6px 2px; }
+  .chip { font-size: 13px; padding: 6px 12px; }
+  .weather-item { font-size: 22px; min-width: 40px; }
+  .check-box { width: 22px; height: 22px; font-size: 13px; }
+  .star { font-size: 26px; }
+  .theme-text { font-size: 15px; }
+  .day-nav { gap: 5px; padding: 8px; }
+  .day-nav-btn { padding: 6px 10px; font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<div class="size-switcher no-print">
+  <button class="size-btn active" onclick="setSize(this)">🖥 Screen</button>
+  <button class="size-btn" onclick="window.print()">🖨 Print / PDF</button>
+</div>
+
+<!-- Cover -->
+<div class="cover no-print">
+  <span class="cover-deco d1">🌿</span>
+  <span class="cover-deco d2">✦</span>
+  <span class="cover-deco d3">✧</span>
+  <span class="cover-deco d4">🌿</span>
+  <img class="cover-kokoron" src="../images/kokoron_cover.png" alt="Kokoron">
+  <div class="cover-eyebrow">Kokoron's Mindful Journal</div>
+  <div class="cover-title">7-Day Journal<br><em>with Kokoron</em></div>
+  <div class="cover-subtitle">MORNING &amp; EVENING · 7 THEMED DAYS</div>
+  <div class="cover-tagline">
+    🌿 Mindfulness × Journaling × Self-Care<br>
+    A gentle space to check in with yourself, every day.
+  </div>
+  <div class="cover-how">
+    <strong>How to use this journal</strong><br>
+    Morning pages → Set your intention for the day<br>
+    Evening pages → Reflect &amp; be kind to yourself<br>
+    It's okay to skip a day 🦥 No pressure.
+  </div>
+</div>
+
+<!-- Day Navigation -->
+<div class="day-nav no-print" id="dayNav"></div>
+
+<!-- Journal -->
+<div id="journal"></div>
+
+<div class="reset-bar no-print">
+  <button class="reset-btn" onclick="confirmReset()">🗑 Reset all entries</button>
+</div>
+
+<div style="text-align:center;padding:8px 0 40px;font-size:11px;color:#9888b0;" class="no-print">
+  🦥 Loves Life · Moca &amp; Kokoron — 7-Day Mindful Journal
+</div>
+
+<script>
+const IMAGES = [
+  'kokoron_01.png','kokoron_02.png','kokoron_03.png','kokoron_04.png',
+  'kokoron_05.png','kokoron_06.png','kokoron_07.png'
+];
+const IMG_BASE = '../images/';
+
+const DAYS = [
+  { day:1, theme:'Check In With Yourself',
+    morning_msg:"You're allowed to feel\nexactly as you are. That's enough. 🌿",
+    evening_msg:"You've done enough today.\nSleep well. 🌙" },
+  { day:2, theme:'Find Your Safe Space',
+    morning_msg:"Take your time.\nYou don't have to rush. 🌿",
+    evening_msg:"Thank you for being here today. 🌙" },
+  { day:3, theme:'Just Breathe',
+    morning_msg:"One deep breath.\nThat's all you need. 🌿",
+    evening_msg:"It's okay if you skipped a day.\nYou're still doing great. 🌙" },
+  { day:4, theme:'Rest Your Mind',
+    morning_msg:"You're allowed to\nempty your mind and rest. 🌿",
+    evening_msg:"Rest well tonight.\nYou deserve it. 🌙" },
+  { day:5, theme:'What Do You Really Want?',
+    morning_msg:"There's no rush to find the answer.\nTrust yourself. 🌿",
+    evening_msg:"Accept yourself\nexactly as you are today. 🌙" },
+  { day:6, theme:'Remember What You Love',
+    morning_msg:"Cherish the moments\nthat bring you joy. 🌿",
+    evening_msg:"Thank you for loving yourself\na little more today. 🌙" },
+  { day:7, theme:'Celebrate How Far You\'ve Come',
+    morning_msg:"Seven days.\nYou made it here. 🌿",
+    evening_msg:"You did it.\nI'm so proud of you. 🌙" }
+];
+
+const WEATHER_MORNING = [
+  {e:'☀️',l:'Clear'},{e:'🌤',l:'Okay'},{e:'☁️',l:'Foggy'},{e:'🌧',l:'Heavy'},{e:'🌙',l:'Quiet'}
+];
+const WEATHER_EVENING = [
+  {e:'🌙',l:'Peaceful'},{e:'✨',l:'Clear'},{e:'😴',l:'Sleepy'},{e:'☁️',l:'Cloudy'},{e:'🫧',l:'Relieved'}
+];
+const MOOD_CHIPS = ['😊 Calm','✨ Excited','😶 Foggy','😴 Tired','💪 Motivated','🫧 Other'];
+const SELF_CARE = ['Drank water','Took deep breaths','Got fresh air','Got proper rest','Connected with someone','Journaled','Was kind to myself','Other'];
+
+function weatherItems(arr, prefix) {
+  return arr.map(w =>
+    `<div class="weather-item" onclick="selWeather(this,'${prefix}')" data-group="${prefix}">
+      ${w.e}<span>${w.l}</span>
+    </div>`
+  ).join('');
+}
+
+function moodChipHtml() {
+  return MOOD_CHIPS.map(c => `<div class="chip" onclick="this.classList.toggle('active')">${c}</div>`).join('');
+}
+
+function checkHtml(n) {
+  return SELF_CARE.map((item, i) =>
+    `<div class="check-item">
+      <div class="check-box" data-key="en_d${n}_check_${i}" onclick="toggleCheck(this)"></div>
+      <span>${item}</span>
+    </div>`
+  ).join('');
+}
+
+function starsHtml(n) {
+  return Array(5).fill(0).map((_,i) =>
+    `<span class="star" data-idx="${i}" data-day="${n}" onclick="setStars(this,${n})">★</span>`
+  ).join('');
+}
+
+function ta(key, rows, ph) {
+  return `<textarea class="write-area" rows="${rows}" data-key="${key}" placeholder="${ph}"></textarea>`;
+}
+
+function buildSpread(d, idx) {
+  const img = IMG_BASE + IMAGES[idx % IMAGES.length];
+  const mMsg = d.morning_msg.replace(/\n/g,'<br>');
+  const eMsg = d.evening_msg.replace(/\n/g,'<br>');
+  const mpfx = `enm${d.day}`, epfx = `ene${d.day}`;
+  const n = d.day;
+  const dow = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+  return `
+<div class="spread" id="day${n}">
+  <!-- Morning -->
+  <div class="page page-morning">
+    <div class="page-header">
+      <div class="page-label">☀️ Morning</div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <input type="date" class="date-input" data-key="en_d${n}_date">
+        <div class="day-badge"><span class="num">${n}</span><span style="font-size:7px;font-weight:600;">Day</span></div>
+      </div>
+    </div>
+    <div class="date-row">
+      <div class="dow-pills" id="dow${n}">
+        ${dow.map(d=>`<div class="dow" onclick="selDow(this,'dow${n}')">${d}</div>`).join('')}
+      </div>
+    </div>
+    <div class="theme-banner">
+      <div class="theme-day">DAY ${n} · TODAY'S THEME</div>
+      <div class="theme-text">${d.theme}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">🌤 Heart Weather <span class="sub">/ How's the weather in your heart?</span></div>
+      <div class="weather-row">${weatherItems(WEATHER_MORNING, mpfx)}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">💭 How are you feeling right now?</div>
+      <div class="mood-chips">${moodChipHtml()}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">🌱 Gratitude <span class="sub">/ What are you grateful for?</span></div>
+      ${ta(`en_d${n}_gratitude`, 2, "I'm grateful for...")}
+    </div>
+
+    <div class="section">
+      <div class="section-label">🌿 How do you want to spend today?</div>
+      ${ta(`en_d${n}_intention`, 2, 'Today I want to...')}
+    </div>
+
+    <div class="section">
+      <div class="step-box">
+        <span class="step-label">🐾 One small step — just this is enough</span>
+        ${ta(`en_d${n}_step`, 1, 'Just one thing...')}
+      </div>
+    </div>
+
+    <div class="section" style="margin-bottom:0;">
+      <div class="affirmation-box">
+        <span class="af-label">🕯️ Today's affirmation</span>
+        ${ta(`en_d${n}_affirm`, 1, "Today I am...")}
+      </div>
+    </div>
+
+    <div class="kokoron-msg">
+      <img class="kokoron-img" src="${img}" alt="Kokoron">
+      <div class="msg-text">${mMsg}</div>
+    </div>
+  </div>
+
+  <div class="spine"></div>
+
+  <!-- Evening -->
+  <div class="page page-evening">
+    <div class="page-header">
+      <div class="page-label">🌙 Evening</div>
+      <div style="font-size:10px;color:var(--text-light);">You made it through today 🌿</div>
+    </div>
+    <div class="evening-accent"></div>
+
+    <div class="section">
+      <div class="section-label">🫧 Self-Care Check <span class="sub">/ Did you take care of yourself?</span></div>
+      <div class="checklist">${checkHtml(n)}</div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">💛 Today's Gratitude</div>
+      <div class="gratitude-box">
+        ${ta(`en_d${n}_eve_gratitude`, 2, "Today I'm thankful for...")}
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="heart-moment">
+        <span class="hm-label">🫀 A moment that moved you</span>
+        ${ta(`en_d${n}_heart`, 2, 'Something that touched my heart today...')}
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="self-message">
+        <span class="sm-label">✍️ A note to yourself</span>
+        ${ta(`en_d${n}_msg`, 3, 'Dear me...')}
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-label">⭐ How do you feel about today?</div>
+      <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+        <div class="mood-stars" id="stars${n}">${starsHtml(n)}</div>
+        <span style="font-size:10px;color:var(--text-light);">Whatever the score — you showed up today.</span>
+      </div>
+    </div>
+
+    <div class="section" style="margin-bottom:0;">
+      <div class="section-label">🌙 How's your heart right now? <span class="sub">/ End-of-day check-in</span></div>
+      <div class="weather-row">${weatherItems(WEATHER_EVENING, epfx)}</div>
+    </div>
+
+    <div class="kokoron-msg">
+      <img class="kokoron-img" src="${img}" alt="Kokoron">
+      <div class="msg-text">${eMsg}</div>
+    </div>
+  </div>
+</div>`;
+}
+
+// Render
+const journal = document.getElementById('journal');
+const nav = document.getElementById('dayNav');
+DAYS.forEach((d, idx) => {
+  journal.innerHTML += buildSpread(d, idx);
+  const btn = document.createElement('button');
+  btn.className = 'day-nav-btn' + (idx === 0 ? ' active' : '');
+  btn.textContent = `Day ${d.day}`;
+  btn.onclick = () => {
+    document.querySelectorAll('.day-nav-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`day${d.day}`).scrollIntoView({ behavior:'smooth', block:'start' });
+  };
+  nav.appendChild(btn);
+});
+
+// LocalStorage
+function saveKey(k,v){ try{localStorage.setItem('kokoron_'+k,v);}catch(e){} }
+function loadKey(k){ try{return localStorage.getItem('kokoron_'+k)||'';}catch(e){return '';} }
+
+document.querySelectorAll('textarea.write-area, input.date-input').forEach(el => {
+  const key = el.dataset.key; if (!key) return;
+  el.value = loadKey(key);
+  el.addEventListener('input', () => saveKey(key, el.value));
+});
+document.querySelectorAll('.check-box[data-key]').forEach(el => {
+  if (loadKey(el.dataset.key)==='1'){ el.classList.add('checked'); el.textContent='✓'; }
+});
+DAYS.forEach(d => {
+  const saved = loadKey(`en_d${d.day}_stars`);
+  if (saved !== '') {
+    document.querySelectorAll(`#stars${d.day} .star`).forEach((s,i) => s.classList.toggle('lit', i <= parseInt(saved)));
+  }
+});
+
+function selWeather(el, group) {
+  document.querySelectorAll(`[data-group="${group}"]`).forEach(e => e.classList.remove('sel'));
+  el.classList.add('sel');
+}
+function selDow(el, groupId) {
+  document.querySelectorAll(`#${groupId} .dow`).forEach(e => e.classList.remove('sel'));
+  el.classList.add('sel');
+}
+function toggleCheck(el) {
+  el.classList.toggle('checked');
+  el.textContent = el.classList.contains('checked') ? '✓' : '';
+  if (el.dataset.key) saveKey(el.dataset.key, el.classList.contains('checked') ? '1' : '0');
+}
+function setStars(el, n) {
+  const idx = parseInt(el.dataset.idx);
+  document.querySelectorAll(`#stars${n} .star`).forEach((s,i) => s.classList.toggle('lit', i <= idx));
+  saveKey(`en_d${n}_stars`, idx);
+}
+function setSize(btn) {
+  document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+}
+function confirmReset() {
+  if (confirm('Reset all entries? This cannot be undone.')) {
+    try { Object.keys(localStorage).filter(k => k.startsWith('kokoron_en')).forEach(k => localStorage.removeItem(k)); } catch(e) {}
+    location.reload();
+  }
+}
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => navigator.serviceWorker.register('../sw.js').catch(()=>{}));
+}
+</script>
+</body>
+</html>
