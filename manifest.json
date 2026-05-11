@@ -1,0 +1,22 @@
+{
+  "name": "こころんと整える 7日間ジャーナル",
+  "short_name": "こころんジャーナル",
+  "description": "朝と夜、1日2ページ × 7日間のマインドフルジャーナル",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#e0d8f0",
+  "theme_color": "#7b68c4",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "images/kokoron_cover.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/kokoron_cover.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
