@@ -322,21 +322,36 @@ textarea.write-area::placeholder { color: #c8bfe0; font-size: 11px; }
 
 /* ===== Mobile ===== */
 @media (max-width: 680px) {
+  body { overflow-x: hidden; font-size: 15px; }
+  html { overflow-x: hidden; }
+
   .cover { margin-top: 56px; padding: 36px 20px 32px; }
   .cover-title { font-size: 26px; }
-  .spread { flex-direction: column; border-radius: 12px; margin: 0 8px 20px; }
+
+  .spread {
+    flex-direction: column;
+    border-radius: 12px;
+    width: calc(100% - 16px);
+    margin: 0 auto 20px;
+  }
   .spine { width: 100%; height: 6px; background: linear-gradient(to right, var(--lav-mid), var(--sage), var(--lav-mid)); }
   .page { min-height: auto; padding: 20px 16px 80px; }
   .checklist { grid-template-columns: 1fr; }
+
   textarea.write-area { font-size: 15px; padding: 6px 2px; }
+  .section-label { font-size: 12px; }
   .chip { font-size: 13px; padding: 6px 12px; }
   .weather-item { font-size: 22px; min-width: 40px; }
+  .weather-item span { font-size: 11px; }
+  .check-item { font-size: 13px; }
   .check-box { width: 22px; height: 22px; font-size: 13px; }
   .star { font-size: 26px; }
   .theme-text { font-size: 15px; }
+  .msg-text { font-size: 12px; }
+
   .size-switcher { display: none; }
   .day-nav { gap: 5px; padding: 10px 12px; justify-content: flex-start; }
-  .day-nav-btn { padding: 7px 12px; font-size: 12px; }
+  .day-nav-btn { padding: 7px 12px; font-size: 13px; }
 }
 </style>
 </head>
