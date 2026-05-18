@@ -217,6 +217,83 @@
   .footer-msg { font-size: 7pt; color: var(--text-lt); line-height: 1.7; margin-bottom: 3px; }
   .footer-brand { font-size: 8pt; font-weight: 700; color: var(--purple); letter-spacing: 0.08em; }
 
+
+  /* ── ふりかえり ── */
+  .reflection {
+    background: white;
+    border: 1.5px solid var(--lavender);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+  }
+  .reflection-title {
+    font-size: 10pt;
+    font-weight: 700;
+    color: var(--purple-dk);
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .reflection-row {
+    margin-bottom: 10px;
+  }
+  .reflection-label {
+    font-size: 8pt;
+    font-weight: 700;
+    color: var(--text-lt);
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .reflection-label::before { content: "✦"; font-size: 7pt; }
+  .reflection-input {
+    border: none;
+    border-bottom: 1px solid var(--line);
+    font-size: 10pt;
+    padding: 5px 2px;
+    outline: none;
+    background: transparent;
+    font-family: inherit;
+    color: var(--text);
+    width: 100%;
+  }
+  /* 気持ちアイコン */
+  .mood-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .mood-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    background: var(--cream);
+    border: 1.5px solid var(--line);
+    border-radius: 12px;
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: all 0.15s;
+    font-family: inherit;
+    user-select: none;
+    min-width: 60px;
+  }
+  .mood-btn:hover { background: var(--purple-lt); border-color: var(--purple); }
+  .mood-btn.selected {
+    background: var(--purple-lt);
+    border-color: var(--purple);
+    box-shadow: 0 0 0 2px rgba(123,104,196,0.25);
+  }
+  .mood-emoji { font-size: 22px; line-height: 1; }
+  .mood-label { font-size: 7pt; color: var(--text-lt); font-weight: 700; }
+  .mood-btn.selected .mood-label { color: var(--purple-dk); }
+
+  @media print {
+    .mood-btn { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .mood-btn.selected { background: #ece8f8 !important; border-color: #7b68c4 !important; }
+  }
   @media print {
     body { background: white; padding: 0; }
     .page { width: 210mm; padding: 10mm 12mm 8mm; box-shadow: none; }
@@ -335,9 +412,70 @@
         <input class="write-line" type="text">
       </div>
       <div class="q-item">
-        <div class="q-label"><span class="q-dot"></span>今できることは？今は考えなくていいことは？</div>
+        <div class="q-label"><span class="q-dot"></span>今できることは？</div>
         <input class="write-line" type="text">
       </div>
+      <div class="q-item">
+        <div class="q-label"><span class="q-dot"></span>今は考えなくてもいいことは？</div>
+        <input class="write-line" type="text">
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ふりかえり -->
+  <div class="reflection">
+    <div class="reflection-title">🌿 書き終えたあと、どう感じますか？</div>
+
+    <!-- 気持ちアイコン -->
+    <div class="reflection-row">
+      <div class="reflection-label">今の気持ち（タップして選んでね）</div>
+      <div class="mood-grid">
+        <button class="mood-btn" onclick="this.classList.toggle('selected')">
+          <span class="mood-emoji">😌</span>
+          <span class="mood-label">穏やか</span>
+        </button>
+        <button class="mood-btn" onclick="this.classList.toggle('selected')">
+          <span class="mood-emoji">😮‍💨</span>
+          <span class="mood-label">すっきり</span>
+        </button>
+        <button class="mood-btn" onclick="this.classList.toggle('selected')">
+          <span class="mood-emoji">🤍</span>
+          <span class="mood-label">やさしい</span>
+        </button>
+        <button class="mood-btn" onclick="this.classList.toggle('selected')">
+          <span class="mood-emoji">😢</span>
+          <span class="mood-label">涙が出そう</span>
+        </button>
+        <button class="mood-btn" onclick="this.classList.toggle('selected')">
+          <span class="mood-emoji">🥺</span>
+          <span class="mood-label">不安</span>
+        </button>
+        <button class="mood-btn" onclick="this.classList.toggle('selected')">
+          <span class="mood-emoji">💭</span>
+          <span class="mood-label">考え中</span>
+        </button>
+        <button class="mood-btn" onclick="this.classList.toggle('selected')">
+          <span class="mood-emoji">😴</span>
+          <span class="mood-label">疲れた</span>
+        </button>
+        <button class="mood-btn" onclick="this.classList.toggle('selected')">
+          <span class="mood-emoji">✨</span>
+          <span class="mood-label">前向き</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 気づいたこと -->
+    <div class="reflection-row">
+      <div class="reflection-label">気づいたこと</div>
+      <input class="reflection-input" type="text" placeholder="">
+    </div>
+
+    <!-- 今日やってみること -->
+    <div class="reflection-row" style="margin-bottom:0;">
+      <div class="reflection-label">ひとつだけ、今日やってみること</div>
+      <input class="reflection-input" type="text" placeholder="">
     </div>
   </div>
 
