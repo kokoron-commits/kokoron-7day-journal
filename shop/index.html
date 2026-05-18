@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>こころんと整えるデジタルワークショップ | Loves Life</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Shippori+Mincho:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ナビゲーション -->
+  <header id="site-header">
+    <nav class="nav-inner">
+      <a href="#" class="nav-logo">🦥 こころん</a>
+      <ul class="nav-links">
+        <li><a href="#products">商品一覧</a></li>
+        <li><a href="#howto">使い方</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- セクション1: ファーストビュー -->
+    <section id="hero">
+      <div class="hero-inner">
+        <div class="hero-text">
+          <p class="hero-eyebrow">Moca &amp; Kokoron / Loves Life</p>
+          <h1 class="hero-title">こころんと整える<br>デジタルワークショップ</h1>
+          <p class="hero-copy">忙しい毎日の中で、自分の気持ちや思考にそっと気づくための、書き込み式セルフケアワークです。</p>
+          <p class="hero-note">スマホ・PC・タブレットから、自分のペースで使えます。</p>
+          <div class="hero-buttons">
+            <a href="#products" class="btn btn-filled scroll-link">商品を見る</a>
+            <a href="#about" class="btn btn-outline scroll-link">はじめての方へ</a>
+          </div>
+        </div>
+        <div class="hero-image">
+          <img src="images/kokoron.png" alt="こころん" width="120" style="mix-blend-mode: multiply;" />
+        </div>
+      </div>
+    </section>
+
+    <!-- セクション2: はじめての方へ -->
+    <section id="about">
+      <div class="section-inner about-inner">
+        <div class="about-text">
+          <h2 class="section-title">はじめての方へ</h2>
+          <p>「こころんと整えるデジタルワークショップ」は、マインドフルネスをベースにした書き込み式セルフケアワークのシリーズです。</p>
+          <p>PDFまたはデジタルノート形式でお届けするので、スマホやタブレット、PCからいつでも使えます。特別な道具は必要ありません。</p>
+          <p>自分のペースで、少しずつ。こころんと一緒に、自分の内側に目を向けてみてください。</p>
+        </div>
+        <div class="about-kokoron">
+          <img src="images/kokoron.png" alt="こころん" width="80" style="mix-blend-mode: multiply;" />
+        </div>
+      </div>
+    </section>
+
+    <!-- セクション3: 商品一覧 -->
+    <section id="products">
+      <div class="section-inner">
+        <h2 class="section-title center">デジタルワーク一覧</h2>
+        <!--
+          商品を追加するには：
+          script.js の products 配列にオブジェクトを1つ追加するだけでOKです
+        -->
+        <div id="product-grid" class="product-grid"></div>
+      </div>
+    </section>
+
+    <!-- セクション4: どれを選べばいい？ -->
+    <section id="guide">
+      <div class="section-inner">
+        <h2 class="section-title center">今のあなたに合うワークを選んでみてください</h2>
+        <div class="guide-grid">
+          <div class="guide-card">
+            <span class="guide-icon">💭</span>
+            <p class="guide-question">「自分が何を大切にしているか知りたい」</p>
+            <p class="guide-answer">→ 価値観ワークシート</p>
+            <a href="#products" class="btn btn-outline-sm scroll-link">このワークを見る</a>
+          </div>
+          <div class="guide-card">
+            <span class="guide-icon">📓</span>
+            <p class="guide-question">「ジャーナリングを始めたい・習慣にしたい」</p>
+            <p class="guide-answer">→ 7日間ジャーナル</p>
+            <a href="#products" class="btn btn-outline-sm scroll-link">このワークを見る</a>
+          </div>
+          <div class="guide-card">
+            <span class="guide-icon">🧠</span>
+            <p class="guide-question">「頭の中が忙しい・何もしたくない」</p>
+            <p class="guide-answer">→ 脳のメモリーを空けるワーク</p>
+            <a href="#products" class="btn btn-outline-sm scroll-link">このワークを見る</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- セクション5: 使い方 -->
+    <section id="howto">
+      <div class="section-inner">
+        <h2 class="section-title center">使い方</h2>
+        <div class="steps-grid">
+          <div class="step-item">
+            <span class="step-icon">🛒</span>
+            <p class="step-num">Step 1</p>
+            <p class="step-label">商品を購入する</p>
+          </div>
+          <div class="step-item">
+            <span class="step-icon">📩</span>
+            <p class="step-num">Step 2</p>
+            <p class="step-label">届いたURLを開く</p>
+          </div>
+          <div class="step-item">
+            <span class="step-icon">✏️</span>
+            <p class="step-num">Step 3</p>
+            <p class="step-label">書き込む</p>
+          </div>
+          <div class="step-item">
+            <span class="step-icon">🔄</span>
+            <p class="step-num">Step 4</p>
+            <p class="step-label">自分のペースで使う</p>
+          </div>
+        </div>
+        <p class="howto-note">※ 購入後はメールにてダウンロードURLをお送りします。</p>
+        <p class="howto-note">※ ダウンロード後は端末に保存してご利用ください。</p>
+      </div>
+    </section>
+
+    <!-- セクション6: 作成者について -->
+    <section id="creator">
+      <div class="section-inner creator-inner">
+        <div class="creator-text">
+          <h2 class="section-title">作成者について</h2>
+          <p>こんにちは、Mocaです。マインドフルネスとセルフケアをテーマに、日常の中でこころを整えるためのコンテンツをつくっています。</p>
+          <p>「難しくなく、続けやすく、でもちゃんと自分に向き合える」ワークをめざして、こころんと一緒に制作しています。</p>
+          <p>このワークが、あなたの毎日にちょっとだけ「ほっ」とできる時間を届けられたら嬉しいです。</p>
+          <p class="creator-sign">Moca &amp; Kokoron / Loves Life</p>
+        </div>
+        <div class="creator-kokoron">
+          <img src="images/kokoron.png" alt="こころん" width="100" style="mix-blend-mode: multiply;" />
+        </div>
+      </div>
+    </section>
+
+    <!-- セクション7: よくある質問 -->
+    <section id="faq">
+      <div class="section-inner">
+        <h2 class="section-title center">よくある質問</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Q. スマホだけでも使えますか？</span>
+              <span class="faq-icon">＋</span>
+            </button>
+            <div class="faq-answer">
+              <p>はい、スマホだけで使えます。PDF形式のワークはAdobe AcrobatなどのPDFアプリから書き込めますし、デジタルノート形式はGoodNotes等でもご利用いただけます。</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Q. 印刷できますか？</span>
+              <span class="faq-icon">＋</span>
+            </button>
+            <div class="faq-answer">
+              <p>はい、印刷してご利用いただけます。紙に書き込むほうがやりやすい方は、ぜひ印刷してお使いください。</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Q. 書いた内容は保存されますか？</span>
+              <span class="faq-icon">＋</span>
+            </button>
+            <div class="faq-answer">
+              <p>PDFアプリやデジタルノートアプリ内での保存となります。お使いのアプリに応じて、上書き保存または別名保存をしてください。クラウド上への自動保存は行われません。</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>Q. 何度も使えますか？</span>
+              <span class="faq-icon">＋</span>
+            </button>
+            <div class="faq-answer">
+              <p>ダウンロードしたファイルは何度でもお使いいただけます。繰り返し使いたい場合は、元のファイルをコピーしてから書き込むことをおすすめします。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- フッター -->
+  <footer id="site-footer">
+    <p class="footer-brand">Moca &amp; Kokoron / Loves Life</p>
+    <p class="footer-sub">こころんと整えるデジタルワークショップ</p>
+    <p class="footer-copy">© 2026 Loves Life</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
