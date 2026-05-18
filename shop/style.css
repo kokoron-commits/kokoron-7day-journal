@@ -2,20 +2,17 @@
    CSS変数（カラーパレット）
    ============================================== */
 :root {
-  --cream: #faf7f2;
-  --lavender: #ece8f8;
-  --lavender-dk: #7b68c4;
-  --lavender-mid: #d4cce8;
-  --mint: #e8f5f0;
-  --mint-dk: #5ab8a8;
-  --pink: #fdf0f0;
-  --pink-dk: #d4a0a0;
-  --beige: #f5ede0;
-  --gold: #c9a96e;
-  --text: #4a3728;
-  --text-lt: #8a7060;
-  --text-purple: #5a4fa0;
-  --shadow: rgba(120, 80, 40, 0.08);
+  --color-bg: #fbf7f0;
+  --color-bg-lavender: #f1ecfb;
+  --color-bg-mint: #edf7ef;
+  --color-bg-pink: #fbeeee;
+  --color-bg-card: #fffdf8;
+  --color-text: #5a4638;
+  --color-text-soft: #7b6a5e;
+  --color-primary: #7d67c8;
+  --color-primary-soft: #e8e0fb;
+  --color-accent: #d7b56d;
+  --color-border: #eadfcc;
 }
 
 /* ==============================================
@@ -32,11 +29,12 @@ html {
 }
 
 body {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  color: var(--text);
-  background: var(--cream);
-  line-height: 1.75;
+  font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", sans-serif;
+  color: var(--color-text);
+  background: var(--color-bg);
+  line-height: 1.8;
   font-size: 15px;
+  letter-spacing: 0.04em;
 }
 
 img {
@@ -58,22 +56,42 @@ ul {
    共通ユーティリティ
    ============================================== */
 .section-inner {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 80px 24px;
 }
 
 .section-title {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--text);
+  color: var(--color-text);
   margin-bottom: 32px;
-  line-height: 1.4;
+  line-height: 1.5;
+  letter-spacing: 0.04em;
 }
 
 .section-title.center {
   text-align: center;
+}
+
+.section-label.center {
+  text-align: center;
+}
+
+.section-label {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 768px) {
+  .section-inner {
+    padding: 56px 20px;
+  }
 }
 
 /* ==============================================
@@ -81,83 +99,87 @@ ul {
    ============================================== */
 .btn {
   display: inline-block;
-  padding: 12px 28px;
-  border-radius: 30px;
-  font-family: 'Zen Maru Gothic', sans-serif;
+  padding: 13px 30px;
+  border-radius: 999px;
+  font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", sans-serif;
   font-size: 14px;
   font-weight: 700;
+  letter-spacing: 0.04em;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   text-decoration: none;
   border: 2px solid transparent;
 }
 
 .btn-filled {
-  background: var(--lavender-dk);
+  background: var(--color-primary);
   color: #fff;
-  border-color: var(--lavender-dk);
-  box-shadow: 0 4px 20px var(--shadow);
+  border-color: var(--color-primary);
+  box-shadow: 0 6px 20px rgba(125, 103, 200, 0.25);
 }
 
 .btn-filled:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 28px rgba(120, 80, 40, 0.16);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(125, 103, 200, 0.35);
 }
 
 .btn-outline {
-  background: transparent;
-  color: var(--lavender-dk);
-  border-color: var(--lavender-dk);
+  background: #fff;
+  color: var(--color-primary);
+  border-color: var(--color-primary);
 }
 
 .btn-outline:hover {
-  transform: translateY(-2px);
-  background: var(--lavender);
-  box-shadow: 0 4px 16px var(--shadow);
+  transform: translateY(-3px);
+  background: var(--color-primary-soft);
+  box-shadow: 0 8px 24px rgba(125, 103, 200, 0.18);
 }
 
 .btn-outline-sm {
   display: inline-block;
   padding: 8px 20px;
-  border-radius: 30px;
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 13px;
+  border-radius: 999px;
+  font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", sans-serif;
+  font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.04em;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: transparent;
-  color: var(--lavender-dk);
-  border: 2px solid var(--lavender-dk);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
   text-decoration: none;
 }
 
 .btn-outline-sm:hover {
-  transform: translateY(-2px);
-  background: var(--lavender);
-  box-shadow: 0 4px 16px var(--shadow);
+  transform: translateY(-3px);
+  background: var(--color-primary-soft);
+  box-shadow: 0 6px 18px rgba(125, 103, 200, 0.18);
 }
 
 /* ==============================================
    ヘッダー・ナビ
    ============================================== */
 #site-header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  background: transparent;
-  transition: background 0.3s, box-shadow 0.3s;
-  padding: 0 20px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  transition: box-shadow 0.3s;
+  padding: 0 24px;
 }
 
 #site-header.scrolled {
-  background: #fff;
-  box-shadow: 0 2px 12px var(--shadow);
+  box-shadow: 0 4px 20px rgba(90, 70, 56, 0.08);
 }
 
 .nav-inner {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -166,26 +188,27 @@ ul {
 }
 
 .nav-logo {
-  font-family: 'Shippori Mincho', serif;
   font-weight: 700;
-  font-size: 1.1rem;
-  color: var(--text);
+  font-size: 0.95rem;
+  color: var(--color-text);
+  letter-spacing: 0.06em;
 }
 
 .nav-links {
   display: none;
-  gap: 24px;
+  gap: 28px;
 }
 
 .nav-links a {
   font-size: 13px;
-  color: var(--text);
+  color: var(--color-text-soft);
   font-weight: 700;
+  letter-spacing: 0.04em;
   transition: color 0.2s;
 }
 
 .nav-links a:hover {
-  color: var(--lavender-dk);
+  color: var(--color-primary);
 }
 
 @media (min-width: 600px) {
@@ -198,18 +221,17 @@ ul {
    ファーストビュー
    ============================================== */
 #hero {
-  background: linear-gradient(160deg, #faf7f2, #ece8f8, #e8f5f0);
-  padding-top: 80px;
+  background: linear-gradient(135deg, #f1ecfb 0%, #edf7ef 60%, #fbf7f0 100%);
 }
 
 .hero-inner {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
-  padding: 60px 20px;
+  padding: 100px 24px 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 32px;
+  gap: 40px;
 }
 
 .hero-text {
@@ -218,35 +240,36 @@ ul {
 
 .hero-eyebrow {
   font-size: 11px;
-  letter-spacing: 0.12em;
-  color: var(--text-purple);
-  font-weight: 400;
-  margin-bottom: 12px;
+  letter-spacing: 0.15em;
+  color: var(--color-primary);
+  font-weight: 700;
+  margin-bottom: 14px;
   text-transform: lowercase;
 }
 
 .hero-title {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 2rem;
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 700;
-  line-height: 1.4;
-  color: var(--text);
+  line-height: 1.45;
+  color: var(--color-text);
   margin-bottom: 20px;
+  letter-spacing: 0.04em;
 }
 
 .hero-copy {
   font-size: 14px;
-  color: var(--text);
+  color: var(--color-text);
   margin-bottom: 8px;
   max-width: 480px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.85;
 }
 
 .hero-note {
   font-size: 12px;
-  color: var(--text-lt);
-  margin-bottom: 28px;
+  color: var(--color-text-soft);
+  margin-bottom: 32px;
 }
 
 .hero-buttons {
@@ -256,28 +279,74 @@ ul {
   justify-content: center;
 }
 
+/* イラスト部分 */
+.hero-image {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-image::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  background: rgba(200, 185, 240, 0.25);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
 .hero-image img {
-  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+  width: 180px;
+  height: auto;
+  filter: drop-shadow(0 8px 20px rgba(125, 103, 200, 0.15));
 }
 
 @media (min-width: 700px) {
   .hero-inner {
-    flex-direction: row-reverse;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    gap: 48px;
   }
+
   .hero-text {
     text-align: left;
+    flex: 1;
   }
-  .hero-copy, .hero-note {
+
+  .hero-copy {
     margin-left: 0;
     margin-right: 0;
   }
+
+  .hero-note {
+    margin-left: 0;
+  }
+
   .hero-buttons {
     justify-content: flex-start;
   }
-  .hero-title {
-    font-size: 2.2rem;
+
+  .hero-image {
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 699px) {
+  .hero-image img {
+    width: 120px;
+  }
+
+  .hero-image::before {
+    width: 160px;
+    height: 160px;
   }
 }
 
@@ -285,18 +354,20 @@ ul {
    はじめての方へ
    ============================================== */
 #about {
-  background: var(--beige);
+  background: var(--color-bg);
 }
 
 .about-inner {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 32px;
 }
 
 .about-text p {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   font-size: 14px;
+  color: var(--color-text);
+  line-height: 1.85;
 }
 
 .about-kokoron {
@@ -310,9 +381,10 @@ ul {
     align-items: flex-start;
     justify-content: space-between;
   }
+
   .about-kokoron {
     flex-shrink: 0;
-    margin-left: 24px;
+    margin-left: 32px;
   }
 }
 
@@ -320,13 +392,13 @@ ul {
    商品一覧
    ============================================== */
 #products {
-  background: #fff;
+  background: var(--color-bg-card);
 }
 
 .product-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 24px;
+  gap: 28px;
 }
 
 @media (min-width: 600px) {
@@ -343,24 +415,25 @@ ul {
 
 /* 商品カード */
 .product-card {
-  border-radius: 16px;
-  box-shadow: 0 4px 20px var(--shadow);
-  background: var(--cream);
+  background: var(--color-bg-card);
+  border: 1px solid rgba(234, 223, 204, 0.9);
+  border-radius: 28px;
+  box-shadow: 0 18px 40px rgba(90, 70, 56, 0.08);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(120, 80, 40, 0.14);
+  box-shadow: 0 28px 56px rgba(90, 70, 56, 0.14);
 }
 
 .product-image-wrap {
   position: relative;
   aspect-ratio: 4 / 5;
-  background: var(--lavender);
+  background: var(--color-bg-lavender);
   overflow: hidden;
 }
 
@@ -368,80 +441,99 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 24px 24px 0 0;
 }
 
 .product-tag {
   position: absolute;
-  top: 10px;
-  left: 10px;
-  background: var(--gold);
-  color: #fff;
+  top: 12px;
+  left: 12px;
   font-size: 11px;
   font-weight: 700;
-  padding: 3px 10px;
-  border-radius: 20px;
+  padding: 4px 12px;
+  border-radius: 999px;
   letter-spacing: 0.05em;
 }
 
-.product-tag.tag-new {
-  background: var(--mint-dk);
+/* タグバリエーション */
+.product-tag.tag-popular {
+  background: var(--color-bg-pink);
+  color: #c06060;
 }
 
-.product-tag.tag-popular {
-  background: var(--pink-dk);
+.product-tag.tag-standard {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
+}
+
+.product-tag.tag-new {
+  background: var(--color-bg-mint);
+  color: #3a9060;
+}
+
+/* デフォルト（タグクラスなし） */
+.product-tag:not(.tag-popular):not(.tag-standard):not(.tag-new) {
+  background: var(--color-primary-soft);
+  color: var(--color-primary);
 }
 
 .product-body {
-  padding: 16px;
+  padding: 20px;
   display: flex;
   flex-direction: column;
   flex: 1;
-  gap: 6px;
+  gap: 8px;
 }
 
 .product-name {
   font-size: 15px;
   font-weight: 700;
-  color: var(--text);
-  line-height: 1.4;
+  color: var(--color-text);
+  line-height: 1.45;
 }
 
 .product-subtitle {
   font-size: 12px;
-  color: var(--text-lt);
-  line-height: 1.4;
+  color: var(--color-text-soft);
+  line-height: 1.5;
 }
 
 .product-description {
   font-size: 13px;
-  color: var(--text);
+  color: var(--color-text);
   display: -webkit-box;
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 
 .product-recommend {
   font-size: 12px;
-  color: var(--text-purple);
+  color: var(--color-primary);
   display: flex;
   align-items: flex-start;
   gap: 4px;
 }
 
 .product-price {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 700;
-  color: var(--gold);
+  color: var(--color-accent);
   margin-top: 4px;
 }
 
 .product-buttons {
   display: flex;
   gap: 8px;
-  margin-top: 8px;
-  flex-wrap: wrap;
+  margin-top: 10px;
+  flex-direction: column;
+}
+
+@media (min-width: 480px) {
+  .product-buttons {
+    flex-direction: row;
+  }
 }
 
 .btn-card-outline {
@@ -449,23 +541,24 @@ ul {
   min-width: 80px;
   display: inline-block;
   padding: 9px 12px;
-  border-radius: 30px;
-  font-family: 'Zen Maru Gothic', sans-serif;
+  border-radius: 999px;
+  font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", sans-serif;
   font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.04em;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
   background: transparent;
-  color: var(--lavender-dk);
-  border: 2px solid var(--lavender-dk);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
   text-decoration: none;
 }
 
 .btn-card-outline:hover {
   transform: translateY(-2px);
-  background: var(--lavender);
-  box-shadow: 0 4px 12px var(--shadow);
+  background: var(--color-primary-soft);
+  box-shadow: 0 4px 14px rgba(125, 103, 200, 0.18);
 }
 
 .btn-card-filled {
@@ -473,30 +566,31 @@ ul {
   min-width: 80px;
   display: inline-block;
   padding: 9px 12px;
-  border-radius: 30px;
-  font-family: 'Zen Maru Gothic', sans-serif;
+  border-radius: 999px;
+  font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", sans-serif;
   font-size: 12px;
   font-weight: 700;
+  letter-spacing: 0.04em;
   text-align: center;
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-  background: var(--lavender-dk);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background: var(--color-primary);
   color: #fff;
-  border: 2px solid var(--lavender-dk);
+  border: 2px solid var(--color-primary);
   text-decoration: none;
-  box-shadow: 0 4px 12px var(--shadow);
+  box-shadow: 0 4px 14px rgba(125, 103, 200, 0.2);
 }
 
 .btn-card-filled:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(120, 80, 40, 0.18);
+  box-shadow: 0 10px 24px rgba(125, 103, 200, 0.32);
 }
 
 /* ==============================================
    どれを選べばいい？
    ============================================== */
 #guide {
-  background: #f5f2fd;
+  background: var(--color-bg-mint);
 }
 
 .guide-grid {
@@ -513,35 +607,37 @@ ul {
 
 .guide-card {
   background: #fff;
-  border-radius: 16px;
-  padding: 24px 20px;
-  box-shadow: 0 4px 20px var(--shadow);
+  border-radius: 28px;
+  padding: 32px 24px;
+  box-shadow: 0 10px 32px rgba(90, 70, 56, 0.07);
+  border: 1px solid rgba(234, 223, 204, 0.7);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 10px;
-  transition: transform 0.2s;
+  gap: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .guide-card:hover {
-  transform: translateY(-3px);
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(90, 70, 56, 0.12);
 }
 
 .guide-icon {
-  font-size: 2rem;
+  font-size: 2.5rem;
 }
 
 .guide-question {
   font-size: 13px;
   font-weight: 700;
-  color: var(--text);
-  line-height: 1.5;
+  color: var(--color-text);
+  line-height: 1.6;
 }
 
 .guide-answer {
   font-size: 13px;
-  color: var(--text-purple);
+  color: var(--color-primary);
   font-weight: 700;
 }
 
@@ -549,13 +645,13 @@ ul {
    使い方
    ============================================== */
 #howto {
-  background: #f0faf8;
+  background: var(--color-bg-lavender);
 }
 
 .steps-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr;
+  gap: 16px;
   margin-bottom: 24px;
 }
 
@@ -567,60 +663,75 @@ ul {
 
 .step-item {
   background: #fff;
-  border-radius: 16px;
-  padding: 24px 16px;
-  box-shadow: 0 4px 16px var(--shadow);
+  border-radius: 20px;
+  padding: 28px 18px;
+  box-shadow: 0 10px 28px rgba(90, 70, 56, 0.07);
+  border: 1px solid rgba(234, 223, 204, 0.7);
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 6px;
+  gap: 10px;
+  transition: transform 0.3s ease;
 }
 
-.step-icon {
-  font-size: 2rem;
+.step-item:hover {
+  transform: translateY(-3px);
 }
 
-.step-num {
-  font-size: 11px;
-  color: var(--mint-dk);
+.step-num-badge {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(125, 103, 200, 0.25);
 }
 
 .step-label {
   font-size: 13px;
   font-weight: 700;
-  color: var(--text);
+  color: var(--color-text);
+  line-height: 1.5;
 }
 
 .howto-note {
   font-size: 12px;
-  color: var(--text-lt);
+  color: var(--color-text-soft);
   margin-top: 4px;
+  line-height: 1.7;
 }
 
 /* ==============================================
    作成者について
    ============================================== */
 #creator {
-  background: var(--beige);
+  background: var(--color-bg-pink);
 }
 
 .creator-inner {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 28px;
 }
 
 .creator-text p {
   font-size: 14px;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
+  color: var(--color-text);
+  line-height: 1.85;
 }
 
 .creator-sign {
+  color: var(--color-primary);
+  font-size: 0.9rem;
   font-weight: 700;
-  color: var(--text-purple);
   margin-top: 8px !important;
 }
 
@@ -636,10 +747,11 @@ ul {
     align-items: flex-start;
     justify-content: space-between;
   }
+
   .creator-kokoron {
     order: 0;
     flex-shrink: 0;
-    margin-left: 24px;
+    margin-left: 32px;
   }
 }
 
@@ -647,7 +759,7 @@ ul {
    よくある質問
    ============================================== */
 #faq {
-  background: #fff;
+  background: var(--color-bg-card);
 }
 
 .faq-list {
@@ -658,35 +770,36 @@ ul {
 
 .faq-item {
   border-radius: 16px;
-  border: 1.5px solid var(--lavender-mid);
+  border: 1px solid var(--color-border);
   overflow: hidden;
-  box-shadow: 0 2px 10px var(--shadow);
+  box-shadow: 0 4px 16px rgba(90, 70, 56, 0.06);
 }
 
 .faq-question {
   width: 100%;
   background: #fff;
   border: none;
-  padding: 18px 20px;
+  padding: 18px 22px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   cursor: pointer;
-  font-family: 'Zen Maru Gothic', sans-serif;
+  font-family: "Zen Maru Gothic", "Hiragino Sans", "Yu Gothic", sans-serif;
   font-size: 14px;
   font-weight: 700;
-  color: var(--text);
+  color: var(--color-text);
   text-align: left;
   transition: background 0.2s;
   gap: 12px;
+  letter-spacing: 0.04em;
 }
 
 .faq-question:hover {
-  background: var(--lavender);
+  background: #fdfcff;
 }
 
 .faq-question[aria-expanded="true"] {
-  background: var(--lavender);
+  background: #fdfcff;
 }
 
 .faq-icon {
@@ -694,7 +807,7 @@ ul {
   font-weight: 400;
   flex-shrink: 0;
   transition: transform 0.3s;
-  color: var(--lavender-dk);
+  color: var(--color-primary);
 }
 
 .faq-question[aria-expanded="true"] .faq-icon {
@@ -705,48 +818,50 @@ ul {
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.35s ease, padding 0.35s ease;
-  padding: 0 20px;
+  padding: 0 22px;
   background: #fdfcff;
 }
 
 .faq-answer.open {
   max-height: 200px;
-  padding: 16px 20px;
+  padding: 16px 22px;
 }
 
 .faq-answer p {
   font-size: 13px;
-  color: var(--text);
-  line-height: 1.7;
+  color: var(--color-text-soft);
+  line-height: 1.8;
 }
 
 /* ==============================================
    フッター
    ============================================== */
 #site-footer {
-  background: var(--text);
-  color: var(--cream);
+  background: var(--color-bg-lavender);
+  color: var(--color-text-soft);
   text-align: center;
-  padding: 40px 20px;
+  padding: 48px 24px;
   display: flex;
   flex-direction: column;
   gap: 6px;
+  border-top: 1px solid var(--color-border);
 }
 
 .footer-brand {
-  font-family: 'Shippori Mincho', serif;
-  font-size: 1rem;
+  font-size: 0.95rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
+  color: var(--color-text);
 }
 
 .footer-sub {
-  font-size: 13px;
-  opacity: 0.8;
+  font-size: 12px;
+  color: var(--color-text-soft);
 }
 
 .footer-copy {
   font-size: 11px;
-  opacity: 0.5;
+  color: var(--color-text-soft);
+  opacity: 0.7;
   margin-top: 8px;
 }
