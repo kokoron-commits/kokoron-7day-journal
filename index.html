@@ -50,38 +50,71 @@ body {
   .spread { box-shadow: none !important; page-break-after: always; break-after: page; flex-direction: row !important; }
   .cover  { page-break-after: always; break-after: page; }
 
-  /* こころんメッセージを非表示にしてスペース確保 */
+  /* こころんメッセージを非表示 */
   .kokoron-msg { display: none !important; }
 
-  /* ページ下余白を詰める */
-  .page { padding-bottom: 16px !important; min-height: auto !important; }
+  /* ページ余白を最小化 */
+  .page { padding: 12px 14px 12px !important; min-height: auto !important; }
 
   /* セクション間隔を詰める */
-  .section { margin-bottom: 6px !important; }
-
-  /* テキストエリアの高さを圧縮 */
-  textarea.write-area {
-    font-size: 11px !important;
-    line-height: 1.6 !important;
-    padding: 2px 2px !important;
-    min-height: 22px !important;
-    border: none !important;
-    border-bottom: 1px solid #ddd !important;
-    resize: none;
-  }
+  .section { margin-bottom: 4px !important; }
 
   /* セクションラベルを小さく */
   .section-label { font-size: 9px !important; margin-bottom: 2px !important; }
 
+  /* テキストエリアを1行分の高さに圧縮 */
+  textarea.write-area {
+    font-size: 11px !important;
+    line-height: 1.5 !important;
+    padding: 1px 2px !important;
+    height: 20px !important;
+    min-height: 20px !important;
+    max-height: 20px !important;
+    overflow: hidden !important;
+    border: none !important;
+    border-bottom: 1px solid #ddd !important;
+    resize: none !important;
+  }
+
+  /* 今日の自分へひとことは少し高めに */
+  .self-msg-box textarea.write-area,
+  .gratitude-box textarea.write-area,
+  .heart-moment textarea.write-area {
+    height: 28px !important;
+    min-height: 28px !important;
+    max-height: 28px !important;
+  }
+
   /* テーマバナーを小さく */
-  .theme-banner { padding: 6px 10px !important; margin-bottom: 6px !important; }
-  .theme-text { font-size: 13px !important; }
+  .theme-banner { padding: 4px 10px !important; margin-bottom: 4px !important; }
+  .theme-day { font-size: 7px !important; }
+  .theme-text { font-size: 12px !important; }
 
   /* ページヘッダーを詰める */
-  .page-header { margin-bottom: 5px !important; padding-bottom: 4px !important; }
+  .page-header { margin-bottom: 4px !important; padding-bottom: 3px !important; }
 
-  /* アファメーションボックス */
-  .affirmation-box { padding: 6px 10px !important; }
+  /* 曜日ピル */
+  .date-row { margin-bottom: 4px !important; }
+  .dow { font-size: 8px !important; padding: 2px 5px !important; }
+
+  /* 天気・ムードアイコン */
+  .weather-row { gap: 6px !important; margin-bottom: 2px !important; }
+  .weather-item { font-size: 14px !important; }
+  .w-label { font-size: 7px !important; }
+  .mood-chips { gap: 4px !important; margin-bottom: 2px !important; }
+  .mood-chip { font-size: 9px !important; padding: 2px 8px !important; }
+
+  /* アファメーション・ステップボックス */
+  .affirmation-box { padding: 4px 8px !important; margin-top: 2px !important; }
+  .step-box { padding: 6px 10px !important; }
+  .step-label { font-size: 9px !important; }
+
+  /* イブニングアクセント */
+  .evening-accent { margin-bottom: 6px !important; }
+
+  /* セルフケアチェック */
+  .checklist { gap: 4px 0 !important; }
+  .check-item { font-size: 10px !important; }
 }
 @page { size: A4 landscape; margin: 8mm; }
 
