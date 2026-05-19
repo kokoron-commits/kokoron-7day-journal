@@ -49,7 +49,39 @@ body {
   .no-print { display: none !important; }
   .spread { box-shadow: none !important; page-break-after: always; break-after: page; flex-direction: row !important; }
   .cover  { page-break-after: always; break-after: page; }
-  textarea { border: none !important; border-bottom: 1px solid #ddd !important; resize: none; }
+
+  /* こころんメッセージを非表示にしてスペース確保 */
+  .kokoron-msg { display: none !important; }
+
+  /* ページ下余白を詰める */
+  .page { padding-bottom: 16px !important; min-height: auto !important; }
+
+  /* セクション間隔を詰める */
+  .section { margin-bottom: 6px !important; }
+
+  /* テキストエリアの高さを圧縮 */
+  textarea.write-area {
+    font-size: 11px !important;
+    line-height: 1.6 !important;
+    padding: 2px 2px !important;
+    min-height: 22px !important;
+    border: none !important;
+    border-bottom: 1px solid #ddd !important;
+    resize: none;
+  }
+
+  /* セクションラベルを小さく */
+  .section-label { font-size: 9px !important; margin-bottom: 2px !important; }
+
+  /* テーマバナーを小さく */
+  .theme-banner { padding: 6px 10px !important; margin-bottom: 6px !important; }
+  .theme-text { font-size: 13px !important; }
+
+  /* ページヘッダーを詰める */
+  .page-header { margin-bottom: 5px !important; padding-bottom: 4px !important; }
+
+  /* アファメーションボックス */
+  .affirmation-box { padding: 6px 10px !important; }
 }
 @page { size: A4 landscape; margin: 8mm; }
 
