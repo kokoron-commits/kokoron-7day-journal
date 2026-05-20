@@ -62,27 +62,33 @@ body {
   /* セクションラベルを小さく */
   .section-label { font-size: 9px !important; margin-bottom: 2px !important; }
 
-  /* テキストエリアを1行分の高さに圧縮 */
+  /* テキストエリアの高さ：書き込みスペース確保 */
   textarea.write-area {
     font-size: 11px !important;
-    line-height: 1.5 !important;
-    padding: 1px 2px !important;
-    height: 20px !important;
-    min-height: 20px !important;
-    max-height: 20px !important;
+    line-height: 1.6 !important;
+    padding: 4px 2px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    max-height: 44px !important;
     overflow: hidden !important;
     border: none !important;
     border-bottom: 1px solid #ddd !important;
     resize: none !important;
   }
 
-  /* 今日の自分へひとことは少し高めに */
-  .self-msg-box textarea.write-area,
+  /* 今日のありがとう・心が動いた瞬間はやや小さく */
   .gratitude-box textarea.write-area,
   .heart-moment textarea.write-area {
-    height: 28px !important;
-    min-height: 28px !important;
-    max-height: 28px !important;
+    height: 36px !important;
+    min-height: 36px !important;
+    max-height: 36px !important;
+  }
+
+  /* 今日の自分へひとことは広めに */
+  .self-msg-box textarea.write-area {
+    height: 80px !important;
+    min-height: 80px !important;
+    max-height: 80px !important;
   }
 
   /* テーマバナーを小さく */
