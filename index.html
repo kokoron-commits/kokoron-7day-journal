@@ -111,8 +111,22 @@ body {
   .mood-chip { font-size: 9px !important; padding: 2px 8px !important; }
 
   /* アファメーション・ステップボックス */
-  .affirmation-box { padding: 4px 8px !important; margin-top: 2px !important; }
-  .step-box { padding: 6px 10px !important; }
+  .affirmation-box {
+    padding: 4px 8px !important;
+    margin-top: 2px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+  .affirmation-box textarea.write-area {
+    height: 60px !important;
+    min-height: 60px !important;
+    max-height: 60px !important;
+  }
+  .step-box {
+    padding: 6px 10px !important;
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
   .step-label { font-size: 9px !important; }
 
   /* イブニングアクセント */
