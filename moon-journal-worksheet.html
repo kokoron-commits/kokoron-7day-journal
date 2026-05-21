@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>自分に戻る夜のジャーナリングシート｜いて座満月</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Shippori+Mincho:wght@400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --night: #0f0f2e;
+  --deep: #1a1a4e;
+  --mid: #2a2a6e;
+  --lav: #6b5fa8;
+  --lav-light: #a89fd8;
+  --lav-pale: #d8d0f5;
+  --gold: #e8c84a;
+  --gold-light: #f5e08a;
+  --gold-pale: #fdf6d8;
+  --cream: #faf8f2;
+  --white: #ffffff;
+  --text-dark: #1a1a3e;
+  --text-mid: #4a4a7a;
+}
+
+body {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  background: linear-gradient(160deg, var(--night) 0%, var(--deep) 50%, #1e1040 100%);
+  min-height: 100vh;
+  color: var(--cream);
+  padding: 0 0 60px;
+}
+
+/* ===== 星の背景 ===== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px);
+  background-size: 200px 200px, 150px 150px, 100px 100px;
+  background-position: 0 0, 50px 80px, 100px 30px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ===== ヘッダー ===== */
+.header {
+  text-align: center;
+  padding: 48px 20px 36px;
+  position: relative;
+}
+
+.moon-icon {
+  font-size: 56px;
+  display: block;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 20px rgba(232, 200, 74, 0.6));
+  animation: glow 3s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(232, 200, 74, 0.6)); }
+  50% { filter: drop-shadow(0 0 35px rgba(232, 200, 74, 0.9)); }
+}
+
+.event-label {
+  display: inline-block;
+  background: rgba(232, 200, 74, 0.15);
+  border: 1px solid rgba(232, 200, 74, 0.4);
+  color: var(--gold-light);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  padding: 4px 16px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.header h1 {
+  font-size: clamp(22px, 5vw, 30px);
+  font-weight: 700;
+  line-height: 1.4;
+  color: var(--white);
+  text-shadow: 0 0 30px rgba(168, 159, 216, 0.5);
+  margin-bottom: 10px;
+}
+
+.header h1 span {
+  color: var(--gold);
+}
+
+.header-sub {
+  font-size: 13px;
+  color: var(--lav-pale);
+  line-height: 1.7;
+  letter-spacing: 0.05em;
+}
+
+.divider-star {
+  text-align: center;
+  margin: 8px 0 24px;
+  color: var(--gold);
+  font-size: 14px;
+  letter-spacing: 8px;
+  opacity: 0.7;
+}
+
+/* ===== セクション ===== */
+.section {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 28px 24px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 22px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-num {
+  width: 28px;
+  height: 28px;
+  background: linear-gradient(135deg, var(--lav), var(--gold));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+}
+
+.section-title {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--lav-pale);
+  letter-spacing: 0.05em;
+}
+
+.section-icon {
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+/* ===== 問い ===== */
+.question {
+  margin-bottom: 20px;
+}
+
+.question:last-child {
+  margin-bottom: 0;
+}
+
+.question-label {
+  font-size: 13px;
+  color: var(--gold-light);
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.question-label::before {
+  content: '✦';
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 12px;
+  color: var(--white);
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 14px;
+  line-height: 1.8;
+  padding: 12px 16px;
+  resize: none;
+  transition: border-color 0.2s, background 0.2s;
+  height: 80px;
+}
+
+textarea:focus {
+  outline: none;
+  border-color: rgba(168, 159, 216, 0.5);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+textarea::placeholder {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 13px;
+}
+
+textarea.tall {
+  height: 110px;
+}
+
+/* ===== ④ 持ち帰る言葉（特別スタイル） ===== */
+.takeaway-section {
+  background: linear-gradient(135deg, rgba(107, 95, 168, 0.2), rgba(232, 200, 74, 0.1));
+  border: 1px solid rgba(232, 200, 74, 0.3);
+}
+
+.takeaway-item {
+  margin-bottom: 20px;
+}
+
+.takeaway-label {
+  font-size: 13px;
+  color: var(--lav-pale);
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.takeaway-input-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(232, 200, 74, 0.35);
+  border-radius: 12px;
+  padding: 10px 16px;
+}
+
+.kakko {
+  color: var(--gold);
+  font-size: 20px;
+  font-weight: 300;
+  flex-shrink: 0;
+}
+
+.takeaway-input-wrap input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(232, 200, 74, 0.4);
+  color: var(--white);
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 15px;
+  letter-spacing: 0.05em;
+  padding: 4px 4px 6px;
+  text-align: center;
+}
+
+.takeaway-input-wrap input:focus {
+  outline: none;
+  border-bottom-color: var(--gold);
+}
+
+.takeaway-input-wrap input::placeholder {
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 13px;
+}
+
+/* ===== ⑤ 小さな一歩 ===== */
+.step-section {
+  background: linear-gradient(135deg, rgba(107, 95, 168, 0.15), rgba(30, 16, 64, 0.3));
+  border: 1px solid rgba(168, 159, 216, 0.3);
+}
+
+/* ===== フッター ===== */
+.footer {
+  text-align: center;
+  padding: 40px 20px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.footer-msg {
+  font-size: 13px;
+  color: var(--lav-pale);
+  line-height: 1.9;
+  margin-bottom: 16px;
+}
+
+.footer-brand {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.4);
+  letter-spacing: 0.1em;
+}
+
+.moon-bottom {
+  font-size: 28px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ===== 印刷ボタン ===== */
+.print-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: rgba(232, 200, 74, 0.15);
+  border: 1px solid rgba(232, 200, 74, 0.4);
+  color: var(--gold-light);
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13px;
+  border-radius: 24px;
+  padding: 10px 24px;
+  cursor: pointer;
+  margin: 0 auto 20px;
+  transition: background 0.2s;
+}
+
+.print-btn:hover {
+  background: rgba(232, 200, 74, 0.25);
+}
+
+/* ===== 印刷用 ===== */
+@media print {
+  body {
+    background: var(--cream) !important;
+    color: var(--text-dark) !important;
+  }
+  body::before { display: none; }
+  .print-btn { display: none; }
+
+  .header h1 { color: var(--text-dark); text-shadow: none; }
+  .header-sub, .event-label { color: var(--text-mid); }
+  .moon-icon { filter: none; }
+  .divider-star { color: var(--lav); }
+
+  .section {
+    background: white;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .section-title { color: var(--text-dark); }
+  .question-label { color: var(--lav); }
+
+  textarea {
+    background: white;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    color: var(--text-dark);
+    border-radius: 0;
+    height: 60px;
+  }
+
+  .takeaway-section {
+    background: #f5f0ff;
+    border: 1px solid var(--lav-pale);
+  }
+
+  .takeaway-input-wrap {
+    background: white;
+    border: 1px solid #ddd;
+  }
+
+  .takeaway-input-wrap input {
+    color: var(--text-dark);
+    border-bottom-color: var(--lav);
+  }
+
+  .kakko { color: var(--lav); }
+  .footer-msg { color: var(--text-mid); }
+  .footer-brand { color: #aaa; }
+  .moon-bottom { display: none; }
+
+  @page { size: A4; margin: 12mm; }
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- ヘッダー -->
+  <div class="header">
+    <span class="moon-icon">🌕</span>
+    <div class="event-label">2025.5.31 満月限定ワーク</div>
+    <h1>自分に戻る夜の<br>ジャーナリングシート</h1>
+    <p class="header-sub">〜 いて座満月に、自由と広がりを見つめる 〜</p>
+  </div>
+
+  <div class="divider-star">✦ ✦ ✦</div>
+
+  <!-- ① 今の私に気づく -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">①</div>
+      <span class="section-icon">🌿</span>
+      <span class="section-title">今の私に気づく</span>
+    </div>
+
+    <div class="question">
+      <div class="question-label">今の気分をひとことで表すと？</div>
+      <textarea placeholder="例：なんとなくふわふわしてる、少し疲れてるけど前向き…"></textarea>
+    </div>
+
+    <div class="question">
+      <div class="question-label">最近、心が少し重く感じていることは？</div>
+      <textarea placeholder="例：やりたいことが多すぎて整理できていない…"></textarea>
+    </div>
+
+    <div class="question">
+      <div class="question-label">最近、少しワクワクしたことは？</div>
+      <textarea placeholder="例：気になっていた本を買った、新しいカフェを見つけた…"></textarea>
+    </div>
+  </div>
+
+  <!-- ② 私が大切にしたい価値 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">②</div>
+      <span class="section-icon">💛</span>
+      <span class="section-title">私が大切にしたい価値</span>
+    </div>
+
+    <div class="question">
+      <div class="question-label">今の私が守りたいものは？</div>
+      <textarea placeholder="例：家族との時間、自分のペース、心の静けさ…"></textarea>
+    </div>
+
+    <div class="question">
+      <div class="question-label">今の私が大切にしたい時間は？</div>
+      <textarea placeholder="例：朝の静かな時間、好きなことに集中できる時間…"></textarea>
+    </div>
+
+    <div class="question">
+      <div class="question-label">本当は、どんな自分でいたい？</div>
+      <textarea class="tall" placeholder="例：もっと自分を信頼できる自分、自由に選択できる自分…"></textarea>
+    </div>
+  </div>
+
+  <!-- ③ いて座満月の問い -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">③</div>
+      <span class="section-icon">🌕</span>
+      <span class="section-title">いて座満月の問い</span>
+    </div>
+
+    <div class="question">
+      <div class="question-label">これから広げていきたい世界は？</div>
+      <textarea placeholder="例：もっと外の世界と繋がりたい、新しいことを学びたい…"></textarea>
+    </div>
+
+    <div class="question">
+      <div class="question-label">もっと自由に選んでいいとしたら、何を選びたい？</div>
+      <textarea placeholder="例：場所に縛られない働き方、もっと自分の感覚を優先した選択…"></textarea>
+    </div>
+
+    <div class="question">
+      <div class="question-label">今、学んでみたいこと・体験してみたいことは？</div>
+      <textarea placeholder="例：英語、ヨガ、料理、旅、新しい仕事のスキル…"></textarea>
+    </div>
+
+    <div class="question">
+      <div class="question-label">小さな冒険をするとしたら、何をしてみたい？</div>
+      <textarea placeholder="例：気になっていた場所に行く、知らない人に話しかける…"></textarea>
+    </div>
+  </div>
+
+  <!-- ④ 今日、持ち帰る言葉 -->
+  <div class="section takeaway-section">
+    <div class="section-header">
+      <div class="section-num">④</div>
+      <span class="section-icon">✨</span>
+      <span class="section-title">今日、持ち帰る言葉</span>
+    </div>
+
+    <div class="takeaway-item">
+      <div class="takeaway-label">今の私が大切にしたい価値は</div>
+      <div class="takeaway-input-wrap">
+        <span class="kakko">「</span>
+        <input type="text" placeholder="ひとことで書いてみよう">
+        <span class="kakko">」</span>
+      </div>
+    </div>
+
+    <div class="takeaway-item" style="margin-bottom:0;">
+      <div class="takeaway-label">これから広げていきたい世界は</div>
+      <div class="takeaway-input-wrap">
+        <span class="kakko">「</span>
+        <input type="text" placeholder="ひとことで書いてみよう">
+        <span class="kakko">」</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ 明日からの小さな一歩 -->
+  <div class="section step-section">
+    <div class="section-header">
+      <div class="section-num">⑤</div>
+      <span class="section-icon">🌱</span>
+      <span class="section-title">明日からの小さな一歩</span>
+    </div>
+
+    <div class="question" style="margin-bottom:0;">
+      <div class="question-label">その価値を大切にするために、明日できる小さな行動は？</div>
+      <textarea class="tall" placeholder="例：朝5分だけ自分のために書く時間をつくる、気になっていたあの場所に行ってみる…"></textarea>
+    </div>
+  </div>
+
+  <!-- 印刷ボタン -->
+  <div style="text-align:center; margin: 8px 0 0;">
+    <button class="print-btn" onclick="window.print()">🖨️ 印刷する</button>
+  </div>
+
+</div>
+
+<!-- フッター -->
+<div class="footer">
+  <span class="moon-bottom">🌕</span>
+  <p class="footer-msg">
+    今夜書いたことを、<br>
+    ぜひこれからの日常に持ち帰ってください🌿<br>
+    あなたの「広がりたい世界」を、応援しています。
+  </p>
+  <p class="footer-brand">Moca &amp; Kokoron 🦥</p>
+</div>
+
+</body>
+</html>
