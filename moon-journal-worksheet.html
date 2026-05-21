@@ -216,6 +216,50 @@ textarea.tall {
   height: 110px;
 }
 
+/* ===== 選択チップ ===== */
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 20px;
+  color: rgba(255,255,255,0.75);
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13px;
+  padding: 6px 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.chip:hover {
+  background: rgba(168, 159, 216, 0.2);
+  border-color: rgba(168, 159, 216, 0.5);
+}
+
+.chip.selected {
+  background: linear-gradient(135deg, rgba(107,95,168,0.5), rgba(232,200,74,0.25));
+  border-color: var(--gold);
+  color: var(--gold-light);
+  font-weight: 700;
+}
+
+.chip-note {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 8px;
+  letter-spacing: 0.04em;
+}
+
 /* ===== ④ 持ち帰る言葉（特別スタイル） ===== */
 .takeaway-section {
   background: linear-gradient(135deg, rgba(107, 95, 168, 0.2), rgba(232, 200, 74, 0.1));
@@ -409,12 +453,34 @@ textarea.tall {
 
     <div class="question">
       <div class="question-label">今の気分をひとことで表すと？</div>
-      <textarea placeholder="例：なんとなくふわふわしてる、少し疲れてるけど前向き…"></textarea>
+      <p class="chip-note">タップして選ぶか、下に書いてね</p>
+      <div class="chips">
+        <button class="chip" onclick="toggleChip(this)">😌 おだやか</button>
+        <button class="chip" onclick="toggleChip(this)">✨ わくわく</button>
+        <button class="chip" onclick="toggleChip(this)">😶 もやもや</button>
+        <button class="chip" onclick="toggleChip(this)">😪 つかれた</button>
+        <button class="chip" onclick="toggleChip(this)">💪 がんばれそう</button>
+        <button class="chip" onclick="toggleChip(this)">🌀 ざわざわ</button>
+        <button class="chip" onclick="toggleChip(this)">🌿 ほっとしたい</button>
+        <button class="chip" onclick="toggleChip(this)">🔥 燃えてる</button>
+      </div>
+      <textarea placeholder="もっと詳しく…（任意）" style="height:56px;"></textarea>
     </div>
 
     <div class="question">
       <div class="question-label">最近、心が少し重く感じていることは？</div>
-      <textarea placeholder="例：やりたいことが多すぎて整理できていない…"></textarea>
+      <p class="chip-note">タップして選ぶか、下に書いてね</p>
+      <div class="chips">
+        <button class="chip" onclick="toggleChip(this)">時間がない</button>
+        <button class="chip" onclick="toggleChip(this)">やることが多すぎる</button>
+        <button class="chip" onclick="toggleChip(this)">将来が不安</button>
+        <button class="chip" onclick="toggleChip(this)">人間関係</button>
+        <button class="chip" onclick="toggleChip(this)">自分への自信</button>
+        <button class="chip" onclick="toggleChip(this)">お金のこと</button>
+        <button class="chip" onclick="toggleChip(this)">体のこと</button>
+        <button class="chip" onclick="toggleChip(this)">方向性が見えない</button>
+      </div>
+      <textarea placeholder="もっと詳しく…（任意）" style="height:56px;"></textarea>
     </div>
 
     <div class="question">
@@ -433,17 +499,48 @@ textarea.tall {
 
     <div class="question">
       <div class="question-label">今の私が守りたいものは？</div>
-      <textarea placeholder="例：家族との時間、自分のペース、心の静けさ…"></textarea>
+      <p class="chip-note">タップして選ぶか、下に書いてね</p>
+      <div class="chips">
+        <button class="chip" onclick="toggleChip(this)">🏠 家族</button>
+        <button class="chip" onclick="toggleChip(this)">🕊️ 自由</button>
+        <button class="chip" onclick="toggleChip(this)">💚 健康</button>
+        <button class="chip" onclick="toggleChip(this)">🤝 つながり</button>
+        <button class="chip" onclick="toggleChip(this)">⏳ 自分の時間</button>
+        <button class="chip" onclick="toggleChip(this)">🌱 成長</button>
+        <button class="chip" onclick="toggleChip(this)">😌 心の平和</button>
+        <button class="chip" onclick="toggleChip(this)">💫 自分らしさ</button>
+      </div>
+      <textarea placeholder="もっと詳しく…（任意）" style="height:56px;"></textarea>
     </div>
 
     <div class="question">
       <div class="question-label">今の私が大切にしたい時間は？</div>
-      <textarea placeholder="例：朝の静かな時間、好きなことに集中できる時間…"></textarea>
+      <p class="chip-note">タップして選ぶか、下に書いてね</p>
+      <div class="chips">
+        <button class="chip" onclick="toggleChip(this)">🌅 朝の静かな時間</button>
+        <button class="chip" onclick="toggleChip(this)">🌙 夜のひとり時間</button>
+        <button class="chip" onclick="toggleChip(this)">📖 学ぶ時間</button>
+        <button class="chip" onclick="toggleChip(this)">🎨 創る時間</button>
+        <button class="chip" onclick="toggleChip(this)">👨‍👩‍👧 家族との時間</button>
+        <button class="chip" onclick="toggleChip(this)">🚶 ひとりの時間</button>
+        <button class="chip" onclick="toggleChip(this)">✍️ 書く時間</button>
+        <button class="chip" onclick="toggleChip(this)">🌿 自然の中の時間</button>
+      </div>
+      <textarea placeholder="もっと詳しく…（任意）" style="height:56px;"></textarea>
     </div>
 
     <div class="question">
       <div class="question-label">本当は、どんな自分でいたい？</div>
-      <textarea class="tall" placeholder="例：もっと自分を信頼できる自分、自由に選択できる自分…"></textarea>
+      <p class="chip-note">タップして選ぶか、下に書いてね</p>
+      <div class="chips">
+        <button class="chip" onclick="toggleChip(this)">🌟 自分を信頼できる</button>
+        <button class="chip" onclick="toggleChip(this)">🕊️ 自由に選択できる</button>
+        <button class="chip" onclick="toggleChip(this)">😌 穏やかでいられる</button>
+        <button class="chip" onclick="toggleChip(this)">🔥 挑戦し続ける</button>
+        <button class="chip" onclick="toggleChip(this)">🎨 表現できる</button>
+        <button class="chip" onclick="toggleChip(this)">💞 人と深くつながれる</button>
+      </div>
+      <textarea class="tall" placeholder="もっと詳しく…（任意）"></textarea>
     </div>
   </div>
 
@@ -457,7 +554,18 @@ textarea.tall {
 
     <div class="question">
       <div class="question-label">これから広げていきたい世界は？</div>
-      <textarea placeholder="例：もっと外の世界と繋がりたい、新しいことを学びたい…"></textarea>
+      <p class="chip-note">タップして選ぶか、下に書いてね</p>
+      <div class="chips">
+        <button class="chip" onclick="toggleChip(this)">💼 仕事・キャリア</button>
+        <button class="chip" onclick="toggleChip(this)">🌍 旅・場所</button>
+        <button class="chip" onclick="toggleChip(this)">📚 学び・知識</button>
+        <button class="chip" onclick="toggleChip(this)">🤝 人とのつながり</button>
+        <button class="chip" onclick="toggleChip(this)">🎨 表現・創作</button>
+        <button class="chip" onclick="toggleChip(this)">💰 お金・豊かさ</button>
+        <button class="chip" onclick="toggleChip(this)">💚 健康・からだ</button>
+        <button class="chip" onclick="toggleChip(this)">🌱 暮らし・日常</button>
+      </div>
+      <textarea placeholder="もっと詳しく…（任意）" style="height:56px;"></textarea>
     </div>
 
     <div class="question">
@@ -535,5 +643,10 @@ textarea.tall {
   <p class="footer-brand">Moca &amp; Kokoron 🦥</p>
 </div>
 
+<script>
+function toggleChip(el) {
+  el.classList.toggle('selected');
+}
+</script>
 </body>
 </html>
