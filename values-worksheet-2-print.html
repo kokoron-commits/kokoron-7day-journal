@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>手放すものを選ぶ｜価値観ワークシート vol.2（印刷版）</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Shippori+Mincho:wght@400;600&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy:     #1a2640;
+  --navy-mid: #2a3a5a;
+  --silver:   #6a7e96;
+  --silver-l: #c0ccd8;
+  --blush:    #9a7868;
+  --blush-l:  #d4b8ac;
+  --cream:    #f6f2ee;
+  --line:     #d8d4ce;
+  --text:     #1a2030;
+  --text-mid: #5a6070;
+  --text-l:   #9098a8;
+}
+
+body {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 0 auto;
+  padding: 14mm 18mm 12mm;
+  background: white;
+  position: relative;
+}
+
+/* ヘッダー */
+.header {
+  text-align: center;
+  padding-bottom: 13px;
+  margin-bottom: 16px;
+  border-bottom: 2px solid var(--navy);
+}
+
+.moon-row {
+  font-size: 24px;
+  letter-spacing: 5px;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.header-tag {
+  display: inline-block;
+  background: var(--navy);
+  color: var(--silver-l);
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  padding: 3px 14px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.header h1 {
+  font-family: 'Shippori Mincho', serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--navy);
+  line-height: 1.45;
+  letter-spacing: 0.05em;
+  margin-bottom: 5px;
+}
+.header h1 em { color: var(--blush); font-style: normal; }
+
+.header-sub {
+  font-size: 10px;
+  color: var(--text-mid);
+  letter-spacing: 0.06em;
+  line-height: 1.7;
+}
+
+/* セクション */
+.section { margin-bottom: 14px; }
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px 5px 10px;
+  background: var(--navy);
+  border-radius: 6px;
+  margin-bottom: 11px;
+}
+.section-num {
+  width: 22px; height: 22px;
+  background: var(--silver-l);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; font-weight: 700;
+  color: var(--navy);
+  flex-shrink: 0;
+}
+.section-name {
+  font-size: 12px; font-weight: 700;
+  color: white; letter-spacing: 0.06em;
+}
+.section-icon { font-size: 13px; flex-shrink: 0; }
+
+/* 質問 */
+.question { margin-bottom: 12px; padding-left: 4px; }
+
+.q-label {
+  font-size: 11px;
+  color: var(--blush);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 6px;
+  display: flex; align-items: center; gap: 5px;
+}
+.q-label::before { content: '◇'; font-size: 8px; color: var(--silver); }
+
+/* チェックリスト */
+.check-list {
+  display: flex; flex-wrap: wrap;
+  gap: 4px 10px;
+  margin-bottom: 7px;
+}
+.check-item {
+  display: flex; align-items: center; gap: 4px;
+  font-size: 10.5px; color: var(--text-mid);
+  white-space: nowrap;
+}
+.check-item::before {
+  content: '';
+  display: inline-block;
+  width: 11px; height: 11px;
+  border: 1.5px solid var(--silver);
+  border-radius: 2px; flex-shrink: 0;
+}
+
+/* 書き込み罫線 */
+.write-lines { width: 100%; margin-top: 3px; }
+.write-line {
+  width: 100%; height: 22px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* ⑤ 手放す宣言ボックス */
+.release-box {
+  background: #faf6f2;
+  border: 1.5px solid var(--blush-l);
+  border-radius: 10px;
+  padding: 12px 16px;
+  margin-bottom: 13px;
+}
+.release-label {
+  font-size: 10.5px;
+  color: var(--text-mid);
+  margin-bottom: 7px;
+}
+.release-line {
+  display: flex; align-items: center; gap: 5px;
+  font-size: 13px; color: var(--blush);
+  font-weight: 700;
+}
+.release-line .rline {
+  flex: 1;
+  border-bottom: 1.5px solid var(--blush-l);
+}
+
+/* フッター */
+.footer {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-msg {
+  font-size: 9.5px;
+  color: var(--text-l);
+  line-height: 1.7;
+}
+.footer-brand {
+  font-size: 10px;
+  color: var(--text-mid);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+/* 印刷ボタン */
+.print-btn {
+  display: block; margin: 24px auto 0;
+  background: var(--navy); color: white;
+  border: none; border-radius: 24px;
+  padding: 11px 32px;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 13px; cursor: pointer;
+  letter-spacing: 0.08em;
+}
+.print-btn:hover { background: var(--navy-mid); }
+
+@media print {
+  body { background: white; }
+  .print-btn { display: none; }
+  .page { width: 100%; margin: 0; padding: 12mm 16mm 10mm; box-shadow: none; }
+  @page { size: A4 portrait; margin: 0; }
+}
+@media screen {
+  body { background: #ddd; padding: 24px 0; }
+  .page { box-shadow: 0 4px 24px rgba(0,0,0,0.12); margin-bottom: 24px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <!-- ヘッダー -->
+  <div class="header">
+    <span class="moon-row">🌑 ✦ 🌑</span>
+    <div class="header-tag">価値観ワークシート vol.2</div>
+    <h1>手放すものを選ぶ、<em>軽くなる私へ</em></h1>
+    <p class="header-sub">持ち続けてきたものを、そっと置いてみる。手放した先に、本当に大切なものが見えてくる。</p>
+  </div>
+
+  <!-- ① 今、私が抱えているもの -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-num">①</div>
+      <span class="section-icon">🌫️</span>
+      <span class="section-name">今、私が抱えているもの</span>
+    </div>
+    <div class="question">
+      <div class="q-label">今、心や頭を占めていることは？（あてはまるものに○）</div>
+      <div class="check-list">
+        <span class="check-item">やることが多すぎる</span>
+        <span class="check-item">人間関係の疲れ</span>
+        <span class="check-item">過去への後悔</span>
+        <span class="check-item">将来への不安</span>
+        <span class="check-item">やめられない習慣</span>
+        <span class="check-item">自己批判・比較</span>
+        <span class="check-item">義務感・ねばならない</span>
+      </div>
+    </div>
+    <div class="question">
+      <div class="q-label">それを抱えていると、どんな気持ちになる？</div>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ② 手放したいものを選ぶ -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-num">②</div>
+      <span class="section-icon">🍂</span>
+      <span class="section-name">手放したいものを選ぶ</span>
+    </div>
+    <div class="question">
+      <div class="q-label">手放したいのはどのカテゴリ？（あてはまるものに○）</div>
+      <div class="check-list">
+        <span class="check-item">考え方・思い込み</span>
+        <span class="check-item">習慣・ルーティン</span>
+        <span class="check-item">関係性・距離感</span>
+        <span class="check-item">役割・キャラ</span>
+        <span class="check-item">仕事・タスク</span>
+        <span class="check-item">感情・執着</span>
+        <span class="check-item">時間の使い方</span>
+      </div>
+    </div>
+    <div class="question">
+      <div class="q-label">具体的に、何を手放したい？</div>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ③ なぜ手放せていないのか -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-num">③</div>
+      <span class="section-icon">🔒</span>
+      <span class="section-name">なぜ手放せていないのか</span>
+    </div>
+    <div class="question">
+      <div class="q-label">正直なところ、手放せない理由は？（あてはまるものに○）</div>
+      <div class="check-list">
+        <span class="check-item">罪悪感がある</span>
+        <span class="check-item">怖い・不安</span>
+        <span class="check-item">どうせ変わらない</span>
+        <span class="check-item">人の目が気になる</span>
+        <span class="check-item">まだ必要かもしれない</span>
+        <span class="check-item">自信がない</span>
+        <span class="check-item">ずっとそうしてきた</span>
+      </div>
+    </div>
+    <div class="question">
+      <div class="q-label">もし手放せたとしたら、何が変わる？</div>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ④ 手放した先の私 -->
+  <div class="section">
+    <div class="section-title">
+      <div class="section-num">④</div>
+      <span class="section-icon">🌅</span>
+      <span class="section-name">手放した先の私</span>
+    </div>
+    <div class="question">
+      <div class="q-label">手放した後の「なりたい私」を自由に書いてみよう</div>
+      <div class="write-lines">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ⑤ 今日、ひとつだけ手放す -->
+  <div class="release-box">
+    <div class="section-title" style="background: var(--blush); margin-bottom: 11px;">
+      <div class="section-num" style="background: white; color: var(--blush);">⑤</div>
+      <span class="section-icon">✨</span>
+      <span class="section-name">今日、ひとつだけ手放す</span>
+    </div>
+    <div class="release-label">今日の私は、</div>
+    <div class="release-line">「<span class="rline"></span>」を手放す。</div>
+    <div style="height: 10px;"></div>
+    <div class="release-label">そのために今日できる小さな行動</div>
+    <div class="release-line">「<span class="rline"></span>」</div>
+  </div>
+
+  <!-- フッター -->
+  <div class="footer">
+    <p class="footer-msg">
+      手放すことは、逃げることじゃない。<br>
+      本当に大切なものに、向かっていくことだから。🌿
+    </p>
+    <p class="footer-brand">Moca &amp; Kokoron 🦥</p>
+  </div>
+
+</div><!-- /page -->
+
+<button class="print-btn" onclick="window.print()">🖨️ PDFとして保存 / 印刷する</button>
+
+</body>
+</html>
