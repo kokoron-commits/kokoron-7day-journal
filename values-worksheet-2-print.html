@@ -160,14 +160,20 @@ body {
   color: var(--text-mid);
   margin-bottom: 7px;
 }
-.release-line {
-  display: flex; align-items: center; gap: 5px;
-  font-size: 13px; color: var(--blush);
+.release-statement {
+  font-size: 13px;
+  color: var(--blush);
   font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
 }
-.release-line .rline {
-  flex: 1;
-  border-bottom: 1.5px solid var(--blush-l);
+
+.release-write {
+  width: 100%;
+  margin-top: 6px;
+}
+.release-write .write-line {
+  border-bottom: 1px solid var(--blush-l);
 }
 
 /* フッター */
@@ -251,6 +257,7 @@ body {
         <div class="write-line"></div>
         <div class="write-line"></div>
         <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
     </div>
   </div>
@@ -277,6 +284,7 @@ body {
     <div class="question">
       <div class="q-label">具体的に、何を手放したい？</div>
       <div class="write-lines">
+        <div class="write-line"></div>
         <div class="write-line"></div>
         <div class="write-line"></div>
         <div class="write-line"></div>
@@ -309,6 +317,8 @@ body {
       <div class="write-lines">
         <div class="write-line"></div>
         <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
     </div>
   </div>
@@ -326,22 +336,35 @@ body {
         <div class="write-line"></div>
         <div class="write-line"></div>
         <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
     </div>
   </div>
 
   <!-- ⑤ 今日、ひとつだけ手放す -->
   <div class="release-box">
-    <div class="section-title" style="background: var(--blush); margin-bottom: 11px;">
+    <div class="section-title" style="background: var(--blush); margin-bottom: 14px;">
       <div class="section-num" style="background: white; color: var(--blush);">⑤</div>
       <span class="section-icon">✨</span>
       <span class="section-name">今日、ひとつだけ手放す</span>
     </div>
-    <div class="release-label">今日の私は、</div>
-    <div class="release-line">「<span class="rline"></span>」を手放す。</div>
-    <div style="height: 10px;"></div>
-    <div class="release-label">そのために今日できる小さな行動</div>
-    <div class="release-line">「<span class="rline"></span>」</div>
+
+    <div class="release-label">今日の私は、「　　　　　　　　　　」を手放す。</div>
+    <div class="release-write">
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
+
+    <div style="height: 16px;"></div>
+
+    <div class="release-label">そのために今日できる小さな行動は、</div>
+    <div class="release-write">
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+      <div class="write-line"></div>
+    </div>
   </div>
 
   <!-- フッター -->
