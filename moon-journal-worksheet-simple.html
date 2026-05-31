@@ -217,19 +217,20 @@ body {
   margin-bottom: 5px;
 }
 
-.takeaway-line {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 16px;
-  color: var(--gold-light);
+.takeaway-statement {
+  font-size: 13px;
+  color: var(--gold);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
 }
 
-.takeaway-line .line {
-  flex: 1;
-  height: 1px;
-  border-bottom: 1.5px solid var(--gold-light);
-  margin: 0 2px;
+.takeaway-write {
+  width: 100%;
+  margin-top: 4px;
+}
+.takeaway-write .write-line {
+  border-bottom: 1px solid var(--gold-light);
 }
 
 /* ⑤ 一歩 */
@@ -339,6 +340,7 @@ body {
       </div>
       <div class="write-lines">
         <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
     </div>
 
@@ -347,12 +349,14 @@ body {
       <div class="write-lines">
         <div class="write-line"></div>
         <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
     </div>
 
     <div class="question">
       <div class="q-label">最近、少しワクワクしたことは？</div>
       <div class="write-lines">
+        <div class="write-line"></div>
         <div class="write-line"></div>
         <div class="write-line"></div>
       </div>
@@ -392,6 +396,7 @@ body {
         <span class="check-item">深くつながれる</span>
       </div>
       <div class="write-lines">
+        <div class="write-line"></div>
         <div class="write-line"></div>
         <div class="write-line"></div>
       </div>
@@ -434,6 +439,7 @@ body {
       <div class="write-lines">
         <div class="write-line"></div>
         <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
     </div>
   </div>
@@ -447,13 +453,21 @@ body {
     </div>
 
     <div class="takeaway-item">
-      <div class="takeaway-label">今の私が大切にしたい価値は</div>
-      <div class="takeaway-line">「<span class="line"></span>」</div>
+      <div class="takeaway-statement">今の私が大切にしたい価値は、「　　　　　　　　　　」</div>
+      <div class="takeaway-write">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
     </div>
 
     <div class="takeaway-item">
-      <div class="takeaway-label">これから広げていきたい世界は</div>
-      <div class="takeaway-line">「<span class="line"></span>」</div>
+      <div class="takeaway-statement">これから広げていきたい世界は、「　　　　　　　　　　」</div>
+      <div class="takeaway-write">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+        <div class="write-line"></div>
+      </div>
     </div>
   </div>
 
@@ -468,6 +482,7 @@ body {
     <div class="question" style="margin-bottom: 0;">
       <div class="q-label" style="color: var(--lav);">その価値を大切にするために、明日できる小さな行動は？</div>
       <div class="write-lines">
+        <div class="write-line" style="border-bottom-color: var(--lav);"></div>
         <div class="write-line" style="border-bottom-color: var(--lav);"></div>
         <div class="write-line" style="border-bottom-color: var(--lav);"></div>
         <div class="write-line" style="border-bottom-color: var(--lav);"></div>
