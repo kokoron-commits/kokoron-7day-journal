@@ -289,6 +289,29 @@
   .mood-emoji { font-size: 22px; line-height: 1; }
   .mood-label { font-size: 7pt; color: var(--text-lt); font-weight: 700; }
   .mood-btn.selected .mood-label { color: var(--purple-dk); }
+  /* 印刷用 気持ちグリッド */
+  .mood-print-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 5px;
+  }
+  .mood-print-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 9.5pt;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .mood-circle {
+    display: inline-block;
+    width: 14px; height: 14px;
+    border: 1.5px solid var(--purple);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
 
   @media print {
     .mood-btn { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -396,7 +419,7 @@
   </div>
 
   <!-- ③ 未来 -->
-  <div class="section section-future">
+  <div class="section section-future" style="break-before: page; padding-top: 4mm;">
     <div class="sec-head">
       <div class="sec-head-left">
         <div class="sec-num">③</div>
@@ -442,40 +465,16 @@
 
     <!-- 気持ちアイコン -->
     <div class="reflection-row">
-      <div class="reflection-label">今の気持ち（タップして選んでね）</div>
-      <div class="mood-grid">
-        <button class="mood-btn" onclick="this.classList.toggle('selected')">
-          <span class="mood-emoji">😌</span>
-          <span class="mood-label">穏やか</span>
-        </button>
-        <button class="mood-btn" onclick="this.classList.toggle('selected')">
-          <span class="mood-emoji">😮‍💨</span>
-          <span class="mood-label">すっきり</span>
-        </button>
-        <button class="mood-btn" onclick="this.classList.toggle('selected')">
-          <span class="mood-emoji">🤍</span>
-          <span class="mood-label">やさしい</span>
-        </button>
-        <button class="mood-btn" onclick="this.classList.toggle('selected')">
-          <span class="mood-emoji">😢</span>
-          <span class="mood-label">涙が出そう</span>
-        </button>
-        <button class="mood-btn" onclick="this.classList.toggle('selected')">
-          <span class="mood-emoji">🥺</span>
-          <span class="mood-label">不安</span>
-        </button>
-        <button class="mood-btn" onclick="this.classList.toggle('selected')">
-          <span class="mood-emoji">💭</span>
-          <span class="mood-label">考え中</span>
-        </button>
-        <button class="mood-btn" onclick="this.classList.toggle('selected')">
-          <span class="mood-emoji">😴</span>
-          <span class="mood-label">疲れた</span>
-        </button>
-        <button class="mood-btn" onclick="this.classList.toggle('selected')">
-          <span class="mood-emoji">✨</span>
-          <span class="mood-label">前向き</span>
-        </button>
+      <div class="reflection-label">今の気持ち（あてはまるものに○）</div>
+      <div class="mood-print-grid">
+        <span class="mood-print-item"><span class="mood-circle"></span>😌 穏やか</span>
+        <span class="mood-print-item"><span class="mood-circle"></span>😮‍💨 すっきり</span>
+        <span class="mood-print-item"><span class="mood-circle"></span>🤍 やさしい</span>
+        <span class="mood-print-item"><span class="mood-circle"></span>😢 涙が出そう</span>
+        <span class="mood-print-item"><span class="mood-circle"></span>🥺 不安</span>
+        <span class="mood-print-item"><span class="mood-circle"></span>💭 考え中</span>
+        <span class="mood-print-item"><span class="mood-circle"></span>😴 疲れた</span>
+        <span class="mood-print-item"><span class="mood-circle"></span>✨ 前向き</span>
       </div>
     </div>
 
