@@ -149,9 +149,9 @@
 
   /* 問いグリッド（2カラム） */
   .q-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
   .q-item { display: flex; flex-direction: column; gap: 3px; }
   .q-label {
@@ -169,9 +169,9 @@
 
   .write-line {
     border: none; border-bottom: 1px solid var(--line);
-    font-size: 10pt; padding: 6px 2px;
-    outline: none; background: transparent;
-    font-family: inherit; color: var(--text); width: 100%;
+    font-size: 10pt; height: 26px;
+    background: transparent;
+    width: 100%;
   }
 
   /* クロージング */
@@ -339,19 +339,23 @@
     <div class="q-grid">
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>まだ引きずっている出来事は？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>思い出すと疲れることは？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>「もう終わった」と言えていないことは？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>本当は手放したいものは？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
     </div>
   </div>
@@ -370,19 +374,23 @@
     <div class="q-grid">
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>今日、本当に必要なことは？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>今の自分にとって大事なことは？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>思い込んでいるだけの「やらなきゃ」は？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>今、減らせるものはある？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
     </div>
   </div>
@@ -401,23 +409,28 @@
     <div class="q-grid">
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>最近、不安になっていることは？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>「もしかしたら…」と考えていることは？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>本当に起きると決まっている？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>今できることは？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
       <div class="q-item">
         <div class="q-label"><span class="q-dot"></span>今は考えなくてもいいことは？</div>
-        <input class="write-line" type="text">
+        <div class="write-line"></div>
+        <div class="write-line"></div>
       </div>
     </div>
   </div>
@@ -469,13 +482,13 @@
     <!-- 気づいたこと -->
     <div class="reflection-row">
       <div class="reflection-label">気づいたこと</div>
-      <input class="reflection-input" type="text" placeholder="">
+      <div class="reflection-input" style="height:26px; border:none; border-bottom:1px solid var(--line); width:100%;"></div>
     </div>
 
     <!-- 今日やってみること -->
     <div class="reflection-row" style="margin-bottom:0;">
       <div class="reflection-label">ひとつだけ、今日やってみること</div>
-      <input class="reflection-input" type="text" placeholder="">
+      <div class="reflection-input" style="height:26px; border:none; border-bottom:1px solid var(--line); width:100%;"></div>
     </div>
   </div>
 
