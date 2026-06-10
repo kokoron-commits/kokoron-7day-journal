@@ -636,30 +636,30 @@ function buildSpread(d, idx) {
     </div>
 
     <div class="section">
-      <div class="section-label">💭 今日の心に近いのは？</div>
+      <div class="section-label">💭 今日の心に近いのは？ <span class="en">/ How are you feeling?</span></div>
       <div class="mood-chips">${moodChipHtml()}</div>
     </div>
 
     <div class="section">
-      <div class="section-label">🌱 今日のありがとう <span class="en">/ Gratitude</span></div>
-      ${ta(`d${n}_gratitude`, 2, '今日ありがとうと思ったことを書いてみよう…')}
+      <div class="section-label">🌱 今日の小さな楽しみ <span class="en">/ Today's Little Joy</span></div>
+      ${ta(`d${n}_gratitude`, 2, '今日楽しみなこと、うれしいことを書いてみよう…')}
     </div>
 
     <div class="section">
-      <div class="section-label">🌿 今日どう過ごしたい？</div>
+      <div class="section-label">🌿 今日どう過ごしたい？ <span class="en">/ Today's Intention</span></div>
       ${ta(`d${n}_intention`, 2, '今日の過ごし方を自由に…')}
     </div>
 
     <div class="section">
       <div class="step-box">
-        <span class="step-label">🐾 今日の小さな一歩 — これだけできればOK</span>
+        <span class="step-label">🐾 今日の小さな一歩 — これだけできればOK <span class="en">/ One Small Step</span></span>
         ${ta(`d${n}_step`, 1, '一つだけ決めてみよう…')}
       </div>
     </div>
 
     <div class="section" style="margin-bottom:0;">
       <div class="affirmation-box">
-        <span class="af-label">🕯️ 今日のアファメーション</span>
+        <span class="af-label">🕯️ 今日のアファメーション <span class="en">/ Affirmation</span></span>
         ${ta(`d${n}_affirm`, 1, '今日の自分へひとこと…')}
       </div>
     </div>
@@ -686,28 +686,28 @@ function buildSpread(d, idx) {
     </div>
 
     <div class="section">
-      <div class="section-label">💛 今日ありがとうと思ったこと</div>
+      <div class="section-label">💛 今日の小さな豊かさ <span class="en">/ Small Abundance</span></div>
       <div class="gratitude-box">
-        ${ta(`d${n}_eve_gratitude`, 2, 'ありがとうと感じた瞬間を…')}
+        ${ta(`d${n}_eve_gratitude`, 2, '今日あった小さな幸せ・豊かさを…')}
       </div>
     </div>
 
     <div class="section">
       <div class="heart-moment">
-        <span class="hm-label">🫀 心が動いた瞬間</span>
+        <span class="hm-label">🫀 心が動いた瞬間 <span class="en">/ What Moved Your Heart</span></span>
         ${ta(`d${n}_heart`, 2, '今日ドキッとした瞬間、じんとした瞬間…')}
       </div>
     </div>
 
     <div class="section">
       <div class="self-message">
-        <span class="sm-label">✍️ 今日の自分へひとこと</span>
+        <span class="sm-label">✍️ 今日の自分へひとこと <span class="en">/ A Note to Yourself</span></span>
         ${ta(`d${n}_msg`, 3, '今日の自分にメッセージを…')}
       </div>
     </div>
 
     <div class="section">
-      <div class="section-label">⭐ 今日の自分に点数をつけるなら</div>
+      <div class="section-label">⭐ 今日の自分に点数をつけるなら <span class="en">/ Rate Your Day</span></div>
       <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
         <div class="mood-stars" id="stars${n}">${starsHtml(n)}</div>
         <span style="font-size:10px;color:var(--text-light);">どんな点数でも、今日のあなたはよくやった</span>
