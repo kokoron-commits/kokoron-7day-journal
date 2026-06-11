@@ -32,235 +32,177 @@ body {
 }
 
 .page {
-  width: 210mm;
-  height: 296mm;
+  max-width: 210mm;
   margin: 0 auto 24px;
-  padding: 14mm 16mm 12mm;
+  padding: 10mm 12mm 8mm;
   background: var(--cream);
   position: relative;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
 }
 
 /* ===== 飾り（太陽） ===== */
 .sun-deco {
-  position: absolute; top: 10mm; right: 12mm;
-  width: 64px; height: 64px; opacity: 0.5;
+  position: absolute; top: 8mm; right: 10mm;
+  width: 56px; height: 56px; opacity: 0.5;
 }
 .sun-core {
   position: absolute; top: 50%; left: 50%;
-  width: 30px; height: 30px; border-radius: 50%;
+  width: 26px; height: 26px; border-radius: 50%;
   background: radial-gradient(circle, #F4D58A 0%, #EDC25E 100%);
   transform: translate(-50%, -50%);
 }
 .sun-ray {
   position: absolute; top: 50%; left: 50%;
-  width: 2.5px; height: 60px;
+  width: 2.5px; height: 52px;
   background: linear-gradient(to bottom, #E8C878 20%, transparent 20%, transparent 80%, #E8C878 80%);
   border-radius: 2px;
 }
 
-/* ===== ページヘッダー ===== */
+/* ===== ヘッダー ===== */
 .ws-header {
   text-align: center;
-  margin-bottom: 10mm;
-  padding-bottom: 6mm;
+  margin-bottom: 7mm;
+  padding-bottom: 5mm;
   border-bottom: 2px dashed var(--border);
 }
 .ws-eyebrow {
   font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 10px; color: var(--text-lt);
+  font-size: 9px; color: var(--text-lt);
   letter-spacing: 0.25em;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
 }
 .ws-title {
-  font-size: 22px; font-weight: 700;
-  letter-spacing: 0.04em;
-  line-height: 1.7;
-  margin-bottom: 8px;
+  font-size: 19px; font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  margin-bottom: 5px;
 }
 .ws-sub {
-  font-size: 11px; color: var(--text-md);
-  line-height: 1.9;
+  font-size: 10px; color: var(--text-md);
+  line-height: 1.8;
 }
 
-/* ===== ページ番号バッジ ===== */
-.badge-wrap { text-align: center; margin-bottom: 7mm; }
-.step-badge {
-  display: inline-flex; align-items: center; gap: 10px;
-  border-radius: 20px;
-  padding: 7px 20px;
-  font-size: 13px; font-weight: 700;
-}
-.step-num {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 10px; letter-spacing: 0.15em;
-}
-
-/* ===== 設問カード ===== */
-.q-card {
+/* ===== セクション ===== */
+.sec {
   border-radius: 14px;
-  padding: 6mm 8mm 7mm;
-  margin-bottom: 6mm;
-  background: white;
   border: 1.5px solid var(--border);
+  padding: 5mm 6mm 5mm;
+  margin-bottom: 5mm;
 }
-.q-title {
-  font-size: 14px; font-weight: 700;
-  margin-bottom: 2mm;
-  display: flex; align-items: center; gap: 7px;
+.sec-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 3mm;
 }
-.q-hint {
-  font-size: 9.5px; color: var(--text-lt);
-  margin-bottom: 3mm; line-height: 1.7;
-}
-.q-line {
-  height: 9.5mm;
-  border-bottom: 1.2px solid var(--border);
-}
-
-/* ===== こころん（CSS描画） ===== */
-.kokoron {
-  position: relative;
-  width: 88px; height: 96px;
+.sec-img {
+  width: 46px; height: 46px;
+  object-fit: contain;
   flex-shrink: 0;
 }
-.kk-arm {
-  position: absolute; bottom: 26px;
-  width: 16px; height: 30px;
-  background: #BD9871;
-  border-radius: 45%;
-}
-.kk-arm.l { left: 2px; transform: rotate(20deg); }
-.kk-arm.r { right: 2px; transform: rotate(-20deg); }
-.kk-body {
-  position: absolute; bottom: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 70px; height: 62px;
-  background: #C8A47E;
-  border-radius: 46% 46% 48% 48%;
-}
-.kk-belly {
-  position: absolute; bottom: 4px; left: 50%;
-  transform: translateX(-50%);
-  width: 44px; height: 40px;
-  background: #EBD9C3;
-  border-radius: 50%;
-}
-.kk-head {
-  position: absolute; top: 0; left: 50%;
-  transform: translateX(-50%);
-  width: 62px; height: 52px;
-  background: #C8A47E;
-  border-radius: 50% 50% 46% 46%;
-}
-.kk-face {
-  position: absolute; top: 10px; left: 50%;
-  transform: translateX(-50%);
-  width: 46px; height: 36px;
-  background: #F2E5D3;
-  border-radius: 50%;
-}
-.kk-patch {
-  position: absolute; top: 14px;
-  width: 13px; height: 17px;
-  background: #A8835D;
-  border-radius: 50%;
-}
-.kk-patch.l { left: 16px; transform: rotate(-18deg); }
-.kk-patch.r { right: 16px; transform: rotate(18deg); }
-.kk-eye {
-  position: absolute; top: 22px;
-  width: 5px; height: 5px;
-  background: #5C4A38; border-radius: 50%;
-}
-.kk-eye.l { left: 31px; }
-.kk-eye.r { right: 31px; }
-.kk-nose {
-  position: absolute; top: 27px; left: 50%;
-  transform: translateX(-50%);
-  width: 7px; height: 5px;
-  background: #6B5640; border-radius: 50%;
-}
-.kk-mouth {
-  position: absolute; top: 31px; left: 50%;
-  transform: translateX(-50%);
-  width: 10px; height: 6px;
-  border-bottom: 1.6px solid #6B5640;
-  border-radius: 50%;
-}
-.kk-cheek {
-  position: absolute; top: 28px;
-  width: 8px; height: 5px;
-  background: #F3C5B5; border-radius: 50%;
-  opacity: 0.8;
-}
-.kk-cheek.l { left: 22px; }
-.kk-cheek.r { right: 22px; }
-.kk-heart {
-  position: absolute; bottom: 24px; left: 50%;
-  transform: translateX(-50%) rotate(-45deg);
-  width: 12px; height: 12px;
-  background: #F0A693;
-}
-.kk-heart::before, .kk-heart::after {
-  content: ''; position: absolute;
-  width: 12px; height: 12px;
-  background: #F0A693; border-radius: 50%;
-}
-.kk-heart::before { top: -6px; left: 0; }
-.kk-heart::after  { top: 0; left: 6px; }
-
-/* ===== こころんのひとこと ===== */
-.kokoron-note {
-  margin-top: auto;
-  display: flex; align-items: center;
-  justify-content: center;
-  gap: 8mm;
-  padding: 5mm 8mm;
-  background: white;
-  border: 1.5px dashed var(--border);
+.sec-badge {
+  display: inline-flex; align-items: center; gap: 8px;
   border-radius: 16px;
+  padding: 4px 14px;
+  font-size: 12px; font-weight: 700;
+  background: white;
 }
-.kokoron-note p {
-  font-size: 11px; color: var(--text-md);
-  line-height: 2.1;
+.sec-num {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9px; letter-spacing: 0.12em;
 }
 
-/* ===== 宣言ボックス（3ページ目） ===== */
+/* ===== 設問 ===== */
+.q {
+  background: white;
+  border-radius: 10px;
+  padding: 3.5mm 4.5mm 3mm;
+  margin-bottom: 3mm;
+}
+.q:last-child { margin-bottom: 0; }
+.q-title {
+  font-size: 12px; font-weight: 700;
+  margin-bottom: 1mm;
+}
+.q-hint {
+  font-size: 8.5px; color: var(--text-lt);
+  margin-bottom: 1.5mm; line-height: 1.6;
+}
+textarea {
+  width: 100%;
+  min-height: 38px;
+  border: none;
+  border-bottom: 1.2px solid var(--border);
+  background: transparent;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--text);
+  line-height: 1.8;
+  resize: vertical;
+  outline: none;
+  padding: 1px 2px 3px;
+}
+textarea:focus { border-bottom-color: var(--lav-dk); }
+textarea::placeholder { color: #D5C8B8; }
+
+/* ===== 宣言ボックス ===== */
 .declare-box {
   border: 2px solid var(--gold-bd);
   background: var(--gold);
   border-radius: 14px;
-  padding: 6mm 8mm;
-  margin-bottom: 6mm;
+  padding: 4mm 6mm;
+  margin-bottom: 5mm;
   text-align: center;
 }
 .declare-title {
-  font-size: 13px; font-weight: 700;
+  font-size: 12.5px; font-weight: 700;
   color: var(--gold-dk);
+  margin-bottom: 2mm;
+}
+.declare-box textarea {
+  border-bottom-color: var(--gold-bd);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  min-height: 34px;
+}
+
+/* ===== こころんのひとこと ===== */
+.kokoron-note {
+  display: flex; align-items: center;
+  justify-content: center;
+  gap: 6mm;
+  padding: 3mm 6mm;
+  background: white;
+  border: 1.5px dashed var(--border);
+  border-radius: 16px;
   margin-bottom: 4mm;
 }
-.declare-line {
-  height: 10mm;
-  border-bottom: 1.4px solid var(--gold-bd);
-  margin: 0 4mm;
+.kokoron-note img {
+  width: 72px; height: 72px;
+  object-fit: contain;
+}
+.kokoron-note p {
+  font-size: 10.5px; color: var(--text-md);
+  line-height: 2;
+}
+
+/* ===== 保存メモ ===== */
+.save-note {
+  text-align: center;
+  font-size: 9px; color: var(--text-lt);
+  margin-bottom: 3mm;
 }
 
 /* ===== フッター ===== */
 .ws-footer {
   text-align: center;
-  padding-top: 4mm;
-  margin-top: 5mm;
+  padding-top: 3mm;
   border-top: 1px dashed var(--border);
   font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 9.5px; color: var(--text-lt);
+  font-size: 9px; color: var(--text-lt);
 }
 
 /* ===== 印刷ボタン ===== */
 .print-btn {
-  display: block; margin: 24px auto;
+  display: block; margin: 20px auto;
   background: var(--lav-dk); color: white;
   border: none; border-radius: 24px;
   padding: 12px 36px;
@@ -272,26 +214,31 @@ body {
 
 @media print {
   body { background: white; }
-  .print-btn { display: none; }
+  .print-btn, .save-note { display: none; }
   .page {
-    width: 100%; height: 296mm;
+    max-width: 100%;
     margin: 0;
+    padding: 7mm 10mm 6mm;
     box-shadow: none;
-    break-after: avoid;
   }
-  .page + .page { break-before: page; }
+  .sec { margin-bottom: 3.5mm; padding: 3.5mm 5mm; }
+  textarea { resize: none; min-height: 32px; }
   @page { size: A4 portrait; margin: 0; }
 }
 @media screen {
   .page { box-shadow: 0 4px 20px rgba(0,0,0,0.10); }
 }
+@media (max-width: 600px) {
+  .page { padding: 6mm 5mm; }
+  .ws-title { font-size: 16px; }
+  .sun-deco { display: none; }
+}
 </style>
 </head>
 <body>
 
-<button class="print-btn" style="margin-top:28px;" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+<button class="print-btn" style="margin-top:24px;" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
 
-<!-- ===== PAGE 1：今のわたしを見つめる ===== -->
 <div class="page">
 
   <div class="sun-deco">
@@ -308,172 +255,133 @@ body {
     <div class="ws-sub">いらないものを手放し、これからの自分を迎える時間。<br>うまく書かなくて大丈夫。思いついたことを、そのまま言葉にしてみてね。</div>
   </div>
 
-  <div class="badge-wrap">
-    <div class="step-badge" style="background:var(--lav);color:var(--lav-dk);">
-      <span class="step-num">PAGE 1</span> 今のわたしを見つめる
+  <div class="save-note">✍️ そのまま書き込めます。内容は自動でこの端末に保存されます（LocalStorage）</div>
+
+  <!-- ===== STEP 1：今のわたしを見つめる ===== -->
+  <div class="sec" style="background:var(--lav);border-color:var(--lav-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_05.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--lav-dk);">
+        <span class="sec-num">STEP 1</span> 今のわたしを見つめる
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-title">🌫 今、心の中にある重さは？</div>
+      <div class="q-hint">なんとなく感じている重さ、ひっかかり。小さなことでもOK。</div>
+      <textarea data-key="sol_q1" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-title">💭 最近、何度も考えてしまうことは？</div>
+      <div class="q-hint">気づくと頭に浮かんでいること。ぐるぐるしていること。</div>
+      <textarea data-key="sol_q2" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-title">🫧 本当は少し疲れていることは？</div>
+      <div class="q-hint">「大丈夫」と言いながら、がんばり続けていることはない？</div>
+      <textarea data-key="sol_q3" placeholder="ここに書いてみよう…"></textarea>
     </div>
   </div>
 
-  <div class="q-card" style="border-color:var(--lav-bd);">
-    <div class="q-title">🌫 今、心の中にある重さは？</div>
-    <div class="q-hint">なんとなく感じている重さ、ひっかかり。小さなことでもOK。</div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-  </div>
-
-  <div class="q-card" style="border-color:var(--lav-bd);">
-    <div class="q-title">💭 最近、何度も考えてしまうことは？</div>
-    <div class="q-hint">気づくと頭に浮かんでいること。ぐるぐるしていること。</div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-  </div>
-
-  <div class="q-card" style="border-color:var(--lav-bd);">
-    <div class="q-title">🫧 本当は少し疲れていることは？</div>
-    <div class="q-hint">「大丈夫」と言いながら、がんばり続けていることはない？</div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-  </div>
-
-  <div class="kokoron-note">
-    <div class="kokoron">
-      <div class="kk-arm l"></div><div class="kk-arm r"></div>
-      <div class="kk-body"></div><div class="kk-belly"></div>
-      <div class="kk-head"></div><div class="kk-face"></div>
-      <div class="kk-patch l"></div><div class="kk-patch r"></div>
-      <div class="kk-eye l"></div><div class="kk-eye r"></div>
-      <div class="kk-nose"></div><div class="kk-mouth"></div>
-      <div class="kk-cheek l"></div><div class="kk-cheek r"></div>
+  <!-- ===== STEP 2：手放しのページ ===== -->
+  <div class="sec" style="background:var(--coral);border-color:var(--coral-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_03.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--coral-dk);">
+        <span class="sec-num">STEP 2</span> 手放しのページ
+      </div>
     </div>
-    <p>気づいてあげるだけで、いいんだよ。<br>ここに書いたことは、ぜんぶ正解🌿</p>
-  </div>
 
-  <div class="ws-footer">🦥 モカ & こころん / Loves Life　｜　夏至の手放しワーク　1 / 3</div>
-</div>
+    <div class="q">
+      <div class="q-title">🍃 もう抱えなくていいものは？</div>
+      <div class="q-hint">役割、心配ごと、習慣。「ずっと持っていたけど、本当はもう重い」もの。</div>
+      <textarea data-key="sol_q4" placeholder="ここに書いてみよう…"></textarea>
+    </div>
 
-<!-- ===== PAGE 2：手放しのページ ===== -->
-<div class="page">
+    <div class="q">
+      <div class="q-title">👥 人の期待で選んでいたことは？</div>
+      <div class="q-hint">「期待に応えなきゃ」で続けていること。自分の本音とは違うかも、と感じること。</div>
+      <textarea data-key="sol_q5" placeholder="ここに書いてみよう…"></textarea>
+    </div>
 
-  <div class="sun-deco">
-    <div class="sun-ray" style="transform:translate(-50%,-50%) rotate(0deg);"></div>
-    <div class="sun-ray" style="transform:translate(-50%,-50%) rotate(45deg);"></div>
-    <div class="sun-ray" style="transform:translate(-50%,-50%) rotate(90deg);"></div>
-    <div class="sun-ray" style="transform:translate(-50%,-50%) rotate(135deg);"></div>
-    <div class="sun-core"></div>
-  </div>
+    <div class="q">
+      <div class="q-title">🌀 軽くなりたい思考は？</div>
+      <div class="q-hint">「〜すべき」「ちゃんとしなきゃ」。手放したら楽になりそうな考え方。</div>
+      <textarea data-key="sol_q6" placeholder="ここに書いてみよう…"></textarea>
+    </div>
 
-  <div class="badge-wrap" style="margin-top:6mm;">
-    <div class="step-badge" style="background:var(--coral);color:var(--coral-dk);">
-      <span class="step-num">PAGE 2</span> 手放しのページ
+    <div class="q">
+      <div class="q-title">🕊 本当は、何をやめてもいい？</div>
+      <div class="q-hint">やめる＝悪いことじゃない。「お休みする」くらいの気持ちで書いてみてね。</div>
+      <textarea data-key="sol_q7" placeholder="ここに書いてみよう…"></textarea>
     </div>
   </div>
 
-  <div class="q-card" style="border-color:var(--coral-bd);">
-    <div class="q-title">🍃 もう抱えなくていいものは？</div>
-    <div class="q-hint">役割、心配ごと、習慣。「ずっと持っていたけど、本当はもう重い」もの。</div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-  </div>
+  <!-- ===== STEP 3：これからの自分を迎える ===== -->
+  <div class="sec" style="background:var(--gold);border-color:var(--gold-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_07.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--gold-dk);">
+        <span class="sec-num">STEP 3</span> これからの自分を迎える
+      </div>
+    </div>
 
-  <div class="q-card" style="border-color:var(--coral-bd);">
-    <div class="q-title">👥 人の期待で選んでいたことは？</div>
-    <div class="q-hint">「期待に応えなきゃ」で続けていること。自分の本音とは違うかも、と感じること。</div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-  </div>
+    <div class="q">
+      <div class="q-title">🌅 手放した先に、どんな自分でいたい？</div>
+      <div class="q-hint">軽くなったあなたは、どんな表情で、どんな毎日を過ごしてる？</div>
+      <textarea data-key="sol_q8" placeholder="ここに書いてみよう…"></textarea>
+    </div>
 
-  <div class="q-card" style="border-color:var(--coral-bd);">
-    <div class="q-title">🌀 軽くなりたい思考は？</div>
-    <div class="q-hint">「〜すべき」「ちゃんとしなきゃ」。手放したら楽になりそうな考え方。</div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-  </div>
+    <div class="q">
+      <div class="q-title">🌿 これから大切にしたい感覚は？</div>
+      <div class="q-hint">心地よさ、余白、わくわく。あなたが選びたい「感じ」を言葉に。</div>
+      <textarea data-key="sol_q9" placeholder="ここに書いてみよう…"></textarea>
+    </div>
 
-  <div class="q-card" style="border-color:var(--coral-bd);">
-    <div class="q-title">🕊 本当は、何をやめてもいい？</div>
-    <div class="q-hint">やめる＝悪いことじゃない。「お休みする」くらいの気持ちで書いてみてね。</div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-  </div>
-
-  <div class="kokoron-note" style="padding:4mm 8mm;">
-    <p style="text-align:center;">ぜんぶ手放さなくても大丈夫。<br>「ひとつだけ降ろしてみる」でも、心はちゃんと軽くなるよ🦥</p>
-  </div>
-
-  <div class="ws-footer">🦥 モカ & こころん / Loves Life　｜　夏至の手放しワーク　2 / 3</div>
-</div>
-
-<!-- ===== PAGE 3：これからの自分を迎える ===== -->
-<div class="page">
-
-  <div class="sun-deco">
-    <div class="sun-ray" style="transform:translate(-50%,-50%) rotate(0deg);"></div>
-    <div class="sun-ray" style="transform:translate(-50%,-50%) rotate(45deg);"></div>
-    <div class="sun-ray" style="transform:translate(-50%,-50%) rotate(90deg);"></div>
-    <div class="sun-ray" style="transform:translate(-50%,-50%) rotate(135deg);"></div>
-    <div class="sun-core"></div>
-  </div>
-
-  <div class="badge-wrap" style="margin-top:6mm;">
-    <div class="step-badge" style="background:var(--gold);color:var(--gold-dk);">
-      <span class="step-num">PAGE 3</span> これからの自分を迎える
+    <div class="q">
+      <div class="q-title">🌻 夏に向けて、小さく始めたいことは？</div>
+      <div class="q-hint">大きな目標じゃなくていい。「5分だけ」「週に1回だけ」でOK。</div>
+      <textarea data-key="sol_q10" placeholder="ここに書いてみよう…"></textarea>
     </div>
   </div>
 
-  <div class="q-card" style="border-color:var(--gold-bd);">
-    <div class="q-title">🌅 手放した先に、どんな自分でいたい？</div>
-    <div class="q-hint">軽くなったあなたは、どんな表情で、どんな毎日を過ごしてる？</div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-  </div>
-
-  <div class="q-card" style="border-color:var(--gold-bd);">
-    <div class="q-title">🌿 これから大切にしたい感覚は？</div>
-    <div class="q-hint">心地よさ、余白、わくわく。あなたが選びたい「感じ」を言葉に。</div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-  </div>
-
-  <div class="q-card" style="border-color:var(--gold-bd);">
-    <div class="q-title">🌻 夏に向けて、小さく始めたいことは？</div>
-    <div class="q-hint">大きな目標じゃなくていい。「5分だけ」「週に1回だけ」でOK。</div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-    <div class="q-line"></div>
-  </div>
-
+  <!-- ===== 夏至の宣言 ===== -->
   <div class="declare-box">
     <div class="declare-title">☀️ 夏至の宣言 — わたしは、これを降ろします</div>
-    <div class="declare-line"></div>
+    <textarea data-key="sol_declare" placeholder="ひとつだけ、言葉にしてみよう…"></textarea>
   </div>
 
+  <!-- ===== こころんのひとこと ===== -->
   <div class="kokoron-note">
-    <div class="kokoron">
-      <div class="kk-arm l"></div><div class="kk-arm r"></div>
-      <div class="kk-body"></div><div class="kk-belly"></div>
-      <div class="kk-head"></div><div class="kk-face"></div>
-      <div class="kk-patch l"></div><div class="kk-patch r"></div>
-      <div class="kk-eye l"></div><div class="kk-eye r"></div>
-      <div class="kk-nose"></div><div class="kk-mouth"></div>
-      <div class="kk-cheek l"></div><div class="kk-cheek r"></div>
-      <div class="kk-heart"></div>
-    </div>
+    <img src="images/kokoron_01.png" alt="こころん">
     <p>ここまで書けたあなたは、もう前に進んでるよ。<br>太陽の力を受け取って、軽やかな夏を迎えようね ☀️🦥</p>
   </div>
 
-  <div class="ws-footer">🦥 モカ & こころん / Loves Life　｜　夏至の手放しワーク　3 / 3</div>
+  <div class="ws-footer">🦥 モカ & こころん / Loves Life　｜　夏至の手放しワーク</div>
 </div>
 
 <button class="print-btn" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<script>
+// ===== LocalStorage 自動保存・復元 =====
+document.querySelectorAll('textarea[data-key]').forEach(el => {
+  const key = 'solstice_' + el.dataset.key;
+  const saved = localStorage.getItem(key);
+  if (saved) el.value = saved;
+  el.addEventListener('input', () => {
+    localStorage.setItem(key, el.value);
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  });
+  // 復元時にも高さを調整
+  if (saved) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+});
+</script>
 
 </body>
 </html>
