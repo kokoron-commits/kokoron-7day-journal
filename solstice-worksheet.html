@@ -218,11 +218,16 @@ textarea::placeholder { color: #D5C8B8; }
   .page {
     max-width: 100%;
     margin: 0;
-    padding: 7mm 10mm 6mm;
+    padding: 10mm 14mm 8mm;
     box-shadow: none;
   }
-  .sec { margin-bottom: 3.5mm; padding: 3.5mm 5mm; }
-  textarea { resize: none; min-height: 32px; }
+  /* 各STEPを1ページずつに分ける */
+  .sec { break-inside: avoid; padding: 6mm 7mm; }
+  .sec + .sec { break-before: page; margin-top: 8mm; }
+  .declare-box, .kokoron-note, .ws-footer { break-inside: avoid; }
+  .q { padding: 4.5mm 5mm 4mm; margin-bottom: 4.5mm; }
+  textarea { resize: none; min-height: 60px; }
+  .declare-box textarea { min-height: 40px; }
   @page { size: A4 portrait; margin: 0; }
 }
 @media screen {
