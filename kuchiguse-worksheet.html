@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>そのひとことで流れが変わる｜口ぐせ解剖ジャーナリング｜モカ & こころん</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:    #FBF8F3;
+  --lav:      #EFE8F7;
+  --lav-bd:   #C9B6E4;
+  --lav-dk:   #8A6FB5;
+  --coral:    #FCEAE4;
+  --coral-bd: #EDB9A8;
+  --coral-dk: #C77B5F;
+  --blue:     #E8F0F7;
+  --blue-bd:  #AFC8E0;
+  --blue-dk:  #5F86B0;
+  --gold:     #FDF4DC;
+  --gold-bd:  #E2C878;
+  --gold-dk:  #B08F3C;
+  --border:   #DCCFBE;
+  --text:     #5C4A38;
+  --text-md:  #8B7260;
+  --text-lt:  #B09880;
+}
+
+body {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background: #ece5db;
+  color: var(--text);
+}
+
+.page {
+  max-width: 210mm;
+  margin: 0 auto 24px;
+  padding: 10mm 12mm 8mm;
+  background: var(--cream);
+  position: relative;
+}
+
+/* ===== 飾り（新月） ===== */
+.moon-deco {
+  position: absolute; top: 9mm; right: 12mm;
+  width: 46px; height: 46px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 60% 40%, #D9CCEC 0%, #B9A6DC 70%, #A18FCB 100%);
+  box-shadow: inset -6px -4px 0 rgba(255,255,255,0.35), 0 0 14px rgba(160,140,200,0.35);
+  opacity: 0.65;
+}
+.moon-deco::before {
+  content: '✦'; position: absolute;
+  top: -10px; left: -16px; color: #C9B6E4; font-size: 12px;
+}
+.moon-deco::after {
+  content: '✦'; position: absolute;
+  bottom: -8px; left: 50px; color: #E2C878; font-size: 9px;
+}
+
+/* ===== ヘッダー ===== */
+.ws-header {
+  text-align: center;
+  margin-bottom: 7mm;
+  padding-bottom: 5mm;
+  border-bottom: 2px dashed var(--border);
+}
+.ws-eyebrow {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9px; color: var(--text-lt);
+  letter-spacing: 0.25em;
+  margin-bottom: 6px;
+}
+.ws-title {
+  font-size: 19px; font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  margin-bottom: 5px;
+}
+.ws-series {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 11px; color: var(--lav-dk);
+  letter-spacing: 0.12em;
+  margin-bottom: 7px;
+}
+.ws-sub {
+  font-size: 10px; color: var(--text-md);
+  line-height: 1.8;
+}
+
+/* ===== 名前・日付 ===== */
+.ws-meta {
+  display: flex; gap: 8mm; justify-content: center;
+  margin-top: 5mm;
+  font-size: 10px; color: var(--text-md);
+}
+.ws-meta span { display: inline-flex; align-items: baseline; gap: 6px; }
+.ws-meta .line { display: inline-block; width: 38mm; border-bottom: 1.2px solid var(--border); }
+
+/* ===== セクション ===== */
+.sec {
+  border-radius: 14px;
+  border: 1.5px solid var(--border);
+  padding: 5mm 6mm 5mm;
+  margin-bottom: 5mm;
+}
+.sec-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 3mm;
+}
+.sec-img {
+  width: 46px; height: 46px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.sec-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border-radius: 16px;
+  padding: 4px 14px;
+  font-size: 12.5px; font-weight: 700;
+  background: white;
+}
+.sec-num {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9px; letter-spacing: 0.12em;
+}
+.sec-hint {
+  font-size: 9px; color: var(--text-lt);
+  margin-bottom: 2.5mm; line-height: 1.7;
+  padding-left: 2px;
+}
+
+/* ===== 設問 ===== */
+.q {
+  background: white;
+  border-radius: 10px;
+  padding: 3.5mm 4.5mm 3mm;
+}
+textarea {
+  width: 100%;
+  min-height: 50px;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--text);
+  line-height: 1.9;
+  resize: vertical;
+  outline: none;
+  padding: 1px 2px 3px;
+  background-image: repeating-linear-gradient(transparent, transparent 27px, var(--border) 27px, var(--border) 28px);
+}
+textarea:focus { background-color: #FCFAFF; }
+textarea::placeholder { color: #D5C8B8; }
+
+/* ===== 言い換え（左右ペア） ===== */
+.compare-head {
+  display: grid;
+  grid-template-columns: 1fr 26px 1fr;
+  gap: 6px; align-items: center;
+  margin-bottom: 2.5mm;
+}
+.compare-label {
+  text-align: center;
+  border-radius: 14px;
+  padding: 3px 0;
+  font-size: 10.5px; font-weight: 700;
+}
+.compare-label.before { background: var(--lav); color: var(--lav-dk); }
+.compare-label.after  { background: var(--coral); color: var(--coral-dk); }
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 26px 1fr;
+  gap: 6px; align-items: center;
+  margin-bottom: 2.5mm;
+}
+.compare-row:last-child { margin-bottom: 0; }
+.compare-in {
+  width: 100%;
+  border: none;
+  border-bottom: 1.3px solid var(--border);
+  background: white;
+  border-radius: 8px 8px 0 0;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--text);
+  padding: 6px 8px 5px;
+  outline: none;
+}
+.compare-in:focus { border-bottom-color: var(--lav-dk); background: #FCFAFF; }
+.compare-in::placeholder { color: #DDD2C4; font-size: 10px; }
+.compare-arrow {
+  text-align: center; color: var(--lav-bd);
+  font-size: 13px; font-weight: 700;
+}
+
+/* ===== これからの言葉ボックス ===== */
+.gift-box {
+  border: 2px solid var(--gold-bd);
+  background: var(--gold);
+  border-radius: 14px;
+  padding: 4mm 6mm;
+  margin-bottom: 5mm;
+}
+.gift-box .q { background: rgba(255,255,255,0.7); }
+
+/* ===== こころんのひとこと ===== */
+.kokoron-note {
+  display: flex; align-items: center;
+  justify-content: center;
+  gap: 6mm;
+  padding: 3mm 6mm;
+  background: white;
+  border: 1.5px dashed var(--border);
+  border-radius: 16px;
+  margin-bottom: 4mm;
+}
+.kokoron-note img {
+  width: 72px; height: 72px;
+  object-fit: contain;
+}
+.kokoron-note p {
+  font-size: 10.5px; color: var(--text-md);
+  line-height: 2;
+}
+
+/* ===== 保存メモ ===== */
+.save-note {
+  text-align: center;
+  font-size: 9px; color: var(--text-lt);
+  margin-bottom: 3mm;
+}
+
+/* ===== フッター ===== */
+.ws-footer {
+  text-align: center;
+  padding-top: 3mm;
+  border-top: 1px dashed var(--border);
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9px; color: var(--text-lt);
+}
+
+/* ===== 印刷ボタン ===== */
+.print-btn {
+  display: block; margin: 20px auto;
+  background: var(--lav-dk); color: white;
+  border: none; border-radius: 24px;
+  padding: 12px 36px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 13px; font-weight: 700; cursor: pointer;
+  letter-spacing: 0.05em;
+}
+.print-btn:hover { opacity: 0.85; }
+
+@media print {
+  body { background: white; }
+  .print-btn, .save-note { display: none; }
+  .page {
+    max-width: 100%;
+    margin: 0;
+    padding: 10mm 14mm 8mm;
+    box-shadow: none;
+  }
+  .sec, .gift-box, .kokoron-note, .ws-footer { break-inside: avoid; }
+  textarea { resize: none; }
+  @page { size: A4 portrait; margin: 0; }
+}
+@media screen {
+  .page { box-shadow: 0 4px 20px rgba(0,0,0,0.10); }
+}
+@media (max-width: 600px) {
+  .page { padding: 6mm 5mm; }
+  .ws-title { font-size: 16px; }
+  .moon-deco { display: none; }
+  .ws-meta { flex-direction: column; gap: 3mm; align-items: center; }
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn" style="margin-top:24px;" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<div class="page">
+
+  <div class="moon-deco"></div>
+
+  <div class="ws-header">
+    <div class="ws-eyebrow">GEMINI NEW MOON JOURNALING</div>
+    <div class="ws-title">そのひとことで流れが変わる</div>
+    <div class="ws-series">🌙 双子座新月 ジャーナリングワークシート</div>
+    <div class="ws-sub">今の自分がよく使っている言葉に気づき、<br>やわらかく整えていくためのワークです。</div>
+    <div class="ws-meta">
+      <span>日付：<span class="line"></span></span>
+      <span>なまえ：<span class="line"></span></span>
+    </div>
+  </div>
+
+  <div class="save-note">✍️ そのまま書き込めます。内容は自動でこの端末に保存されます（LocalStorage）</div>
+
+  <!-- ===== 1：最近よく使っている言葉 ===== -->
+  <div class="sec" style="background:var(--lav);border-color:var(--lav-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_05.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--lav-dk);">
+        <span class="sec-num">1</span> 最近よく使っている言葉
+      </div>
+    </div>
+    <div class="sec-hint">人に対して ／ 自分に対して ／ 口ぐせ など、思いつく言葉を書いてみましょう。</div>
+    <div class="q">
+      <textarea data-key="q1" placeholder="例：「どうせ」「ちゃんとしなきゃ」「すみません」…"></textarea>
+    </div>
+  </div>
+
+  <!-- ===== 2：その言葉の奥にある気持ち ===== -->
+  <div class="sec" style="background:var(--coral);border-color:var(--coral-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_03.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--coral-dk);">
+        <span class="sec-num">2</span> その言葉の奥にある気持ち
+      </div>
+    </div>
+    <div class="sec-hint">その言葉を使うとき、本当はどんな気持ちや願いがあるでしょう？</div>
+    <div class="q">
+      <textarea data-key="q2" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+  </div>
+
+  <!-- ===== 3：やわらかく言い換えるなら？ ===== -->
+  <div class="sec" style="background:var(--blue);border-color:var(--blue-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_07.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--blue-dk);">
+        <span class="sec-num">3</span> やわらかく言い換えるなら？
+      </div>
+    </div>
+    <div class="sec-hint">否定ではなく、願いや気持ちが伝わる言葉に整えてみましょう。</div>
+    <div class="compare-head">
+      <span class="compare-label before">いつもの言葉</span>
+      <span></span>
+      <span class="compare-label after">言い換えた言葉</span>
+    </div>
+    <div class="compare-row">
+      <input class="compare-in" data-key="c1a" placeholder="いつもの言葉">
+      <span class="compare-arrow">→</span>
+      <input class="compare-in" data-key="c1b" placeholder="言い換えた言葉">
+    </div>
+    <div class="compare-row">
+      <input class="compare-in" data-key="c2a" placeholder="いつもの言葉">
+      <span class="compare-arrow">→</span>
+      <input class="compare-in" data-key="c2b" placeholder="言い換えた言葉">
+    </div>
+    <div class="compare-row">
+      <input class="compare-in" data-key="c3a" placeholder="いつもの言葉">
+      <span class="compare-arrow">→</span>
+      <input class="compare-in" data-key="c3b" placeholder="言い換えた言葉">
+    </div>
+    <div class="compare-row">
+      <input class="compare-in" data-key="c4a" placeholder="いつもの言葉">
+      <span class="compare-arrow">→</span>
+      <input class="compare-in" data-key="c4b" placeholder="言い換えた言葉">
+    </div>
+  </div>
+
+  <!-- ===== 4：これから自分にかけたい言葉 ===== -->
+  <div class="gift-box">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_01.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--gold-dk);">
+        <span class="sec-num">4</span> これから自分にかけたい言葉
+      </div>
+    </div>
+    <div class="sec-hint">今の自分に贈りたい、やさしいひとことを書いてみましょう。</div>
+    <div class="q">
+      <textarea data-key="q4" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+  </div>
+
+  <!-- ===== こころんのひとこと ===== -->
+  <div class="kokoron-note">
+    <img src="images/kokoron_01.png" alt="こころん">
+    <p>ことばを整えることは、自分を責めることではなく、<br>自分にも相手にも、やさしい選択肢を増やすこと。<br>ゆっくりいきましょう 🌙</p>
+  </div>
+
+  <div class="ws-footer">🦥 モカ & こころん / Loves Life　｜　口ぐせ解剖ジャーナリング</div>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<script>
+// ===== LocalStorage 自動保存・復元 =====
+document.querySelectorAll('textarea[data-key], input[data-key]').forEach(el => {
+  const key = 'kuchiguse_' + el.dataset.key;
+  const saved = localStorage.getItem(key);
+  if (saved) el.value = saved;
+  const isArea = el.tagName === 'TEXTAREA';
+  const grow = () => {
+    if (!isArea) return;
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  };
+  el.addEventListener('input', () => {
+    localStorage.setItem(key, el.value);
+    grow();
+  });
+  if (saved) grow();
+});
+</script>
+
+</body>
+</html>
