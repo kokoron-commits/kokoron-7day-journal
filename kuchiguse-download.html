@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>そのひとことで流れが変わる｜口ぐせ解剖ジャーナリング 無料ダウンロード</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ===================================================================== -->
+<!-- ▼▼▼ アクセス解析（GoatCounter）ここだけ自分のコードに差し替え ▼▼▼   -->
+<!--   YOURCODE の部分を、自分のGoatCounterのコード名に変えてください       -->
+<!--   例: data-goatcounter="https://mocacode.goatcounter.com/count"        -->
+<script data-goatcounter="https://YOURCODE.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ▲▲▲ ここまで ▲▲▲                                                     -->
+<!-- ===================================================================== -->
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream:    #FBF8F3;
+  --lav:      #EFE8F7;
+  --lav-bd:   #C9B6E4;
+  --lav-dk:   #8A6FB5;
+  --gold-dk:  #B08F3C;
+  --border:   #DCCFBE;
+  --text:     #5C4A38;
+  --text-md:  #8B7260;
+  --text-lt:  #B09880;
+}
+body {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background: #ece5db;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px 16px;
+}
+.card {
+  max-width: 440px; width: 100%;
+  background: var(--cream);
+  border-radius: 22px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.12);
+  padding: 30px 26px 26px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.moon {
+  position: absolute; top: 16px; right: 18px;
+  width: 30px; height: 30px; border-radius: 50%;
+  background: radial-gradient(circle at 60% 40%, #D9CCEC 0%, #B9A6DC 70%, #A18FCB 100%);
+  box-shadow: inset -4px -3px 0 rgba(255,255,255,0.35);
+  opacity: 0.6;
+}
+.eyebrow {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9px; color: var(--text-lt);
+  letter-spacing: 0.25em; margin-bottom: 8px;
+}
+.title {
+  font-size: 20px; font-weight: 700;
+  line-height: 1.55; margin-bottom: 6px;
+}
+.series {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 11px; color: var(--lav-dk);
+  letter-spacing: 0.1em; margin-bottom: 16px;
+}
+.thumb-wrap {
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  margin-bottom: 18px;
+}
+.thumb-wrap img { width: 100%; display: block; }
+.lead {
+  font-size: 12px; color: var(--text-md);
+  line-height: 1.9; margin-bottom: 20px;
+}
+.dl-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--lav-dk); color: white;
+  text-decoration: none;
+  border-radius: 26px;
+  padding: 14px 38px;
+  font-size: 15px; font-weight: 700;
+  letter-spacing: 0.04em;
+  box-shadow: 0 4px 14px rgba(138,111,181,0.35);
+  transition: opacity 0.2s, transform 0.1s;
+}
+.dl-btn:hover { opacity: 0.9; }
+.dl-btn:active { transform: translateY(1px); }
+.dl-note {
+  font-size: 9.5px; color: var(--text-lt);
+  margin-top: 12px; line-height: 1.7;
+}
+.footer {
+  margin-top: 22px; padding-top: 16px;
+  border-top: 1px dashed var(--border);
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9px; color: var(--text-lt);
+}
+.thanks {
+  display: none;
+  margin-top: 16px;
+  font-size: 12px; color: var(--gold-dk);
+  font-weight: 700; line-height: 1.8;
+}
+.thanks.show { display: block; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="moon"></div>
+
+  <div class="eyebrow">FREE JOURNALING WORKSHEET</div>
+  <div class="title">そのひとことで<br>流れが変わる</div>
+  <div class="series">🌙 双子座新月 ジャーナリングワークシート</div>
+
+  <div class="thumb-wrap">
+    <img src="images/kuchiguse-thumb.png" alt="口ぐせ解剖ジャーナリングワークシート プレビュー">
+  </div>
+
+  <div class="lead">
+    今の自分がよく使っている言葉に気づき、<br>
+    やわらかく整えていくためのワークシートです。<br>
+    印刷して、手書きで書き込めます ✍️
+  </div>
+
+  <a class="dl-btn" id="dlBtn"
+     href="kuchiguse-worksheet.pdf" download>
+    📄 PDFを無料ダウンロード
+  </a>
+
+  <div class="thanks" id="thanks">
+    ダウンロードありがとう 🌿<br>ゆっくり、書いてみてくださいね。
+  </div>
+
+  <div class="dl-note">
+    ※ ボタンを押すとPDFが保存されます。<br>
+    印刷して、または画面に書き込んでお使いください。
+  </div>
+
+  <div class="footer">🦥 モカ & こころん / Loves Life</div>
+</div>
+
+<script>
+// ダウンロードボタンが押されたら「DLした人」としてイベントを記録
+document.getElementById('dlBtn').addEventListener('click', function () {
+  // GoatCounterのイベント計測（ページを開いた数とは別にカウント）
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+      path:  'download-kuchiguse-pdf',
+      title: '口ぐせPDF ダウンロード',
+      event: true
+    });
+  }
+  // お礼メッセージを表示
+  document.getElementById('thanks').classList.add('show');
+});
+</script>
+
+</body>
+</html>
