@@ -63,7 +63,13 @@ body {
   font-size: 11px; color: var(--gold-dk);
   letter-spacing: 0.1em; margin-bottom: 16px;
 }
-.kokoron-img { width: 110px; height: 110px; object-fit: contain; margin: 4px auto 14px; display: block; }
+.thumb-wrap {
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+.thumb-wrap img { width: 100%; display: block; }
 .lead {
   font-size: 12px; color: var(--text-md);
   line-height: 1.9; margin-bottom: 20px;
@@ -121,7 +127,9 @@ body {
   <div class="title">夏至の手放しワーク</div>
   <div class="series">☀️ 参加者用ワークシート</div>
 
-  <img class="kokoron-img" src="images/kokoron_07.png" alt="こころん">
+  <div class="thumb-wrap">
+    <img src="images/solstice-thumb.png" alt="夏至の手放しワーク プレビュー">
+  </div>
 
   <div class="lead">
     いらないものを手放し、<br>
