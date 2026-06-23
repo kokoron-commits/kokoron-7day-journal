@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>わたしの満足度マップ｜デザイン見本（有料版イメージ）</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Klee+One:wght@400;600&family=Sacramento&family=Cormorant+Garamond:wght@500&display=swap" rel="stylesheet">
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+:root{
+  --ivory:#FBF8F1; --ivory-2:#F4EEE2;
+  --mint:#DCEAE2; --mint-dk:#5E8A78;
+  --sand:#E7D9C2; --sand-dk:#A98F6E;
+  --lotus:#F1DCDF; --lotus-dk:#C2868F;
+  --sage:#CBD8BC; --sage-dk:#7C9468;
+  --gold:#E2C878;
+  --text:#5B4A39; --text-md:#8B7A66; --text-lt:#B4A48E;
+  --line:#E3D8C6;
+}
+body{ font-family:'Zen Maru Gothic',sans-serif; background:#e9e2d6; color:var(--text); }
+.demo-tag{ text-align:center; font-size:11px; color:var(--text-md); letter-spacing:.1em; padding:14px 10px 4px; }
+.page{ position:relative; max-width:210mm; margin:0 auto 24px; padding:14mm 14mm 10mm; background:var(--ivory); overflow:hidden; }
+@media screen{ .page{ box-shadow:0 6px 26px rgba(0,0,0,.12); } }
+
+/* 水彩のにじみ（背景・うっすら） */
+.wash{ position:absolute; border-radius:50%; filter:blur(46px); opacity:.5; z-index:0; pointer-events:none; }
+.wash.a{ width:240px; height:240px; background:var(--mint); top:-60px; left:-50px; }
+.wash.b{ width:220px; height:220px; background:var(--lotus); bottom:-50px; right:-40px; opacity:.45; }
+.wash.c{ width:160px; height:160px; background:var(--sage); top:40%; right:-60px; opacity:.35; }
+.inner{ position:relative; z-index:1; }
+
+/* 金の粒 */
+.dot{ position:absolute; width:5px; height:5px; border-radius:50%; background:var(--gold); opacity:.7; z-index:1; }
+
+/* ヘッダー */
+.head{ text-align:center; padding-bottom:7mm; margin-bottom:8mm; position:relative; }
+.eyebrow{ font-size:10px; color:var(--sage-dk); letter-spacing:.28em; margin-bottom:6px; }
+.lotus-svg{ width:64px; height:auto; margin:2px auto 6px; display:block; }
+.title{ font-size:25px; font-weight:500; letter-spacing:.04em; color:var(--text); margin-bottom:6px; }
+.tagline{ font-family:'Klee One',serif; font-size:12px; color:var(--text-md); margin-bottom:10px; }
+.brandline{ display:flex; align-items:center; justify-content:center; gap:9px; font-size:10px; color:var(--text-lt); letter-spacing:.06em; }
+.brandline .ll{ font-family:'Sacramento',cursive; font-size:19px; color:var(--lotus-dk); letter-spacing:.02em; line-height:1; }
+.brandline .sep{ width:1px; height:14px; background:var(--line); }
+.brandline .mj{ font-family:'Cormorant Garamond',serif; letter-spacing:.14em; font-size:10px; }
+.hr-soft{ height:1px; background:linear-gradient(to right, transparent, var(--sage) 20%, var(--sage) 80%, transparent); opacity:.55; margin:9mm 0; border:0; }
+
+/* 名前・日付 */
+.meta{ display:flex; gap:10mm; justify-content:center; margin-top:7mm; font-size:11px; color:var(--text-md); }
+.meta .ln{ display:inline-block; width:40mm; border-bottom:1px solid var(--line); }
+
+/* セクション（枠なし・余白で区切る） */
+.sec{ margin-bottom:9mm; position:relative; }
+.sec-head{ display:flex; align-items:center; gap:10px; margin-bottom:3mm; }
+.step-pill{ display:inline-flex; align-items:center; gap:7px; background:var(--mint); color:var(--mint-dk); border-radius:20px; padding:5px 15px; font-size:12.5px; font-weight:700; }
+.step-pill .n{ font-family:'Cormorant Garamond',serif; font-size:11px; letter-spacing:.1em; }
+.leaf{ width:18px; height:18px; flex-shrink:0; }
+.sec-intro{ font-size:10.5px; color:var(--text-md); line-height:1.85; margin-bottom:2mm; padding-left:2px; }
+.hint{ font-size:9.5px; color:var(--text-lt); line-height:1.9; margin-bottom:3mm; padding-left:2px; }
+.q-title{ font-size:12px; font-weight:700; color:var(--text); margin:3mm 0 2mm; }
+.q-title .em{ color:var(--lotus-dk); }
+.write{ width:100%; min-height:96px; border:none; background:transparent; font-family:inherit; font-size:11px; color:var(--text); line-height:2; resize:vertical; outline:none; padding:2px 2px 4px;
+  background-image:repeating-linear-gradient(transparent, transparent 31px, var(--line) 31px, var(--line) 32px); }
+.write:focus{ background-color:#FFFDF8; }
+.write::placeholder{ color:#D8CCB8; }
+
+/* こころん ステッカー（端に添える・控えめ） */
+.kokoron-sticker{ position:absolute; width:88px; height:88px; padding:5px; background:#fff; border-radius:50%; box-shadow:0 4px 14px rgba(120,100,70,.18); transform:rotate(-5deg); z-index:2; }
+.kokoron-sticker img{ width:100%; height:100%; object-fit:contain; }
+.sticker-head{ top:8mm; right:9mm; }
+.sticker-sec{ bottom:-6mm; right:4mm; width:74px; height:74px; transform:rotate(4deg); }
+
+/* フッター */
+.foot{ text-align:center; margin-top:6mm; padding-top:5mm; border-top:1px solid var(--line); }
+.foot .lotus-mini{ width:26px; opacity:.7; margin:0 auto 4px; display:block; }
+.foot p{ font-size:9.5px; color:var(--text-lt); letter-spacing:.05em; }
+@media (max-width:600px){ .page{padding:9mm 7mm;} .title{font-size:21px;} .kokoron-sticker.sticker-head{width:64px;height:64px;} .meta{flex-direction:column;gap:3mm;align-items:center;} }
+</style>
+</head>
+<body>
+<div class="demo-tag">🌿 デザイン見本（有料版イメージ）― ブランドガイド Ver.1.0 準拠 ／ C案：水彩テクスチャ × 蓮 × こころん</div>
+
+<div class="page">
+  <div class="wash a"></div><div class="wash b"></div><div class="wash c"></div>
+  <span class="dot" style="top:18mm;left:24mm;"></span>
+  <span class="dot" style="top:30mm;right:30mm;width:4px;height:4px;"></span>
+  <span class="dot" style="bottom:40mm;left:18mm;width:4px;height:4px;"></span>
+
+  <!-- こころんを端に添える -->
+  <div class="kokoron-sticker sticker-head"><img src="images/kokoron_07.png" alt="こころん"></div>
+
+  <div class="inner">
+    <div class="head">
+      <div class="eyebrow">MY SATISFACTION MAP</div>
+      <svg class="lotus-svg" viewBox="0 0 120 78" fill="none" stroke="#9C8463" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 70 C60 50 60 30 60 18 C66 30 70 48 64 70"/>
+        <path d="M60 70 C60 50 60 30 60 18 C54 30 50 48 56 70"/>
+        <path d="M60 70 C50 56 36 46 28 40 C40 40 54 52 60 70"/>
+        <path d="M60 70 C70 56 84 46 92 40 C80 40 66 52 60 70"/>
+        <path d="M60 70 C46 64 28 60 14 60 C30 52 50 58 60 70"/>
+        <path d="M60 70 C74 64 92 60 106 60 C90 52 70 58 60 70"/>
+        <path d="M40 70 C46 72 54 73 60 73 C66 73 74 72 80 70"/>
+      </svg>
+      <div class="title">わたしの満足度マップ</div>
+      <div class="tagline">こころのリズムを、やさしく整える。</div>
+      <div class="brandline"><span class="ll">Loves&nbsp;Life</span><span class="sep"></span><span class="mj">MINDFULNESS &amp; JOURNALING</span></div>
+      <div class="meta"><span>日付 <span class="ln"></span></span><span>なまえ <span class="ln"></span></span></div>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="sec">
+      <div class="sec-head">
+        <span class="step-pill"><span class="n">STEP 1</span> 最近、満たされた瞬間</span>
+      </div>
+      <div class="sec-intro">最近「これ、選んでよかった」と感じたことを、そっと書き出してみましょう。</div>
+      <div class="hint">買ってよかったもの／使ってよかった時間／行ってよかった場所／食べて幸せだったもの／会えてよかった人／やってよかったこと</div>
+      <div class="q-title">最近、心がふっと<span class="em">満たされた瞬間</span>はいつでしたか？</div>
+      <textarea class="write" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <hr class="hr-soft">
+
+    <!-- STEP 2 -->
+    <div class="sec">
+      <div class="sec-head">
+        <span class="step-pill"><span class="n">STEP 2</span> 気持ち別に見つける</span>
+      </div>
+      <div class="sec-intro">自分の心が反応するものを、気持ちのままに集めてみましょう。<br>正解はありません。あなたの「ここちよい」を、ゆっくりと。</div>
+      <div class="q-title">✦ ワクワクするもの・ここちよいもの</div>
+      <textarea class="write" placeholder="ここに書いてみよう…"></textarea>
+      <div class="kokoron-sticker sticker-sec"><img src="images/kokoron_03.png" alt="こころん"></div>
+    </div>
+
+    <div class="foot">
+      <svg class="lotus-mini" viewBox="0 0 120 78" fill="none" stroke="#B4A48E" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M60 70 C60 46 60 28 60 18 C68 32 72 50 64 70"/><path d="M60 70 C60 46 60 28 60 18 C52 32 48 50 56 70"/>
+        <path d="M60 70 C48 56 30 48 18 44 C34 44 52 54 60 70"/><path d="M60 70 C72 56 90 48 102 44 C86 44 68 54 60 70"/>
+      </svg>
+      <p>モカ＆こころん　｜　わたしの満足度マップ</p>
+    </div>
+  </div>
+</div>
+</body>
+</html>
