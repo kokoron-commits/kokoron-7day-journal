@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>わたしの満足度マップ｜モカ & こころん</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream:#FBF8F3; --border:#DCCFBE; --text:#5C4A38; --text-md:#8B7260; --text-lt:#B09880;
+  --lav:#EFE8F7; --lav-bd:#C9B6E4; --lav-dk:#8A6FB5;
+  --coral:#FCEAE4; --coral-bd:#EDB9A8; --coral-dk:#C77B5F;
+  --gold:#FDF4DC; --gold-bd:#E2C878; --gold-dk:#B08F3C;
+  --green:#E8F1E6; --green-bd:#AECBA2; --green-dk:#6E9A5C;
+  --blue:#E8F0F7; --blue-bd:#AFC8E0; --blue-dk:#5F86B0;
+}
+body { font-family:'M PLUS Rounded 1c',sans-serif; background:#ece5db; color:var(--text); }
+.page { max-width:210mm; margin:0 auto 24px; padding:10mm 12mm 8mm; background:var(--cream); position:relative; }
+
+.ws-header { text-align:center; margin-bottom:7mm; padding-bottom:5mm; border-bottom:2px dashed var(--border); }
+.ws-eyebrow { font-family:'Zen Maru Gothic',sans-serif; font-size:9px; color:var(--text-lt); letter-spacing:.25em; margin-bottom:6px; }
+.ws-title { font-size:20px; font-weight:700; letter-spacing:.03em; line-height:1.5; margin-bottom:5px; }
+.ws-series { font-family:'Zen Maru Gothic',sans-serif; font-size:11px; color:var(--coral-dk); letter-spacing:.08em; margin-bottom:7px; }
+.ws-sub { font-size:10px; color:var(--text-md); line-height:1.8; }
+.ws-meta { display:flex; gap:8mm; justify-content:center; margin-top:5mm; font-size:10px; color:var(--text-md); }
+.ws-meta .line { display:inline-block; width:36mm; border-bottom:1.2px solid var(--border); }
+
+.sec { border-radius:14px; border:1.5px solid var(--border); padding:5mm 6mm; margin-bottom:5mm; }
+.sec-head { display:flex; align-items:center; gap:10px; margin-bottom:2mm; }
+.sec-img { width:44px; height:44px; object-fit:contain; flex-shrink:0; }
+.sec-badge { display:inline-flex; align-items:center; gap:8px; border-radius:16px; padding:4px 14px; font-size:12.5px; font-weight:700; background:white; }
+.sec-num { font-family:'Zen Maru Gothic',sans-serif; font-size:9px; letter-spacing:.12em; }
+.sec-intro { font-size:9.5px; color:var(--text-md); line-height:1.7; margin-bottom:2.5mm; padding-left:2px; }
+.hint-list { font-size:9px; color:var(--text-lt); line-height:1.75; margin-bottom:2.5mm; padding-left:2px; }
+
+.q { background:white; border-radius:10px; padding:3.5mm 4.5mm 3mm; margin-bottom:3mm; }
+.q:last-child { margin-bottom:0; }
+.q-title { font-size:11.5px; font-weight:700; margin-bottom:1.5mm; }
+.q-title .em { color:var(--coral-dk); }
+textarea {
+  width:100%; min-height:42px; border:none; background:transparent; font-family:inherit;
+  font-size:11px; color:var(--text); line-height:1.9; resize:vertical; outline:none; padding:1px 2px 3px;
+  background-image:repeating-linear-gradient(transparent, transparent 27px, var(--border) 27px, var(--border) 28px);
+}
+textarea:focus { background-color:#FCFAFF; }
+textarea::placeholder { color:#D5C8B8; }
+.sub { margin-bottom:2.5mm; }
+.sub:last-child { margin-bottom:0; }
+.sub-label { display:inline-block; font-size:10.5px; font-weight:700; margin-bottom:.5mm; padding:1px 9px; border-radius:12px; }
+.sub-hint { font-size:8.5px; color:var(--text-lt); margin-left:4px; }
+
+.kokoron-note { display:flex; align-items:center; justify-content:center; gap:6mm; padding:3mm 6mm; background:white; border:1.5px dashed var(--border); border-radius:16px; margin-bottom:4mm; }
+.kokoron-note img { width:72px; height:72px; object-fit:contain; }
+.kokoron-note p { font-size:10.5px; color:var(--text-md); line-height:2; }
+.save-note { text-align:center; font-size:9px; color:var(--text-lt); margin-bottom:3mm; }
+.ws-footer { text-align:center; padding-top:3mm; border-top:1px dashed var(--border); font-family:'Zen Maru Gothic',sans-serif; font-size:9px; color:var(--text-lt); }
+.print-btn { display:block; margin:20px auto; background:var(--coral-dk); color:white; border:none; border-radius:24px; padding:12px 36px; font-family:'M PLUS Rounded 1c',sans-serif; font-size:13px; font-weight:700; cursor:pointer; letter-spacing:.05em; }
+.print-btn:hover { opacity:.85; }
+
+@media print {
+  body { background:white; }
+  .print-btn, .save-note { display:none; }
+  .page { max-width:100%; margin:0; padding:10mm 14mm 8mm; box-shadow:none; }
+  .sec, .kokoron-note, .ws-footer { break-inside:avoid; }
+  textarea { resize:none; }
+  @page { size:A4 portrait; margin:0; }
+}
+@media screen { .page { box-shadow:0 4px 20px rgba(0,0,0,.10); } }
+@media (max-width:600px){ .page{padding:6mm 5mm;} .ws-title{font-size:16px;} .ws-meta{flex-direction:column;gap:3mm;align-items:center;} }
+</style>
+</head>
+<body>
+
+<button class="print-btn" style="margin-top:24px;" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<div class="page">
+  <div class="ws-header">
+    <div class="ws-eyebrow">MY SATISFACTION MAP</div>
+    <div class="ws-title">わたしの満足度マップ</div>
+    <div class="ws-series">🌷 時間とお金を、もっと幸せに使うためのジャーナリング</div>
+    <div class="ws-sub">正解を探す時間ではなく、自分の心が反応するものを集める時間です。<br>うまく書こうとしなくて大丈夫。思いつくままに書いてみてね。</div>
+    <div class="ws-meta"><span>日付：<span class="line"></span></span><span>なまえ：<span class="line"></span></span></div>
+  </div>
+
+  <div class="save-note">✍️ そのまま書き込めます。内容は自動でこの端末に保存されます（LocalStorage）</div>
+
+  <!-- 1 -->
+  <div class="sec" style="background:var(--lav);border-color:var(--lav-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_05.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--lav-dk);"><span class="sec-num">STEP 1</span> 最近、満たされた瞬間</div>
+    </div>
+    <div class="sec-intro">最近「これ、選んでよかった」と感じたことを書き出してみましょう。</div>
+    <div class="hint-list">買ってよかったもの／使ってよかった時間／行ってよかった場所／食べて幸せだったもの／会えてよかった人／やってよかったこと／あえてやめてよかったこと</div>
+    <div class="q">
+      <div class="q-title">💭 最近、心がふっと<span class="em">満たされた瞬間</span>はいつでしたか？</div>
+      <textarea data-key="q1" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+  </div>
+
+  <!-- 2 -->
+  <div class="sec" style="background:var(--coral);border-color:var(--coral-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_03.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--coral-dk);"><span class="sec-num">STEP 2</span> 気持ち別に見つける</div>
+    </div>
+    <div class="sec-intro">自分の心が反応するものを、気持ち別に書き出してみましょう。</div>
+    <div class="q">
+      <div class="sub"><span class="sub-label" style="background:var(--coral);color:var(--coral-dk);">✨ ワクワクするもの</span><span class="sub-hint">これから楽しみになるもの、気分が上がるもの</span>
+        <textarea data-key="q2a" placeholder="…"></textarea></div>
+      <div class="sub"><span class="sub-label" style="background:var(--blue);color:var(--blue-dk);">🫧 ここちよいもの</span><span class="sub-hint">安心する空間、好きな香り、肌ざわり、音、景色</span>
+        <textarea data-key="q2b" placeholder="…"></textarea></div>
+      <div class="sub"><span class="sub-label" style="background:var(--gold);color:var(--gold-dk);">☀️ 元気が出るもの</span><span class="sub-hint">前向きになれる人、場所、言葉、習慣</span>
+        <textarea data-key="q2c" placeholder="…"></textarea></div>
+      <div class="sub"><span class="sub-label" style="background:var(--green);color:var(--green-dk);">🌿 心がゆるむもの</span><span class="sub-hint">ほっとする時間、ひとり時間、何もしない時間</span>
+        <textarea data-key="q2d" placeholder="…"></textarea></div>
+      <div class="sub"><span class="sub-label" style="background:var(--lav);color:var(--lav-dk);">🍰 お腹を満たすおいしいもの</span><span class="sub-hint">食べると幸せを感じるもの、また食べたいもの</span>
+        <textarea data-key="q2e" placeholder="…"></textarea></div>
+    </div>
+  </div>
+
+  <!-- 3 -->
+  <div class="sec" style="background:var(--gold);border-color:var(--gold-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_07.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--gold-dk);"><span class="sec-num">STEP 3</span> お金の使い方から見つける</div>
+    </div>
+    <div class="sec-intro">金額の大小ではなく、「満足度」に注目して書いてみましょう。</div>
+    <div class="q">
+      <div class="sub"><span class="sub-label" style="background:var(--green);color:var(--green-dk);">0円で満たされること</span>
+        <textarea data-key="q3a" placeholder="…"></textarea></div>
+      <div class="sub"><span class="sub-label" style="background:var(--blue);color:var(--blue-dk);">500円以内の小さな幸せ</span>
+        <textarea data-key="q3b" placeholder="…"></textarea></div>
+      <div class="sub"><span class="sub-label" style="background:var(--coral);color:var(--coral-dk);">少し奮発しても満足度が高いもの</span>
+        <textarea data-key="q3c" placeholder="…"></textarea></div>
+      <div class="sub"><span class="sub-label" style="background:var(--gold);color:var(--gold-dk);">予算を決めて楽しみたいこと</span>
+        <textarea data-key="q3d" placeholder="…"></textarea></div>
+      <div class="q-title" style="margin-top:2mm;">💴 お金を使ったあとに<span class="em">「これはよかった」</span>と思えるものは？</div>
+      <textarea data-key="q3q" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+  </div>
+
+  <!-- 4 -->
+  <div class="sec" style="background:var(--green);border-color:var(--green-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_02.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--green-dk);"><span class="sec-num">STEP 4</span> プライスレスな満足</div>
+    </div>
+    <div class="sec-intro">お金では買えないけれど、自分にとって大切な満足を書き出します。</div>
+    <div class="hint-list">誰かとの会話／家族やペットとの時間／朝の空気／静かな夜／感謝された瞬間／自分らしくいられる場所／安心して話せる人</div>
+    <div class="q">
+      <div class="q-title">🕊 自分にとって、何より満たされる<span class="em">プライスレスな時間</span>は？</div>
+      <textarea data-key="q4" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+  </div>
+
+  <!-- 5 -->
+  <div class="sec" style="background:var(--blue);border-color:var(--blue-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_06.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--blue-dk);"><span class="sec-num">STEP 5</span> 制限なくできるとしたら？</div>
+    </div>
+    <div class="sec-intro">一度、時間・お金・場所の制限を外して考えてみましょう。</div>
+    <div class="hint-list">どこに行きたい？／何を食べたい？／誰と過ごしたい？／どんな暮らしをしたい？／何に時間を使いたい？／どんな自分でいたい？</div>
+    <div class="q">
+      <div class="q-title">🌈 制限がないとしたら、今の自分は<span class="em">何を選びたい</span>ですか？</div>
+      <textarea data-key="q5" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+  </div>
+
+  <!-- 6 -->
+  <div class="sec" style="background:var(--coral);border-color:var(--coral-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_04.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--coral-dk);"><span class="sec-num">STEP 6</span> わたしの満足度マップ</div>
+    </div>
+    <div class="sec-intro">ここまで書いた中から、これからの自分に取り入れたいものを選びます。</div>
+    <div class="q">
+      <div class="sub"><span class="sub-label" style="background:var(--lav);color:var(--lav-dk);">日常に入れたい小さな満足</span>
+        <textarea data-key="q6a" placeholder="…"></textarea></div>
+      <div class="sub"><span class="sub-label" style="background:var(--gold);color:var(--gold-dk);">月1回、自分に許可したいこと</span>
+        <textarea data-key="q6b" placeholder="…"></textarea></div>
+      <div class="sub"><span class="sub-label" style="background:var(--green);color:var(--green-dk);">今年後半のやりたいことリストに入れたいこと</span>
+        <textarea data-key="q6c" placeholder="…"></textarea></div>
+      <div class="sub"><span class="sub-label" style="background:var(--coral);color:var(--coral-dk);">もう我慢しすぎなくていいこと</span>
+        <textarea data-key="q6d" placeholder="…"></textarea></div>
+      <div class="q-title" style="margin-top:2mm;">🌷 これからの自分に、どんな満足を<span class="em">許可してあげたい</span>ですか？</div>
+      <textarea data-key="q6q" placeholder="最後に、ひとことどうぞ…"></textarea>
+    </div>
+  </div>
+
+  <div class="kokoron-note">
+    <img src="images/kokoron_01.png" alt="こころん">
+    <p>満足度マップは、一度で完成しなくて大丈夫。<br>暮らしの中で、少しずつ更新していこうね🌷🦥</p>
+  </div>
+
+  <div class="ws-footer">🦥 モカ & こころん / Loves Life　｜　わたしの満足度マップ</div>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<script>
+document.querySelectorAll('textarea[data-key]').forEach(el => {
+  const key = 'manzoku_' + el.dataset.key;
+  const saved = localStorage.getItem(key);
+  if (saved) el.value = saved;
+  const grow = () => { el.style.height='auto'; el.style.height=el.scrollHeight+'px'; };
+  el.addEventListener('input', () => { localStorage.setItem(key, el.value); grow(); });
+  if (saved) grow();
+});
+</script>
+</body>
+</html>

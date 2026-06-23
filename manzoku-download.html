@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>わたしの満足度マップ｜参加者用ダウンロード</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ▼ アクセス解析（GoatCounter）moca のダッシュボードに記録 ▼ -->
+<script data-goatcounter="https://moca.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+<!-- ▲ ここまで ▲ -->
+
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+:root {
+  --cream:#FBF8F3; --coral:#FCEAE4; --coral-bd:#EDB9A8; --coral-dk:#C77B5F;
+  --lav-dk:#8A6FB5; --gold-dk:#B08F3C; --border:#DCCFBE; --text:#5C4A38; --text-md:#8B7260; --text-lt:#B09880;
+}
+body { font-family:'M PLUS Rounded 1c',sans-serif; background:#ece5db; color:var(--text); min-height:100vh; display:flex; align-items:center; justify-content:center; padding:24px 16px; }
+.card { max-width:460px; width:100%; background:var(--cream); border-radius:22px; box-shadow:0 6px 28px rgba(0,0,0,.12); padding:30px 26px 26px; text-align:center; position:relative; overflow:hidden; }
+.deco { position:absolute; top:16px; right:20px; font-size:22px; opacity:.7; }
+.eyebrow { font-family:'Zen Maru Gothic',sans-serif; font-size:9px; color:var(--text-lt); letter-spacing:.25em; margin-bottom:8px; }
+.title { font-size:21px; font-weight:700; line-height:1.5; margin-bottom:4px; }
+.series { font-family:'Zen Maru Gothic',sans-serif; font-size:11px; color:var(--coral-dk); letter-spacing:.08em; margin-bottom:16px; }
+.thumb-wrap { border-radius:12px; overflow:hidden; border:1px solid var(--border); box-shadow:0 3px 12px rgba(0,0,0,.08); margin-bottom:16px; }
+.thumb-wrap img { width:100%; display:block; }
+.lead { font-size:12px; color:var(--text-md); line-height:1.9; margin-bottom:20px; }
+.btn { display:flex; align-items:center; justify-content:center; gap:8px; width:100%; text-decoration:none; border-radius:26px; padding:15px 20px; font-size:15px; font-weight:700; letter-spacing:.03em; margin-bottom:12px; transition:opacity .2s, transform .1s; }
+.btn:active { transform:translateY(1px); } .btn:hover { opacity:.9; }
+.btn-digital { background:var(--coral-dk); color:white; box-shadow:0 4px 14px rgba(199,123,95,.35); }
+.btn-pdf { background:white; color:var(--gold-dk); border:2px solid #E2C878; }
+.btn-sub { font-size:10px; font-weight:400; opacity:.85; display:block; margin-top:2px; }
+.divider { font-size:10px; color:var(--text-lt); margin:6px 0 10px; }
+.dl-note { font-size:9.5px; color:var(--text-lt); margin-top:12px; line-height:1.7; }
+.footer { margin-top:22px; padding-top:16px; border-top:1px dashed var(--border); font-family:'Zen Maru Gothic',sans-serif; font-size:9px; color:var(--text-lt); }
+.thanks { display:none; margin-top:14px; font-size:12px; color:var(--coral-dk); font-weight:700; line-height:1.8; }
+.thanks.show { display:block; }
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="deco">🌷</div>
+  <div class="eyebrow">MY SATISFACTION MAP</div>
+  <div class="title">わたしの満足度マップ</div>
+  <div class="series">🌷 時間とお金を、もっと幸せに使うためのジャーナリング</div>
+
+  <div class="thumb-wrap">
+    <img src="images/manzoku-thumb.png" alt="わたしの満足度マップ プレビュー">
+  </div>
+
+  <div class="lead">
+    自分が何に満たされる人なのかを見つけて、<br>
+    “わたしのごきげんの取説”をつくるワークシートです。<br>
+    お好きな方法で受け取ってくださいね 🌿
+  </div>
+
+  <a class="btn btn-digital" id="digitalBtn" href="manzoku-worksheet.html">
+    ✍️ 画面に書き込む（デジタル版）
+    <span class="btn-sub">スマホ・PCでそのまま入力できます</span>
+  </a>
+
+  <div class="divider">― または ―</div>
+
+  <a class="btn btn-pdf" id="pdfBtn" href="manzoku-worksheet.pdf" download>
+    📄 印刷して使う（PDF版）
+    <span class="btn-sub">プリントして手書きで</span>
+  </a>
+
+  <div class="thanks" id="thanks">受け取りありがとう 🌷<br>ゆっくり、自分の満足を集めてみてね。</div>
+  <div class="dl-note">※「わたしの満足度マップをつくる会」参加者用ワークシートです。</div>
+  <div class="footer">🦥 モカ & こころん / Loves Life</div>
+</div>
+
+<script>
+function track(path, title){
+  if (window.goatcounter && window.goatcounter.count) window.goatcounter.count({path:path, title:title, event:true});
+  document.getElementById('thanks').classList.add('show');
+}
+document.getElementById('digitalBtn').addEventListener('click', function(){ track('open-manzoku-digital','満足度マップ デジタル版を開く'); });
+document.getElementById('pdfBtn').addEventListener('click', function(){ track('download-manzoku-pdf','満足度マップ PDFダウンロード'); });
+</script>
+</body>
+</html>
