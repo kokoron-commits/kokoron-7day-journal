@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- ===================================================================== -->
+<!-- 🌑 新月ワークシート 配布ページ（固定URL・毎月中身だけ差し替える）      -->
+<!--                                                                       -->
+<!-- 【毎月ここだけ変える】下の「▼ 毎月差し替え」の7か所                    -->
+<!--   1. <title>　2. 見出し3行　3. サムネ画像　4. リード文                 -->
+<!--   5. デジタル版リンク先　6. PDFリンク先　7. ページ下部の注釈           -->
+<!--                                                                       -->
+<!-- 【変えないもの】このファイル名（shingetsu-download.html）              -->
+<!--   → URLが固定されるので、公式LINEの設定を毎月触らなくて済みます        -->
+<!--   GoatCounterのイベント名も固定のままにします                          -->
+<!--   （open-shingetsu-digital / download-shingetsu-pdf）                  -->
+<!-- ===================================================================== -->
+
+<!-- ▼ 毎月差し替え① タイトル -->
+<title>しし座新月｜心がよろこぶ方へ、小さく一歩。｜ワークシート ダウンロード</title>
+
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ===================================================================== -->
+<!-- ▼▼▼ アクセス解析（GoatCounter）moca のダッシュボードに記録 ▼▼▼      -->
+<script data-goatcounter="https://moca.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ▲▲▲ ここまで ▲▲▲                                                     -->
+<!-- ===================================================================== -->
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --cream:    #FBF8F3;
+  --gold:     #FDF4DC;
+  --gold-bd:  #E2C878;
+  --gold-dk:  #B08F3C;
+  --lav-dk:   #8A6FB5;
+  --border:   #DCCFBE;
+  --text:     #5C4A38;
+  --text-md:  #8B7260;
+  --text-lt:  #B09880;
+}
+body {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background: #ece5db;
+  color: var(--text);
+  min-height: 100vh;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px 16px;
+}
+.card {
+  max-width: 460px; width: 100%;
+  background: var(--cream);
+  border-radius: 22px;
+  box-shadow: 0 6px 28px rgba(0,0,0,0.12);
+  padding: 30px 26px 26px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.deco {
+  position: absolute; top: 16px; right: 20px;
+  font-size: 22px; opacity: 0.7;
+}
+.eyebrow {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9px; color: var(--text-lt);
+  letter-spacing: 0.25em; margin-bottom: 8px;
+}
+.title { font-size: 21px; font-weight: 700; line-height: 1.5; margin-bottom: 4px; }
+.series {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 11px; color: var(--lav-dk);
+  letter-spacing: 0.1em; margin-bottom: 16px;
+}
+.thumb-wrap {
+  border-radius: 12px; overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+  margin-bottom: 16px;
+}
+.thumb-wrap img { width: 100%; display: block; }
+.lead {
+  font-size: 12px; color: var(--text-md);
+  line-height: 1.9; margin-bottom: 20px;
+}
+.btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  width: 100%;
+  text-decoration: none;
+  border-radius: 26px;
+  padding: 15px 20px;
+  font-size: 15px; font-weight: 700;
+  letter-spacing: 0.03em;
+  margin-bottom: 12px;
+  transition: opacity 0.2s, transform 0.1s;
+}
+.btn:active { transform: translateY(1px); }
+.btn:hover { opacity: 0.9; }
+.btn-digital {
+  background: var(--lav-dk); color: white;
+  box-shadow: 0 4px 14px rgba(138,111,181,0.35);
+}
+.btn-pdf {
+  background: white; color: var(--gold-dk);
+  border: 2px solid var(--gold-bd);
+}
+.btn-sub { font-size: 10px; font-weight: 400; opacity: 0.85; display: block; margin-top: 2px; }
+.divider {
+  font-size: 10px; color: var(--text-lt);
+  margin: 6px 0 10px;
+}
+.dl-note {
+  font-size: 9.5px; color: var(--text-lt);
+  margin-top: 12px; line-height: 1.7;
+}
+.footer {
+  margin-top: 22px; padding-top: 16px;
+  border-top: 1px dashed var(--border);
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9px; color: var(--text-lt);
+}
+.thanks {
+  display: none; margin-top: 14px;
+  font-size: 12px; color: var(--lav-dk);
+  font-weight: 700; line-height: 1.8;
+}
+.thanks.show { display: block; }
+</style>
+</head>
+<body>
+
+<div class="card">
+  <div class="deco">🌑</div>
+
+  <!-- ▼ 毎月差し替え② 見出し3行 -->
+  <div class="eyebrow">LEO NEW MOON · 8/13</div>
+  <div class="title">しし座新月<br>心がよろこぶ方へ、小さく一歩。</div>
+  <div class="series">🌑 だれかの期待より、自分の心がよろこぶ方へ</div>
+
+  <!-- ▼ 毎月差し替え③ サムネ画像 -->
+  <div class="thumb-wrap">
+    <img src="images/shingetsu-thumb-2026-08.png" alt="しし座新月 ジャーナリングワークシート プレビュー">
+  </div>
+
+  <!-- ▼ 毎月差し替え④ リード文 -->
+  <div class="lead">
+    新月は、新しく始めることや、<br>
+    心の意図をそっと置くタイミング。<br>
+    大きな決意じゃなくて大丈夫です 🌿
+  </div>
+
+  <!-- ▼ 毎月差し替え⑤ デジタル版のリンク先（ファイル名だけ変える） -->
+  <a class="btn btn-digital" id="digitalBtn"
+     href="newmoon-2026-08-worksheet.html">
+    ✍️ 画面に書き込む（デジタル版）
+    <span class="btn-sub">スマホ・PCでそのまま入力できます</span>
+  </a>
+
+  <div class="divider">― または ―</div>
+
+  <!-- ▼ 毎月差し替え⑥ PDFのリンク先（ファイル名だけ変える） -->
+  <a class="btn btn-pdf" id="pdfBtn"
+     href="shingetsu-worksheet-2026-08.pdf" download>
+    📄 印刷して使う（PDF版）
+    <span class="btn-sub">保存・印刷してお使いいただけます</span>
+  </a>
+
+  <div class="thanks" id="thanks">
+    受け取りありがとう 🌑<br>心がよろこぶ方へ、小さく一歩。
+  </div>
+
+  <!-- ▼ 毎月差し替え⑦ 注釈 -->
+  <div class="dl-note">
+    ※ このワークシートは「8/13 しし座新月」のジャーナリング用です。
+  </div>
+
+  <div class="footer">🦥 モカ & こころん / Loves Life</div>
+</div>
+
+<script>
+function track(path, title) {
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({ path: path, title: title, event: true });
+  }
+  document.getElementById('thanks').classList.add('show');
+}
+// ▼ イベント名は固定のまま（月別の数は GoatCounter の期間指定で見られます）
+document.getElementById('digitalBtn').addEventListener('click', function () {
+  track('open-shingetsu-digital', '新月WS デジタル版を開く');
+});
+document.getElementById('pdfBtn').addEventListener('click', function () {
+  track('download-shingetsu-pdf', '新月WS PDFダウンロード');
+});
+</script>
+
+</body>
+</html>

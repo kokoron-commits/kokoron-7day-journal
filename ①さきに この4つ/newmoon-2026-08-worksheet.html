@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>心がよろこぶ方へ、小さく一歩。しし座新月のジャーナリング｜モカ & こころん</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ===================================================================== -->
+<!-- ▼▼▼ アクセス解析（GoatCounter）moca のダッシュボードに記録 ▼▼▼      -->
+<script data-goatcounter="https://moca.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ▲▲▲ ここまで ▲▲▲                                                     -->
+<!-- ===================================================================== -->
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:    #FBF8F3;
+  --lav:      #EFE8F7;
+  --lav-bd:   #C9B6E4;
+  --lav-dk:   #8A6FB5;
+  --sage:     #E9F0E6;
+  --sage-bd:  #B6CBAE;
+  --sage-dk:  #6F8B64;
+  --gold:     #FDF4DC;
+  --gold-bd:  #E2C878;
+  --gold-dk:  #B08F3C;
+  --border:   #DCCFBE;
+  --text:     #5C4A38;
+  --text-md:  #8B7260;
+  --text-lt:  #B09880;
+}
+
+body {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background: #ece5db;
+  color: var(--text);
+}
+
+.page {
+  max-width: 210mm;
+  margin: 0 auto 24px;
+  padding: 10mm 12mm 8mm;
+  background: var(--cream);
+  position: relative;
+}
+
+/* ===== 飾り（新月＝見えない月。輪郭だけ） ===== */
+.moon-deco {
+  position: absolute; top: 8mm; right: 10mm;
+  width: 56px; height: 56px; opacity: 0.6;
+}
+.moon-core {
+  position: absolute; top: 50%; left: 50%;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: radial-gradient(circle at 38% 34%, #FAF6EE 0%, #F3ECE0 60%, #EADFCB 100%);
+  border: 1.5px solid var(--lav-bd);
+  box-shadow: 0 0 12px 4px rgba(201, 182, 228, 0.28);
+  transform: translate(-50%, -50%);
+}
+.moon-star {
+  position: absolute;
+  width: 3px; height: 3px; border-radius: 50%;
+  background: #E2C878;
+}
+
+/* ===== ヘッダー ===== */
+.ws-header {
+  text-align: center;
+  margin-bottom: 7mm;
+  padding-bottom: 5mm;
+  border-bottom: 2px dashed var(--border);
+}
+.ws-eyebrow {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9px; color: var(--text-lt);
+  letter-spacing: 0.25em;
+  margin-bottom: 6px;
+}
+.ws-title {
+  font-size: 19px; font-weight: 700;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
+  margin-bottom: 5px;
+}
+.ws-sub {
+  font-size: 10px; color: var(--text-md);
+  line-height: 1.8;
+}
+
+/* ===== 導入のひとこと ===== */
+.intro-note {
+  background: white;
+  border: 1.5px dashed var(--border);
+  border-radius: 14px;
+  padding: 3.5mm 6mm;
+  margin-bottom: 5mm;
+  text-align: center;
+  font-size: 10px; color: var(--text-md);
+  line-height: 2;
+}
+
+/* ===== セクション ===== */
+.sec {
+  border-radius: 14px;
+  border: 1.5px solid var(--border);
+  padding: 5mm 6mm 5mm;
+  margin-bottom: 5mm;
+}
+.sec-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 3mm;
+}
+.sec-img {
+  width: 46px; height: 46px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+.sec-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  border-radius: 16px;
+  padding: 4px 14px;
+  font-size: 12px; font-weight: 700;
+  background: white;
+}
+.sec-num {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9px; letter-spacing: 0.12em;
+}
+
+/* ===== 設問 ===== */
+.q {
+  background: white;
+  border-radius: 10px;
+  padding: 3.5mm 4.5mm 3mm;
+  margin-bottom: 3mm;
+}
+.q:last-child { margin-bottom: 0; }
+.q-title {
+  font-size: 12px; font-weight: 700;
+  margin-bottom: 1mm;
+}
+.q-hint {
+  font-size: 8.5px; color: var(--text-lt);
+  margin-bottom: 1.5mm; line-height: 1.6;
+}
+textarea {
+  width: 100%;
+  min-height: 38px;
+  border: none;
+  border-bottom: 1.2px solid var(--border);
+  background: transparent;
+  font-family: inherit;
+  font-size: 11px;
+  color: var(--text);
+  line-height: 1.8;
+  resize: vertical;
+  outline: none;
+  padding: 1px 2px 3px;
+}
+textarea:focus { border-bottom-color: var(--lav-dk); }
+textarea::placeholder { color: #D5C8B8; }
+
+/* ===== たとえば ===== */
+.example {
+  background: var(--gold);
+  border: 1.2px dashed var(--gold-bd);
+  border-radius: 10px;
+  padding: 3mm 4.5mm;
+  margin-top: 3mm;
+}
+.example-title {
+  font-size: 10px; font-weight: 700;
+  color: var(--gold-dk);
+  text-align: center;
+  margin-bottom: 1.5mm;
+}
+.example ul {
+  list-style: none;
+  font-size: 9.5px; color: var(--text-md);
+  line-height: 2;
+}
+.example li::before { content: "・"; color: var(--gold-dk); }
+
+/* ===== 宣言ボックス ===== */
+.declare-box {
+  border: 2px solid var(--gold-bd);
+  background: var(--gold);
+  border-radius: 14px;
+  padding: 4mm 6mm;
+  margin-bottom: 5mm;
+  text-align: center;
+}
+.declare-title {
+  font-size: 12.5px; font-weight: 700;
+  color: var(--gold-dk);
+  margin-bottom: 1mm;
+}
+.declare-hint {
+  font-size: 8.5px; color: var(--text-lt);
+  margin-bottom: 2mm;
+}
+.declare-box textarea {
+  border-bottom-color: var(--gold-bd);
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  min-height: 34px;
+}
+
+/* ===== こころんのひとこと ===== */
+.kokoron-note {
+  display: flex; align-items: center;
+  justify-content: center;
+  gap: 6mm;
+  padding: 3mm 6mm;
+  background: white;
+  border: 1.5px dashed var(--border);
+  border-radius: 16px;
+  margin-bottom: 4mm;
+}
+.kokoron-note img {
+  width: 72px; height: 72px;
+  object-fit: contain;
+}
+.kokoron-note p {
+  font-size: 10.5px; color: var(--text-md);
+  line-height: 2;
+}
+
+/* ===== 保存メモ ===== */
+.save-note {
+  text-align: center;
+  font-size: 9px; color: var(--text-lt);
+  margin-bottom: 3mm;
+}
+
+/* ===== フッター ===== */
+.ws-footer {
+  text-align: center;
+  padding-top: 3mm;
+  border-top: 1px dashed var(--border);
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9px; color: var(--text-lt);
+}
+
+/* ===== 印刷ボタン ===== */
+.print-btn {
+  display: block; margin: 20px auto;
+  background: var(--lav-dk); color: white;
+  border: none; border-radius: 24px;
+  padding: 12px 36px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 13px; font-weight: 700; cursor: pointer;
+  letter-spacing: 0.05em;
+}
+.print-btn:hover { opacity: 0.85; }
+
+@media print {
+  body { background: white; }
+  .print-btn, .save-note { display: none; }
+  .page {
+    max-width: 100%;
+    margin: 0;
+    padding: 10mm 14mm 8mm;
+    box-shadow: none;
+  }
+  .sec { break-inside: avoid; padding: 6mm 7mm; }
+  .sec + .sec { break-before: page; margin-top: 8mm; }
+  .declare-box, .kokoron-note, .ws-footer { break-inside: avoid; }
+  .q { padding: 4.5mm 5mm 4mm; margin-bottom: 4.5mm; }
+  textarea { resize: none; min-height: 60px; }
+  .declare-box textarea { min-height: 40px; }
+  @page { size: A4 portrait; margin: 0; }
+}
+@media screen {
+  .page { box-shadow: 0 4px 20px rgba(0,0,0,0.10); }
+}
+@media (max-width: 600px) {
+  .page { padding: 6mm 5mm; }
+  .ws-title { font-size: 16px; }
+  .moon-deco { display: none; }
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn" style="margin-top:24px;" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<div class="page">
+
+  <div class="moon-deco">
+    <div class="moon-core"></div>
+    <div class="moon-star" style="top:2px;left:2px;"></div>
+    <div class="moon-star" style="bottom:4px;right:0;"></div>
+    <div class="moon-star" style="bottom:0;left:8px;"></div>
+  </div>
+
+  <div class="ws-header">
+    <div class="ws-eyebrow">NEW MOON JOURNALING &nbsp;/&nbsp; 2026.08.13</div>
+    <div class="ws-title">🌑 心がよろこぶ方へ、小さく一歩。<br>しし座新月のジャーナリング</div>
+    <div class="ws-sub">大きな決意じゃなくて大丈夫。<br>今日は、小さな気持ちをやさしく言葉にしてみましょう。</div>
+  </div>
+
+  <div class="save-note">✍️ そのまま書き込めます。内容は自動でこの端末に保存されます（LocalStorage）</div>
+
+  <div class="intro-note">
+    新月は、新しく始めることや、心の意図をそっと置くタイミング。<br>
+    だれかの期待より、正しさより、<br>
+    自分の心がふっとよろこぶ方へ。
+  </div>
+
+  <!-- ===== STEP 1：きづく ===== -->
+  <div class="sec" style="background:var(--lav);border-color:var(--lav-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_05.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--lav-dk);">
+        <span class="sec-num">STEP 1</span> きづく
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-title">🌿 いま、心がよろこぶことは何ですか？</div>
+      <div class="q-hint">最近うれしかったこと、ほっとしたこと、好きだと感じたことでもOK。</div>
+      <textarea data-key="q1" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-title">✨ 本当は少しやってみたいことはありますか？</div>
+      <div class="q-hint">やってみたい、気になる、心が動くことを書いてみましょう。</div>
+      <textarea data-key="q2" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+  </div>
+
+  <!-- ===== STEP 2：ふみだす ===== -->
+  <div class="sec" style="background:var(--sage);border-color:var(--sage-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_03.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--sage-dk);">
+        <span class="sec-num">STEP 2</span> ふみだす
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-title">🌱 今日、小さく一歩できることは何ですか？</div>
+      <div class="q-hint">今すぐできるくらい、小さくて大丈夫です。</div>
+      <textarea data-key="q3" placeholder="ここに書いてみよう…"></textarea>
+
+      <div class="example">
+        <div class="example-title">たとえば</div>
+        <ul>
+          <li>気になっていたことをメモする</li>
+          <li>好きな飲みものをゆっくり味わう</li>
+          <li>「やってみたい」をひとつ認める</li>
+          <li>5分だけ行動してみる</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== STEP 3：ゆるす ===== -->
+  <div class="sec" style="background:var(--gold);border-color:var(--gold-bd);">
+    <div class="sec-head">
+      <img class="sec-img" src="images/kokoron_07.png" alt="こころん">
+      <div class="sec-badge" style="color:var(--gold-dk);">
+        <span class="sec-num">STEP 3</span> ゆるす
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-title">🤍 この新月で、自分にやさしく許したいこと</div>
+      <div class="q-hint">できていないことではなく、「もう頑張らなくていいこと」を。</div>
+      <textarea data-key="q4" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+  </div>
+
+  <!-- ===== この新月の小さな意図 ===== -->
+  <div class="declare-box">
+    <div class="declare-title">🌑 この新月の小さな意図</div>
+    <div class="declare-hint">今の自分に、そっと置いておきたい気持ち。ひとつだけで十分です。</div>
+    <textarea data-key="declare" placeholder="ひとつだけ、言葉にしてみよう…"></textarea>
+  </div>
+
+  <!-- ===== こころんのひとこと ===== -->
+  <div class="kokoron-note">
+    <img src="images/kokoron_01.png" alt="こころん">
+    <p>新月は、大きな変化より小さな意図から。<br>その一歩は、きっとあなたの中にやさしく残っていくよ 🌑🦥</p>
+  </div>
+
+  <div class="ws-footer">🦥 モカ & こころん / Loves Life　｜　2026.08.13 しし座新月のジャーナリング</div>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<script>
+// ===== 「実際に書き始めた人」を1回だけ記録（イベント名は固定） =====
+let wroteOnce = false;
+function trackFirstWrite() {
+  if (wroteOnce) return;
+  wroteOnce = true;
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({
+      path: 'write-shingetsu-digital',
+      title: '新月WS デジタル版に書き始めた',
+      event: true
+    });
+  }
+}
+
+// ===== LocalStorage 自動保存・復元 =====
+document.querySelectorAll('textarea[data-key]').forEach(el => {
+  const key = 'newmoon202608_' + el.dataset.key;
+  const saved = localStorage.getItem(key);
+  if (saved) el.value = saved;
+  el.addEventListener('input', () => {
+    trackFirstWrite();
+    localStorage.setItem(key, el.value);
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  });
+  if (saved) {
+    el.style.height = 'auto';
+    el.style.height = el.scrollHeight + 'px';
+  }
+});
+
+// ===== 印刷／PDF保存も記録 =====
+document.querySelectorAll('.print-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({
+        path: 'print-shingetsu-digital',
+        title: '新月WS デジタル版を印刷/PDF保存',
+        event: true
+      });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
