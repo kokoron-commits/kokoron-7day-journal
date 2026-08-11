@@ -3,7 +3,23 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>かに座新月｜心の居場所を整える夜｜参加者用ダウンロード</title>
+
+<!-- ===================================================================== -->
+<!-- 🌑 新月ワークシート 配布ページ（固定URL・毎月中身だけ差し替える）      -->
+<!--                                                                       -->
+<!-- 【毎月ここだけ変える】下の「▼ 毎月差し替え」の7か所                    -->
+<!--   1. <title>　2. 見出し3行　3. サムネ画像　4. リード文                 -->
+<!--   5. デジタル版リンク先　6. PDFリンク先　7. ページ下部の注釈           -->
+<!--                                                                       -->
+<!-- 【変えないもの】このファイル名（shingetsu-download.html）              -->
+<!--   → URLが固定されるので、公式LINEの設定を毎月触らなくて済みます        -->
+<!--   GoatCounterのイベント名も固定のままにします                          -->
+<!--   （open-shingetsu-digital / download-shingetsu-pdf）                  -->
+<!-- ===================================================================== -->
+
+<!-- ▼ 毎月差し替え① タイトル -->
+<title>しし座新月｜心がよろこぶ方へ、小さく一歩。｜ワークシート ダウンロード</title>
+
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
 
 <!-- ===================================================================== -->
@@ -83,11 +99,19 @@ body {
 }
 .btn:active { transform: translateY(1px); }
 .btn:hover { opacity: 0.9; }
-.btn-pdf {
+.btn-digital {
   background: var(--lav-dk); color: white;
   box-shadow: 0 4px 14px rgba(138,111,181,0.35);
 }
+.btn-pdf {
+  background: white; color: var(--gold-dk);
+  border: 2px solid var(--gold-bd);
+}
 .btn-sub { font-size: 10px; font-weight: 400; opacity: 0.85; display: block; margin-top: 2px; }
+.divider {
+  font-size: 10px; color: var(--text-lt);
+  margin: 6px 0 10px;
+}
 .dl-note {
   font-size: 9.5px; color: var(--text-lt);
   margin-top: 12px; line-height: 1.7;
@@ -109,34 +133,48 @@ body {
 <body>
 
 <div class="card">
-  <div class="deco">🌙</div>
+  <div class="deco">🌑</div>
 
-  <div class="eyebrow">CANCER NEW MOON · 7/14</div>
-  <div class="title">かに座新月<br>心の居場所を整える夜</div>
-  <div class="series">🌙 安心できる場所から、新しい私をはじめる時間</div>
+  <!-- ▼ 毎月差し替え② 見出し3行 -->
+  <div class="eyebrow">LEO NEW MOON · 8/13</div>
+  <div class="title">しし座新月<br>心がよろこぶ方へ、小さく一歩。</div>
+  <div class="series">🌑 だれかの期待より、自分の心がよろこぶ方へ</div>
 
+  <!-- ▼ 毎月差し替え③ サムネ画像 -->
   <div class="thumb-wrap">
-    <img src="images/shingetsu-thumb.png" alt="かに座新月 心の居場所を整える夜 プレビュー">
+    <img src="images/shingetsu-thumb-2026-08.png" alt="しし座新月 ジャーナリングワークシート プレビュー">
   </div>
 
+  <!-- ▼ 毎月差し替え④ リード文 -->
   <div class="lead">
-    安心できる場所を思い出し、<br>
-    そこから新しい自分をはじめるためのジャーナリングシートです。<br>
-    お好きなタイミングで書いてみてくださいね 🌿
+    新月は、新しく始めることや、<br>
+    心の意図をそっと置くタイミング。<br>
+    大きな決意じゃなくて大丈夫です 🌿
   </div>
 
+  <!-- ▼ 毎月差し替え⑤ デジタル版のリンク先（ファイル名だけ変える） -->
+  <a class="btn btn-digital" id="digitalBtn"
+     href="newmoon-2026-08-worksheet.html">
+    ✍️ 画面に書き込む（デジタル版）
+    <span class="btn-sub">スマホ・PCでそのまま入力できます</span>
+  </a>
+
+  <div class="divider">― または ―</div>
+
+  <!-- ▼ 毎月差し替え⑥ PDFのリンク先（ファイル名だけ変える） -->
   <a class="btn btn-pdf" id="pdfBtn"
-     href="shingetsu-worksheet.pdf" download>
-    📄 ジャーナリングシートをダウンロード
+     href="shingetsu-worksheet-2026-08.pdf" download>
+    📄 印刷して使う（PDF版）
     <span class="btn-sub">保存・印刷してお使いいただけます</span>
   </a>
 
   <div class="thanks" id="thanks">
-    受け取りありがとう 🌙<br>安心できる場所から、ゆっくり整えていきましょうね。
+    受け取りありがとう 🌑<br>心がよろこぶ方へ、小さく一歩。
   </div>
 
+  <!-- ▼ 毎月差し替え⑦ 注釈 -->
   <div class="dl-note">
-    ※ このワークシートは「かに座新月・心の居場所を整える夜」参加者用です。
+    ※ このワークシートは「8/13 しし座新月」のジャーナリング用です。
   </div>
 
   <div class="footer">🦥 モカ & こころん / Loves Life</div>
@@ -149,8 +187,12 @@ function track(path, title) {
   }
   document.getElementById('thanks').classList.add('show');
 }
+// ▼ イベント名は固定のまま（月別の数は GoatCounter の期間指定で見られます）
+document.getElementById('digitalBtn').addEventListener('click', function () {
+  track('open-shingetsu-digital', '新月WS デジタル版を開く');
+});
 document.getElementById('pdfBtn').addEventListener('click', function () {
-  track('download-shingetsu-pdf', 'かに座新月WS PDFダウンロード');
+  track('download-shingetsu-pdf', '新月WS PDFダウンロード');
 });
 </script>
 
