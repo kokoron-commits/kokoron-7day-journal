@@ -7,27 +7,24 @@
 <!-- ===================================================================== -->
 <!-- 🌕 満月ワークシート 配布ページ（固定URL・毎月中身だけ差し替える）      -->
 <!--                                                                       -->
-<!-- 【毎月ここだけ変える】下の「▼ 毎月差し替え」の7か所                    -->
-<!--   1. <title>　2. 見出し3行　3. サムネ画像　4. リード文                 -->
-<!--   5. デジタル版リンク先　6. PDFリンク先　7. ページ下部の注釈           -->
+<!-- 【ファイル名】mangetsu-download.html（変えない）                       -->
+<!--   → URLが固定されるので、公式LINEの設定を毎月触らずに済みます          -->
 <!--                                                                       -->
-<!-- 【変えないもの】このファイル名（mangetsu-download.html）               -->
-<!--   → URLが固定されるので、公式LINEの設定を毎月触らなくて済みます        -->
-<!--   GoatCounterのイベント名も固定のままにします                          -->
-<!--   （open-mangetsu-digital / download-mangetsu-pdf）                    -->
+<!-- 【毎月差し替えるのは4か所だけ】                                        -->
+<!--   1. <title>　2. 画像3枚のファイル名　3. ボタンのリンク先              -->
+<!--   4. ページ下部の注釈                                                  -->
+<!--                                                                       -->
+<!-- 【GoatCounterのイベント名】固定のまま                                  -->
+<!--   open-mangetsu-digital / download-mangetsu-pdf                        -->
 <!-- ===================================================================== -->
 
-<!-- ▼ 毎月差し替え① タイトル -->
-<title>魚座満月｜ここまでの私に、実りを見つける満月。｜ワークシート ダウンロード</title>
+<title>魚座満月｜ここまでの私に、実りを見つける満月。｜ワークシート</title>
 
 <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
 
-<!-- ===================================================================== -->
-<!-- ▼▼▼ アクセス解析（GoatCounter）moca のダッシュボードに記録 ▼▼▼      -->
+<!-- アクセス解析（GoatCounter） -->
 <script data-goatcounter="https://moca.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
-<!-- ▲▲▲ ここまで ▲▲▲                                                     -->
-<!-- ===================================================================== -->
 
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -46,48 +43,39 @@ body {
   font-family: 'M PLUS Rounded 1c', sans-serif;
   background: #ece5db;
   color: var(--text);
-  min-height: 100vh;
-  display: flex; align-items: center; justify-content: center;
-  padding: 24px 16px;
+  padding: 20px 14px 40px;
 }
 .card {
   max-width: 460px; width: 100%;
+  margin: 0 auto;
   background: var(--cream);
   border-radius: 22px;
   box-shadow: 0 6px 28px rgba(0,0,0,0.12);
-  padding: 30px 26px 26px;
+  padding: 24px 20px 26px;
   text-align: center;
-  position: relative;
   overflow: hidden;
 }
-.deco {
-  position: absolute; top: 16px; right: 20px;
-  font-size: 22px; opacity: 0.7;
-}
+.deco { font-size: 22px; opacity: 0.7; margin-bottom: 6px; }
 .eyebrow {
   font-family: 'Zen Maru Gothic', sans-serif;
   font-size: 9px; color: var(--text-lt);
-  letter-spacing: 0.25em; margin-bottom: 8px;
+  letter-spacing: 0.25em; margin-bottom: 14px;
 }
-.title { font-size: 21px; font-weight: 700; line-height: 1.5; margin-bottom: 4px; }
-.series {
-  font-family: 'Zen Maru Gothic', sans-serif;
-  font-size: 11px; color: var(--lav-dk);
-  letter-spacing: 0.1em; margin-bottom: 16px;
-}
-.thumb-wrap {
+/* ===== 画像3枚 ===== */
+.shots { margin-bottom: 20px; }
+.shot {
   border-radius: 12px; overflow: hidden;
   border: 1px solid var(--border);
   box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-  margin-bottom: 16px;
+  margin-bottom: 12px;
 }
-.thumb-wrap img { width: 100%; display: block; }
-.lead {
-  font-size: 12px; color: var(--text-md);
-  line-height: 1.9; margin-bottom: 20px;
-}
+.shot:last-child { margin-bottom: 0; }
+.shot img { width: 100%; display: block; }
+
+/* ===== ボタン ===== */
 .btn {
-  display: flex; align-items: center; justify-content: center; gap: 8px;
+  display: flex; align-items: center; justify-content: center;
+  flex-direction: column;
   width: 100%;
   text-decoration: none;
   border-radius: 26px;
@@ -107,23 +95,46 @@ body {
   background: white; color: var(--gold-dk);
   border: 2px solid var(--gold-bd);
 }
-.btn-sub { font-size: 10px; font-weight: 400; opacity: 0.85; display: block; margin-top: 2px; }
-.divider {
-  font-size: 10px; color: var(--text-lt);
-  margin: 6px 0 10px;
+.btn-sub { font-size: 10px; font-weight: 400; opacity: 0.85; margin-top: 3px; }
+.divider { font-size: 10px; color: var(--text-lt); margin: 6px 0 10px; }
+
+/* ===== 書き方のメッセージ ===== */
+.how {
+  background: white;
+  border: 1.5px dashed var(--border);
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin: 18px 0 14px;
+  font-size: 12px; color: var(--text-md);
+  line-height: 2;
+}
+/* ===== LINEへ戻る案内 ===== */
+.back-line {
+  background: var(--gold);
+  border: 1.5px solid var(--gold-bd);
+  border-radius: 14px;
+  padding: 14px 16px;
+  font-size: 12px; color: var(--text);
+  line-height: 2;
+}
+.back-line .kw {
+  display: inline-block;
+  font-weight: 700; font-size: 14px;
+  color: var(--gold-dk);
+  padding: 1px 8px;
 }
 .dl-note {
   font-size: 9.5px; color: var(--text-lt);
-  margin-top: 12px; line-height: 1.7;
+  margin-top: 14px; line-height: 1.7;
 }
 .footer {
-  margin-top: 22px; padding-top: 16px;
+  margin-top: 20px; padding-top: 14px;
   border-top: 1px dashed var(--border);
   font-family: 'Zen Maru Gothic', sans-serif;
   font-size: 9px; color: var(--text-lt);
 }
 .thanks {
-  display: none; margin-top: 14px;
+  display: none; margin-top: 12px;
   font-size: 12px; color: var(--lav-dk);
   font-weight: 700; line-height: 1.8;
 }
@@ -134,36 +145,24 @@ body {
 
 <div class="card">
   <div class="deco">🌕</div>
+  <div class="eyebrow">PISCES FULL MOON &nbsp;·&nbsp; 2026.08.28</div>
 
-  <!-- ▼ 毎月差し替え② 見出し3行 -->
-  <div class="eyebrow">PISCES FULL MOON · 8/28</div>
-  <div class="title">魚座満月<br>ここまでの私に、実りを見つける満月。</div>
-  <div class="series">🌕 ここまでの実りを受け取り、心に残っているものを、やさしく見つめる</div>
-
-  <!-- ▼ 毎月差し替え③ サムネ画像 -->
-  <div class="thumb-wrap">
-    <img src="images/mangetsu-thumb-2026-08.png" alt="魚座満月 ジャーナリングワークシート プレビュー">
+  <!-- ▼ 毎月差し替え：画像3枚 -->
+  <div class="shots">
+    <div class="shot"><img src="images/mangetsu-2026-08-01-cover.png" alt="8月28日 魚座満月 ここまでの私に、実りを見つける満月。"></div>
+    <div class="shot"><img src="images/mangetsu-2026-08-02-theme.png" alt="今回の満月テーマ 小さな変化も、ちゃんと実り。"></div>
+    <div class="shot"><img src="images/mangetsu-2026-08-03-questions.png" alt="今夜のジャーナリング 3つの問い"></div>
   </div>
 
-  <!-- ▼ 毎月差し替え④ リード文 -->
-  <div class="lead">
-    8月の満月は「スタージョンムーン」。<br>
-    夏の終わりに、実りが満ちる時期の満月です。<br>
-    目に見える成果だけが、実りではありません 🌾
-  </div>
-
-  <!-- ▼ 毎月差し替え⑤ デジタル版のリンク先（ファイル名だけ変える） -->
-  <a class="btn btn-digital" id="digitalBtn"
-     href="fullmoon-2026-08-worksheet.html">
+  <!-- ▼ 毎月差し替え：リンク先のファイル名だけ -->
+  <a class="btn btn-digital" id="digitalBtn" href="fullmoon-2026-08-worksheet.html">
     ✍️ 画面に書き込む（デジタル版）
     <span class="btn-sub">スマホ・PCでそのまま入力できます</span>
   </a>
 
   <div class="divider">― または ―</div>
 
-  <!-- ▼ 毎月差し替え⑥ PDFのリンク先（ファイル名だけ変える） -->
-  <a class="btn btn-pdf" id="pdfBtn"
-     href="mangetsu-worksheet-2026-08.pdf" download>
+  <a class="btn btn-pdf" id="pdfBtn" href="mangetsu-worksheet-2026-08.pdf" download>
     📄 印刷して使う（PDF版）
     <span class="btn-sub">保存・印刷してお使いいただけます</span>
   </a>
@@ -172,7 +171,19 @@ body {
     受け取りありがとう 🌕<br>ここまで歩いてきたことが、あなたの実りです。
   </div>
 
-  <!-- ▼ 毎月差し替え⑦ 注釈 -->
+  <div class="how">
+    すべての問いに答えなくても大丈夫です。<br>
+    今の自分に残った問いをひとつ、<br>
+    やさしく眺めてみてくださいね🌿
+  </div>
+
+  <div class="back-line">
+    書けたら、LINEのトーク画面に<br>
+    <span class="kw">「書けた」</span><br>
+    と送っていただけたら嬉しいです😊
+  </div>
+
+  <!-- ▼ 毎月差し替え：注釈 -->
   <div class="dl-note">
     ※ このワークシートは「8/28 魚座満月」のジャーナリング用です。
   </div>
@@ -187,7 +198,6 @@ function track(path, title) {
   }
   document.getElementById('thanks').classList.add('show');
 }
-// ▼ イベント名は固定のまま（月別の数は GoatCounter の期間指定で見られます）
 document.getElementById('digitalBtn').addEventListener('click', function () {
   track('open-mangetsu-digital', '満月WS デジタル版を開く');
 });
