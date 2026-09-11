@@ -124,6 +124,14 @@ button{
 }
 .example p{margin:0;padding:10px 12px 12px;color:#716159;font-size:13px}
 
+/* スマホでは下のボタンを固定しない（入力は自動保存されるため、書く画面を広く使う） */
+@media (max-width:600px){
+  .hero{padding:28px 22px}
+  .section{padding:22px 18px}
+  .actions{position:static}
+  .actions button{padding:10px 14px;font-size:14px}
+}
+
 @media print{
   body{background:white}
   .actions{display:none}
@@ -138,7 +146,7 @@ button{
 
 <section class="hero">
   <div class="kicker">モカ ⊹ 心のリズムと続く事業を支える人</div>
-  <h1>AI時代の<span class="accent">稼ぐ力</span>を育てる<br>言語化ワーク</h1>
+  <h1>AI時代の<span class="accent">稼ぐ力</span>を<br>育てる言語化ワーク</h1>
   <div class="sub">〜事業・副業を続けるための「自分の軸」を見つける時間〜</div>
   <div class="meta">
     <div class="badge">価値観</div>
