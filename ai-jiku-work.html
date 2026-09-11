@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI時代の稼ぐ力を育てる言語化ワーク</title>
+
+<!-- ===================================================================== -->
+<!-- ▼▼▼ アクセス解析（GoatCounter）moca のダッシュボードに記録 ▼▼▼      -->
+<script data-goatcounter="https://moca.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ▲▲▲ ここまで ▲▲▲                                                     -->
+<!-- ===================================================================== -->
+
+<style>
+:root{
+  --ivory:#FFF9F2;
+  --mint:#CFE9DD;
+  --sand:#E9D9C4;
+  --pink:#F4C7C3;
+  --sage:#BFD8C4;
+  --gold:#EAD7A7;
+  --ink:#4A3B33;
+  --muted:#7B6D66;
+  --line:#E8DDD3;
+  --white:#FFFFFF;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","YuGothic","Noto Sans JP",sans-serif;
+  color:var(--ink);
+  background:linear-gradient(180deg,#fffdf9 0%,var(--ivory) 100%);
+  line-height:1.75;
+}
+.wrap{max-width:980px;margin:0 auto;padding:28px 18px 80px}
+.hero{
+  background:rgba(255,255,255,.92);
+  border:1px solid var(--line);
+  border-radius:26px;
+  padding:36px 34px;
+  box-shadow:0 10px 30px rgba(80,60,45,.06);
+  position:relative;
+  overflow:hidden;
+}
+.hero:before,.hero:after{
+  content:"";
+  position:absolute;border-radius:999px;opacity:.5;filter:blur(1px)
+}
+.hero:before{width:240px;height:240px;background:var(--mint);right:-100px;top:-110px}
+.hero:after{width:200px;height:200px;background:var(--pink);left:-90px;bottom:-100px}
+.kicker{font-size:14px;letter-spacing:.08em;color:#9a6a5c;font-weight:700}
+h1{font-size:clamp(28px,5vw,48px);line-height:1.28;margin:8px 0 10px;position:relative}
+h1 .accent{color:#c86f62}
+.sub{font-size:18px;color:var(--muted);position:relative}
+.meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:20px;position:relative}
+.badge{
+  background:var(--ivory);border:1px solid var(--line);border-radius:999px;
+  padding:8px 13px;font-size:14px
+}
+.note{
+  margin-top:22px;padding:16px 18px;background:#fffaf6;border-left:4px solid var(--pink);
+  border-radius:12px;color:#665951;position:relative
+}
+.section{
+  margin-top:28px;background:rgba(255,255,255,.96);border:1px solid var(--line);
+  border-radius:24px;padding:28px;box-shadow:0 8px 24px rgba(80,60,45,.045)
+}
+.stephead{display:flex;gap:14px;align-items:flex-start;margin-bottom:14px}
+.stepnum{
+  min-width:52px;height:52px;border-radius:16px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--mint),#eef8f3);font-weight:800
+}
+.stephead h2{margin:0;font-size:24px;line-height:1.35}
+.purpose{margin:4px 0 0;color:var(--muted)}
+.q{
+  margin-top:18px;padding:18px;border-radius:18px;background:#fffdfa;border:1px solid #eee3da
+}
+.q label{display:block;font-weight:700;margin-bottom:8px}
+.hint{font-size:13px;color:#927d72;margin-bottom:8px}
+textarea,input[type="text"]{
+  width:100%;border:1px solid #dccfc5;border-radius:12px;padding:12px 14px;
+  font:inherit;color:var(--ink);background:white;outline:none;resize:vertical
+}
+textarea:focus,input[type="text"]:focus{border-color:#b7d6c6;box-shadow:0 0 0 3px rgba(191,216,196,.25)}
+textarea{min-height:110px}
+textarea.short{min-height:82px}
+.share{
+  margin-top:20px;padding:16px 18px;border-radius:14px;
+  background:linear-gradient(90deg,#f6fbf8,#fff9f7);border:1px dashed #c9dbd1
+}
+.share strong{display:block;margin-bottom:4px}
+.final{
+  background:linear-gradient(135deg,#fffaf7,#f5fbf8)
+}
+.actions{
+  position:sticky;bottom:12px;margin-top:28px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap;
+  padding:10px;background:rgba(255,255,255,.88);backdrop-filter:blur(10px);
+  border:1px solid var(--line);border-radius:18px
+}
+button{
+  border:0;border-radius:999px;padding:11px 18px;font:inherit;font-weight:700;cursor:pointer
+}
+.primary{background:#7fa992;color:white}
+.secondary{background:#f2dfd7;color:#6d4b40}
+.ghost{background:#f4f1ec;color:#5d524b}
+.small{font-size:12px;color:var(--muted);text-align:center;margin-top:10px}
+
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 12px}
+.chip{
+  border:1px solid #d8cec5;background:#fff;color:#5d524b;
+  padding:8px 12px;border-radius:999px;font-size:13px;font-weight:600;
+  cursor:pointer;transition:.15s ease
+}
+.chip:hover{transform:translateY(-1px);border-color:#b8d5c7}
+.chip.active{background:#e8f5ee;border-color:#9fc7b3;color:#365d4b}
+.example{
+  margin-top:10px;border:1px solid #eadfd6;border-radius:12px;background:#fff;
+  overflow:hidden
+}
+.example summary{
+  cursor:pointer;padding:10px 12px;font-size:13px;font-weight:700;color:#7b655a;
+  background:#fffaf6
+}
+.example p{margin:0;padding:10px 12px 12px;color:#716159;font-size:13px}
+
+@media print{
+  body{background:white}
+  .actions{display:none}
+  .section,.hero{box-shadow:none;break-inside:avoid}
+  textarea,input{border:1px solid #bbb}
+  .wrap{max-width:none;padding:0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<section class="hero">
+  <div class="kicker">モカ ⊹ 心のリズムと続く事業を支える人</div>
+  <h1>AI時代の<span class="accent">稼ぐ力</span>を育てる<br>言語化ワーク</h1>
+  <div class="sub">〜事業・副業を続けるための「自分の軸」を見つける時間〜</div>
+  <div class="meta">
+    <div class="badge">価値観</div>
+    <div class="badge">信念</div>
+    <div class="badge">事業の目的</div>
+    <div class="badge">事業主マインド</div>
+    <div class="badge">言語化</div>
+  </div>
+  <div class="note">
+    <strong>今日のゴール</strong><br>
+    完成した答えを出すことではありません。今の自分の中にある「言葉の種」を見つけ、
+    迷ったときに戻れる事業・副業の軸を少しずつ言語化していきます。
+  </div>
+</section>
+
+<section class="section">
+  <div class="stephead">
+    <div class="stepnum">01</div>
+    <div>
+      <h2>現在地を知る</h2>
+      <div class="purpose">今の自分がどこにいて、何に迷っているのかを見える化します。</div>
+    </div>
+  </div>
+
+  <div class="q"><label>Q1. 今、事業・副業・働き方について気になっていることは何ですか？</label>
+<div class="hint">👇 近いものをタップ（複数OK）</div>
+<div class="chips" data-target="q1">
+<button type="button" class="chip">方向性を整理したい</button>
+<button type="button" class="chip">売上を伸ばしたい</button>
+<button type="button" class="chip">発信に迷っている</button>
+<button type="button" class="chip">商品・サービスを見直したい</button>
+<button type="button" class="chip">AIをどう使うか迷う</button>
+<button type="button" class="chip">継続に不安がある</button>
+</div>
+<details class="example"><summary>💡 回答例を見る</summary><p>発信や商品づくりは続けているけれど、何を優先すべきか迷っている。今の事業の方向性を一度整理したい。</p></details>
+<textarea data-key="q1"></textarea></div>
+  <div class="q"><label>Q2. 最近、行動が止まったり、迷ったりした場面はありますか？</label><textarea data-key="q2"></textarea></div>
+  <div class="q"><label>Q3. その時、何が不安でしたか？ または、何が引っかかっていましたか？</label><textarea data-key="q3"></textarea></div>
+  <div class="q">
+    <label>Q4. 今の自分に必要だと思うものは何ですか？</label>
+<div class="chips" data-target="q4">
+<button type="button" class="chip">方向性</button><button type="button" class="chip">発信</button>
+<button type="button" class="chip">商品設計</button><button type="button" class="chip">導線</button>
+<button type="button" class="chip">継続力</button><button type="button" class="chip">自信</button>
+<button type="button" class="chip">相談相手</button><button type="button" class="chip">時間管理</button>
+<button type="button" class="chip">収益化の考え方</button>
+</div>
+
+    <div class="hint">例：方向性／発信／商品設計／導線／継続力／自信／相談相手／時間管理／収益化の考え方</div>
+    <textarea data-key="q4" class="short"></textarea>
+  </div>
+  <div class="share"><strong>シェアの問い</strong>今の自分の「現在地」として見えてきたことは？</div>
+</section>
+
+<section class="section">
+  <div class="stephead">
+    <div class="stepnum">02</div>
+    <div>
+      <h2>価値観と信念を見つける</h2>
+      <div class="purpose">何を大切にして、どんな姿勢で事業・副業を続けたいのかを見つめます。</div>
+    </div>
+  </div>
+
+  <div class="q"><label>Q5. 仕事や活動をするうえで、あなたが大切にしたいことは何ですか？</label>
+<div class="hint">👇 大切にしたいものをタップ（複数OK）</div>
+<div class="chips" data-target="q5">
+<button type="button" class="chip">誠実さ</button><button type="button" class="chip">安心感</button>
+<button type="button" class="chip">自由</button><button type="button" class="chip">成長</button>
+<button type="button" class="chip">挑戦</button><button type="button" class="chip">つながり</button>
+<button type="button" class="chip">継続</button><button type="button" class="chip">自分らしさ</button>
+<button type="button" class="chip">誰かの役に立つ</button><button type="button" class="chip">楽しさ</button>
+</div>
+<details class="example"><summary>💡 回答例を見る</summary><p>相手を急かさず、安心して話せる関係をつくること。売上だけでなく、長く続けられることも大切にしたい。</p></details>
+<textarea data-key="q5"></textarea></div>
+  <div class="q"><label>Q6. 「これは自分らしくない」と感じる働き方・売り方・発信はありますか？</label>
+<div class="chips" data-target="q6">
+<button type="button" class="chip">不安をあおる売り方</button><button type="button" class="chip">数字だけを追う</button>
+<button type="button" class="chip">無理な毎日発信</button><button type="button" class="chip">自分を大きく見せる</button>
+<button type="button" class="chip">他人の型をそのまま真似る</button><button type="button" class="chip">値下げで選ばれる</button>
+</div>
+<textarea data-key="q6"></textarea></div>
+  <div class="q"><label>Q7. 逆に「こういう形なら続けたい」と思える働き方・関わり方はありますか？</label><textarea data-key="q7"></textarea></div>
+  <div class="q"><label>Q8. あなたが事業・副業を通して守りたい価値観は何ですか？</label>
+<div class="hint">👇 3つくらい選んでみるのもおすすめです</div>
+<div class="chips" data-target="q8">
+<button type="button" class="chip">誠実</button><button type="button" class="chip">信頼</button>
+<button type="button" class="chip">挑戦</button><button type="button" class="chip">自由</button>
+<button type="button" class="chip">安心</button><button type="button" class="chip">成長</button>
+<button type="button" class="chip">貢献</button><button type="button" class="chip">つながり</button>
+<button type="button" class="chip">丁寧さ</button><button type="button" class="chip">自分らしさ</button>
+</div>
+<textarea data-key="q8" class="short"></textarea></div>
+  <div class="share"><strong>シェアの問い</strong>「自分が大切にしたいこと」として、言葉にしてみたいものは何ですか？</div>
+</section>
+
+<section class="section">
+  <div class="stephead">
+    <div class="stepnum">03</div>
+    <div>
+      <h2>事業の目的を言葉にする</h2>
+      <div class="purpose">「稼ぐ」の先にある、“何のためにやるのか”を整理します。</div>
+    </div>
+  </div>
+
+  <div class="q"><label>Q9. あなたは、なぜこの事業・副業・活動をやってみたい／続けたいと思っていますか？</label>
+<div class="chips" data-target="q9">
+<button type="button" class="chip">収入の柱を増やしたい</button><button type="button" class="chip">好き・得意を仕事にしたい</button>
+<button type="button" class="chip">誰かの役に立ちたい</button><button type="button" class="chip">働き方を選べるようになりたい</button>
+<button type="button" class="chip">自分の経験を価値に変えたい</button><button type="button" class="chip">将来の選択肢を増やしたい</button>
+</div>
+<details class="example"><summary>💡 回答例を見る</summary><p>自分が迷ってきた経験を、同じように立ち止まっている人の役に立てたい。収入だけでなく、働き方の自由も増やしたい。</p></details>
+<textarea data-key="q9"></textarea></div>
+  <div class="q">
+    <label>Q10. 収益以外に、この活動を通して得たいものは何ですか？</label>
+<div class="chips" data-target="q10">
+<button type="button" class="chip">自由</button><button type="button" class="chip">安心</button>
+<button type="button" class="chip">成長</button><button type="button" class="chip">人とのつながり</button>
+<button type="button" class="chip">役に立つ実感</button><button type="button" class="chip">自分らしい働き方</button>
+<button type="button" class="chip">社会への貢献</button><button type="button" class="chip">自己実現</button>
+</div>
+
+    <div class="hint">例：自由／安心／成長／人とのつながり／役に立つ実感／自分らしい働き方／社会への貢献</div>
+    <textarea data-key="q10"></textarea>
+  </div>
+  <div class="q"><label>Q11. あなたの商品・サービス・活動を通して、相手にどんな変化を届けたいですか？</label>
+<div class="chips" data-target="q11">
+<button type="button" class="chip">安心してほしい</button><button type="button" class="chip">前に進めるようにしたい</button>
+<button type="button" class="chip">自信を持ってほしい</button><button type="button" class="chip">時間を増やしたい</button>
+<button type="button" class="chip">売上につなげたい</button><button type="button" class="chip">選択肢を増やしたい</button>
+<button type="button" class="chip">自分らしく働けるようにしたい</button>
+</div>
+<textarea data-key="q11"></textarea></div>
+  <div class="q"><label>Q12. 「このために私は続けたい」と思える言葉を書くなら、どんな言葉になりますか？</label><textarea data-key="q12" class="short"></textarea></div>
+  <div class="share"><strong>シェアの問い</strong>今日ここまでで、事業・副業の「目的」として見えてきた言葉は？</div>
+</section>
+
+<section class="section">
+  <div class="stephead">
+    <div class="stepnum">04</div>
+    <div>
+      <h2>稼ぐ力につながる言葉にする</h2>
+      <div class="purpose">価値観や目的を、事業・発信・サービスに使える言葉へ少し変換します。完成形ではなく“仮”でOK。</div>
+    </div>
+  </div>
+
+  <div class="q"><label>Q13. あなたが届けたい人は、どんな悩みや願いを持っている人ですか？</label>
+<div class="chips" data-target="q13">
+<button type="button" class="chip">副業・起業を始めたい人</button><button type="button" class="chip">方向性に迷っている人</button>
+<button type="button" class="chip">発信が苦手な人</button><button type="button" class="chip">スキルはあるが売り方がわからない人</button>
+<button type="button" class="chip">行動が続かない人</button><button type="button" class="chip">一人で抱えている人</button>
+</div>
+<textarea data-key="q13"></textarea></div>
+  <div class="q"><label>Q14. その人に対して、あなたが届けられる価値は何ですか？</label>
+<div class="chips" data-target="q14">
+<button type="button" class="chip">話を聴いて整理する</button><button type="button" class="chip">一緒に言語化する</button>
+<button type="button" class="chip">方法を教える</button><button type="button" class="chip">代わりに作る</button>
+<button type="button" class="chip">継続を支える</button><button type="button" class="chip">視点・気づきを届ける</button>
+<button type="button" class="chip">人や情報をつなぐ</button>
+</div>
+<textarea data-key="q14"></textarea></div>
+  <div class="q"><label>Q15. 自分だからこそ伝えられること、できることは何ですか？</label><textarea data-key="q15"></textarea></div>
+  <div class="q">
+    <label>Q16. 今の自分の「仮コンセプト」を一言で書くと？</label>
+<details class="example"><summary>💡 回答例を見る</summary><p>「スキルや想いはあるけれど形にできていない人が、自分の言葉で事業を前に進めるための伴走サポート」</p></details>
+
+    <div class="hint">例：「〇〇な人が、〇〇できるようになるサポート」「〇〇を通して、〇〇な未来をつくる」</div>
+    <textarea data-key="q16" class="short"></textarea>
+  </div>
+  <div class="share"><strong>ここでのポイント</strong>完成させなくて大丈夫です。「今の自分なら、こう言えそう」という仮の言葉を置いてみましょう。</div>
+</section>
+
+<section class="section final">
+  <div class="stephead">
+    <div class="stepnum">05</div>
+    <div>
+      <h2>今日の気づきと次の一歩</h2>
+      <div class="purpose">今日出てきた言葉を、次の行動につなげます。</div>
+    </div>
+  </div>
+
+  <div class="q"><label>Q17. 今日のワークで見えてきた「自分の軸の種」は何ですか？</label>
+<details class="example"><summary>💡 回答例を見る</summary><p>「急がせるのではなく、安心して整理できる時間から、その人の次の一歩につなげたい」</p></details>
+<textarea data-key="q17"></textarea></div>
+  <div class="q"><label>Q18. 今日、特に印象に残った言葉は何ですか？</label><textarea data-key="q18" class="short"></textarea></div>
+  <div class="q"><label>Q19. 今月ひとつ試してみたいことは何ですか？</label>
+<div class="chips" data-target="q19">
+<button type="button" class="chip">プロフィールを見直す</button><button type="button" class="chip">発信を1本作る</button>
+<button type="button" class="chip">サービス内容を整理する</button><button type="button" class="chip">誰かに話してみる</button>
+<button type="button" class="chip">小さくモニターする</button><button type="button" class="chip">コンセプトを仮決めする</button>
+</div>
+<textarea data-key="q19" class="short"></textarea></div>
+  <div class="q">
+    <label>Q20. もう少し深掘りしたいことは何ですか？</label>
+<div class="chips" data-target="q20">
+<button type="button" class="chip">コンセプト</button><button type="button" class="chip">商品設計</button>
+<button type="button" class="chip">発信</button><button type="button" class="chip">導線</button>
+<button type="button" class="chip">価格設定</button><button type="button" class="chip">AI活用</button>
+<button type="button" class="chip">継続の仕組み</button><button type="button" class="chip">事業主マインド</button>
+</div>
+
+    <div class="hint">例：コンセプト／商品設計／発信／導線／価格設定／AI活用／継続の仕組み／事業主マインド</div>
+    <textarea data-key="q20"></textarea>
+  </div>
+  <div class="share"><strong>最後のシェア</strong>今日持ち帰りたい「自分の軸の種」を一言で。</div>
+</section>
+
+<div class="actions">
+  <button class="primary" onclick="saveNow()">入力内容を保存</button>
+  <button class="secondary" onclick="window.print()">印刷 / PDF保存</button>
+  <button class="ghost" onclick="clearAll()">入力をクリア</button>
+</div>
+<div class="small">入力内容はこのブラウザ内にのみ保存されます。共有端末では使用後にクリアしてください。</div>
+
+</div>
+<script>
+// ===== 「実際に書き始めた人」を1回だけ記録（イベント名は固定） =====
+let wroteOnce=false;
+function trackFirstWrite(){
+  if(wroteOnce) return;
+  wroteOnce=true;
+  if(window.goatcounter && window.goatcounter.count){
+    window.goatcounter.count({
+      path:'write-ai-jiku-work',
+      title:'AI時代の言語化ワーク デジタル版に書き始めた',
+      event:true
+    });
+  }
+}
+
+// ===== LocalStorage 自動保存・復元（他のワークシートと混ざらないよう専用の名前） =====
+const PREFIX='aijiku202609_';
+const fields=[...document.querySelectorAll('[data-key]')];
+fields.forEach(el=>{
+  const k=PREFIX+el.dataset.key;
+  const saved=localStorage.getItem(k);
+  if(saved!==null) el.value=saved;
+  el.addEventListener('input',()=>{
+    trackFirstWrite();
+    localStorage.setItem(k,el.value);
+  });
+});
+function saveNow(){
+  fields.forEach(el=>localStorage.setItem(PREFIX+el.dataset.key,el.value));
+  alert('このブラウザに入力内容を保存しました。');
+}
+function clearAll(){
+  if(!confirm('入力内容をすべてクリアしますか？')) return;
+  fields.forEach(el=>{
+    el.value='';
+    localStorage.removeItem(PREFIX+el.dataset.key);
+  });
+  document.querySelectorAll('.chip.active').forEach(b=>b.classList.remove('active'));
+}
+
+// ===== 印刷／PDF保存も記録 =====
+document.querySelectorAll('.actions .secondary').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    if(window.goatcounter && window.goatcounter.count){
+      window.goatcounter.count({
+        path:'print-ai-jiku-work',
+        title:'AI時代の言語化ワーク デジタル版を印刷/PDF保存',
+        event:true
+      });
+    }
+  });
+});
+
+document.querySelectorAll('.chips').forEach(group=>{
+  const targetKey=group.dataset.target;
+  const target=document.querySelector(`[data-key="${targetKey}"]`);
+  if(!target) return;
+  group.querySelectorAll('.chip').forEach(btn=>{
+    const val=btn.textContent.trim();
+    const existing=(target.value||'').split('、').map(s=>s.trim()).filter(Boolean);
+    if(existing.includes(val)) btn.classList.add('active');
+    btn.addEventListener('click',()=>{
+      btn.classList.toggle('active');
+      const selected=[...group.querySelectorAll('.chip.active')].map(b=>b.textContent.trim());
+      const freeParts=(target.value||'').split('、').map(s=>s.trim()).filter(Boolean)
+        .filter(x=>![...group.querySelectorAll('.chip')].map(b=>b.textContent.trim()).includes(x));
+      target.value=[...selected,...freeParts].join('、');
+      target.dispatchEvent(new Event('input'));
+    });
+  });
+});
+
+</script>
+</body>
+</html>
