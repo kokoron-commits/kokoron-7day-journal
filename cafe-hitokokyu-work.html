@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>カフェで、ひと呼吸。｜モカ & こころん</title>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Old+Mincho:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- ===================================================================== -->
+<!-- ▼▼▼ アクセス解析（GoatCounter）moca のダッシュボードに記録 ▼▼▼      -->
+<script data-goatcounter="https://moca.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+<!-- ▲▲▲ ここまで ▲▲▲                                                     -->
+<!-- ===================================================================== -->
+
+<style>
+:root{
+  --paper:#FAF7F2;
+  --paper-2:#FFFFFF;
+  --ink:#4C4239;
+  --ink-soft:#7D7268;
+  --ink-faint:#A79C91;
+  --line:#E6DED3;
+  --accent:#8C9A86;      /* 静かなセージ */
+  --accent-soft:#EEF1EA;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Yu Gothic","Noto Sans JP",sans-serif;
+  color:var(--ink);
+  background:var(--paper);
+  line-height:2;
+  font-size:15px;
+  letter-spacing:.02em;
+}
+.wrap{max-width:640px;margin:0 auto;padding:40px 20px 96px}
+
+/* ===== ヘッダー ===== */
+header{text-align:center;padding:8px 0 30px;border-bottom:1px solid var(--line);margin-bottom:34px}
+.eyebrow{font-size:10px;letter-spacing:.34em;color:var(--ink-faint);margin-bottom:14px}
+h1{
+  font-family:'Zen Old Mincho',serif;
+  font-weight:500;font-size:25px;letter-spacing:.08em;
+  margin:0 0 10px;line-height:1.6;
+}
+.sub{font-size:12px;color:var(--ink-soft);letter-spacing:.08em}
+
+/* ===== 導入 ===== */
+.intro{
+  text-align:center;font-size:13.5px;color:var(--ink-soft);
+  line-height:2.1;margin-bottom:44px;
+}
+
+/* ===== セクション ===== */
+section{margin-bottom:52px}
+.step{display:flex;align-items:baseline;gap:12px;margin-bottom:6px}
+.step-en{font-family:'Zen Old Mincho',serif;font-size:10.5px;letter-spacing:.28em;color:var(--accent)}
+.step-ja{font-family:'Zen Old Mincho',serif;font-size:17px;letter-spacing:.12em}
+.step-lead{font-size:12px;color:var(--ink-faint);margin-bottom:26px}
+
+.q{margin-bottom:32px}
+.q-title{font-size:15px;line-height:1.9;margin-bottom:4px}
+.q-hint{font-size:11.5px;color:var(--ink-faint);line-height:1.9;margin-bottom:10px}
+
+textarea{
+  width:100%;
+  min-height:104px;
+  padding:16px 18px;
+  border:1px solid var(--line);
+  border-radius:14px;
+  background:var(--paper-2);
+  font-family:inherit;font-size:15px;line-height:2.1;color:var(--ink);
+  resize:vertical;outline:none;
+  transition:border-color .2s;
+}
+textarea::placeholder{color:#D3C9BE}
+textarea:focus{border-color:var(--accent)}
+textarea.short{min-height:68px}
+
+/* ===== お天気 ===== */
+.weather{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:6px 0 14px;
+}
+.weather button{
+  padding:12px 8px 10px;
+  border:1px solid var(--line);border-radius:14px;
+  background:var(--paper-2);
+  font-family:inherit;font-size:11px;color:var(--ink-soft);
+  line-height:1.7;cursor:pointer;word-break:break-all;
+  transition:all .2s;
+}
+.weather button .mark{display:block;font-size:18px;line-height:1.4;opacity:.85}
+.weather button[aria-pressed="true"]{
+  background:var(--accent-soft);border-color:var(--accent);color:var(--ink);
+}
+
+/* ===== 呼吸 ===== */
+.breath{
+  background:var(--accent-soft);
+  border-radius:18px;
+  padding:26px 22px 22px;
+  margin-bottom:26px;
+}
+.breath ol{list-style:none;margin:0;padding:0}
+.breath li{
+  display:flex;gap:14px;align-items:baseline;
+  font-size:13.5px;color:var(--ink-soft);line-height:2;
+  padding:7px 0;border-bottom:1px dashed rgba(140,154,134,.35);
+}
+.breath li:last-child{border-bottom:none}
+.breath .num{font-family:'Zen Old Mincho',serif;font-size:11px;color:var(--accent);letter-spacing:.1em;flex-shrink:0}
+.breath .say{color:var(--ink)}
+.count{display:flex;align-items:center;gap:12px;margin-top:16px;font-size:12px;color:var(--ink-soft)}
+.count button{
+  width:38px;height:38px;border-radius:50%;
+  border:1px solid var(--line);background:var(--paper-2);
+  font-size:15px;color:var(--ink-faint);cursor:pointer;transition:all .2s;
+}
+.count button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ===== しめ ===== */
+.closing{
+  border:1px solid var(--line);border-radius:18px;
+  background:var(--paper-2);
+  padding:26px 22px;text-align:center;
+}
+.closing .q-title{font-family:'Zen Old Mincho',serif;font-size:16px;letter-spacing:.08em}
+.closing textarea{
+  text-align:center;min-height:76px;border:none;border-bottom:1px solid var(--line);
+  border-radius:0;background:transparent;font-size:16px;
+}
+.closing textarea:focus{border-bottom-color:var(--accent)}
+
+/* ===== こころん ===== */
+.kokoron{display:flex;align-items:center;justify-content:center;gap:16px;margin:40px 0 30px}
+.kokoron img{width:76px;height:76px;object-fit:contain;opacity:.92}
+.kokoron p{font-size:12.5px;color:var(--ink-soft);line-height:2.1;margin:0}
+
+/* ===== 保存まわり ===== */
+.tools{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.tools button{
+  border:1px solid var(--line);border-radius:999px;
+  background:var(--paper-2);color:var(--ink-soft);
+  font-family:inherit;font-size:12.5px;letter-spacing:.06em;
+  padding:11px 22px;cursor:pointer;transition:all .2s;
+}
+.tools button:hover{border-color:var(--accent);color:var(--ink)}
+.save-note{text-align:center;font-size:11px;color:var(--ink-faint);margin-top:16px;line-height:1.9}
+footer{
+  text-align:center;font-size:10.5px;color:var(--ink-faint);
+  letter-spacing:.14em;margin-top:44px;padding-top:22px;border-top:1px solid var(--line);
+}
+
+@media print{
+  body{background:#fff}
+  .tools,.save-note{display:none}
+  textarea{border-color:#ddd;min-height:88px}
+  section{break-inside:avoid;margin-bottom:26px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="eyebrow">PAUSE, BREATHE, JOURNAL.</div>
+    <h1>カフェで、ひと呼吸。</h1>
+    <div class="sub">モカ & こころんの ジャーナリングカフェ会</div>
+  </header>
+
+  <div class="intro">
+    あたたかい飲みものを片手に、いつもより少しだけ、ゆっくり。<br>
+    書けたところまでで、じゅうぶんです。
+  </div>
+
+  <!-- ========== STEP 1 ========== -->
+  <section>
+    <div class="step">
+      <span class="step-en">STEP 1 ・ PAUSE</span>
+      <span class="step-ja">立ちどまる</span>
+    </div>
+    <div class="step-lead">いまの自分に、そっと気づく時間</div>
+
+    <div class="q">
+      <div class="q-title">いまの心のお天気は？</div>
+      <div class="q-hint">近いものに、ふれてみてください。</div>
+      <div class="weather" id="weather">
+        <button type="button" aria-pressed="false" data-w="はれ"><span class="mark">☀︎</span>はれ</button>
+        <button type="button" aria-pressed="false" data-w="はれ時々くもり"><span class="mark">⛅︎</span>はれ時々<br>くもり</button>
+        <button type="button" aria-pressed="false" data-w="くもり"><span class="mark">☁︎</span>くもり</button>
+        <button type="button" aria-pressed="false" data-w="あめ"><span class="mark">☂︎</span>あめ</button>
+        <button type="button" aria-pressed="false" data-w="かみなり"><span class="mark">⚡︎</span>かみなり</button>
+        <button type="button" aria-pressed="false" data-w="にじ"><span class="mark">◠</span>にじ</button>
+      </div>
+      <textarea class="short" data-key="q1" placeholder="そう感じるのは…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-title">最近、頭の中をいちばん占めていることは？</div>
+      <div class="q-hint">仕事のこと、家族のこと、からだのこと。思い浮かんだままに。</div>
+      <textarea data-key="q2" placeholder="ここに書いてみましょう"></textarea>
+    </div>
+  </section>
+
+  <!-- ========== STEP 2 ========== -->
+  <section>
+    <div class="step">
+      <span class="step-en">STEP 2 ・ BREATHE</span>
+      <span class="step-ja">呼吸する</span>
+    </div>
+    <div class="step-lead">画面から目を離して、からだに戻る時間</div>
+
+    <div class="breath">
+      <ol>
+        <li><span class="num">01</span><span class="say">カップを両手で包んで、あたたかさを感じる</span></li>
+        <li><span class="num">02</span><span class="say">鼻から、4つ数えて、ゆっくり吸う</span></li>
+        <li><span class="num">03</span><span class="say">口から、6つ数えて、細く長く吐く</span></li>
+        <li><span class="num">04</span><span class="say">自分のペースで、3回くりかえす</span></li>
+      </ol>
+      <div class="count">
+        <span>できたら、ひとつずつ</span>
+        <button type="button" aria-pressed="false" data-key="b1">1</button>
+        <button type="button" aria-pressed="false" data-key="b2">2</button>
+        <button type="button" aria-pressed="false" data-key="b3">3</button>
+      </div>
+    </div>
+
+    <div class="q">
+      <div class="q-title">呼吸のあと、気づいたことは？</div>
+      <div class="q-hint">聞こえる音、飲みものの香り、肩やおなかの感じ。小さなことほど大切です。</div>
+      <textarea data-key="q3" placeholder="ここに書いてみましょう"></textarea>
+    </div>
+  </section>
+
+  <!-- ========== STEP 3 ========== -->
+  <section>
+    <div class="step">
+      <span class="step-en">STEP 3 ・ JOURNAL</span>
+      <span class="step-ja">書く</span>
+    </div>
+    <div class="step-lead">ほんとうの気持ちを、ことばにする時間</div>
+
+    <div class="q">
+      <div class="q-title">最近のわたしが、がんばっていることは？</div>
+      <div class="q-hint">ほんの小さなことほど、書いてみましょう。</div>
+      <textarea data-key="q4" placeholder="ここに書いてみましょう"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-title">ほんとうは、どうしたい？</div>
+      <div class="q-hint">「できるかどうか」は横に置いて、気持ちのほうを書いてみましょう。</div>
+      <textarea data-key="q5" placeholder="ここに書いてみましょう"></textarea>
+    </div>
+  </section>
+
+  <!-- ========== しめ ========== -->
+  <div class="closing">
+    <div class="q-title">今日のわたしに、ひとこと</div>
+    <div class="q-hint">帰り道に思い出せるくらいの、短いことばで。</div>
+    <textarea data-key="declare" placeholder="ひとつだけ、ことばにしてみましょう"></textarea>
+  </div>
+
+  <div class="kokoron">
+    <img src="images/kokoron_01.png" alt="こころん">
+    <p>ひと呼吸ぶんの余白が、<br>あしたのわたしを、そっと助けてくれるよ</p>
+  </div>
+
+  <div class="tools">
+    <button type="button" onclick="saveNow()">この端末に保存する</button>
+    <button type="button" onclick="printSheet()">PDFで保存 / 印刷する</button>
+  </div>
+  <div class="save-note">
+    書いた内容は、この端末のブラウザに自動で保存されます。<br>
+    お使いの端末の中だけに残る形なので、そのままお持ちください。
+  </div>
+
+  <footer>MOCA &amp; KOKORON ／ LOVES LIFE</footer>
+</div>
+
+<script>
+// ===== 「実際に書き始めた人」を1回だけ記録 =====
+let wroteOnce=false;
+function trackFirstWrite(){
+  if(wroteOnce) return;
+  wroteOnce=true;
+  if(window.goatcounter && window.goatcounter.count){
+    window.goatcounter.count({
+      path:'write-cafe-hitokokyu',
+      title:'カフェで、ひと呼吸。デジタル版に書き始めた',
+      event:true
+    });
+  }
+}
+
+// ===== LocalStorage（このワークシート専用の名前） =====
+const PREFIX='cafehitokokyu_';
+
+// テキスト欄
+const fields=[...document.querySelectorAll('textarea[data-key]')];
+fields.forEach(el=>{
+  const k=PREFIX+el.dataset.key;
+  try{
+    const saved=localStorage.getItem(k);
+    if(saved!==null) el.value=saved;
+  }catch(e){}
+  el.addEventListener('input',()=>{
+    trackFirstWrite();
+    try{ localStorage.setItem(k,el.value); }catch(e){}
+  });
+});
+
+// お天気（ひとつだけ選ぶ）
+const weatherBtns=[...document.querySelectorAll('#weather button')];
+try{
+  const savedW=localStorage.getItem(PREFIX+'weather');
+  if(savedW) weatherBtns.forEach(b=>b.setAttribute('aria-pressed', String(b.dataset.w===savedW)));
+}catch(e){}
+weatherBtns.forEach(b=>{
+  b.addEventListener('click',()=>{
+    const on=b.getAttribute('aria-pressed')==='true';
+    weatherBtns.forEach(x=>x.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed', String(!on));
+    trackFirstWrite();
+    try{ localStorage.setItem(PREFIX+'weather', on ? '' : b.dataset.w); }catch(e){}
+  });
+});
+
+// 呼吸のカウント
+const countBtns=[...document.querySelectorAll('.count button')];
+countBtns.forEach(b=>{
+  const k=PREFIX+b.dataset.key;
+  try{ if(localStorage.getItem(k)==='1') b.setAttribute('aria-pressed','true'); }catch(e){}
+  b.addEventListener('click',()=>{
+    const on=b.getAttribute('aria-pressed')==='true';
+    b.setAttribute('aria-pressed', String(!on));
+    try{ localStorage.setItem(k, on ? '0' : '1'); }catch(e){}
+  });
+});
+
+function saveNow(){
+  try{
+    fields.forEach(el=>localStorage.setItem(PREFIX+el.dataset.key, el.value));
+    alert('この端末に保存しました。');
+  }catch(e){
+    alert('この端末では保存を使えないようです。画面をコピーして残してくださいね。');
+  }
+}
+
+function printSheet(){
+  if(window.goatcounter && window.goatcounter.count){
+    window.goatcounter.count({
+      path:'print-cafe-hitokokyu',
+      title:'カフェで、ひと呼吸。デジタル版を印刷/PDF保存',
+      event:true
+    });
+  }
+  window.print();
+}
+
+// テキスト欄の高さを、書いた量に合わせる
+fields.forEach(el=>{
+  const grow=()=>{ el.style.height='auto'; el.style.height=Math.max(el.scrollHeight, 68)+'px'; };
+  el.addEventListener('input',grow);
+  grow();
+});
+</script>
+</body>
+</html>
