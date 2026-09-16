@@ -48,33 +48,7 @@
   .kokoron{margin:1.5mm 0 0!important;break-inside:avoid!important}.kokoron img{width:15mm!important;height:15mm!important}.kokoron p{font-size:6.5pt!important;line-height:1.2!important;margin:-1mm 0 0!important}
   footer{font-size:6pt!important;line-height:1.2!important;margin-top:1mm!important;padding-top:1.5mm!important}footer span{font-size:6pt!important;margin-top:.5mm!important}
 }
-</style><script>'use strict';
-const KEY='kokoron-gratitude-v1';
-const $=id=>document.getElementById(id);
-const dateKey=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
-const empty=()=>({time:'',gratitudes:['','',''],moment:'',moods:[],myself:'',free:'',deeperOpen:false});
-let state={version:1,days:{}},active=dateKey(),storageOK=true,blankMode=false;
-try{const raw=localStorage.getItem(KEY);if(raw){const p=JSON.parse(raw);if(p.version!==1||!p.days||typeof p.days!=='object')throw Error();state=p}}catch(e){storageOK=false}
-const day=()=>state.days[active]??empty();
-function ensure(){if(!state.days[active])state.days[active]=empty();return state.days[active]}
-function save(){if(blankMode)return;try{localStorage.setItem(KEY,JSON.stringify(state));$('save-status').textContent='このブラウザに保存しました。'}catch(e){storageOK=false;$('save-status').textContent='このブラウザに保存できません。画面を閉じる前に画像またはPDFで保存してください。'}}
-function setField(key,value){ensure()[key]=value;save()}
-function render(){const d=day();$('journal-date').value=active;d.gratitudes.forEach((v,i)=>$(`gratitude-${i+1}`).value=v);$('moment').value=d.moment;$('myself').value=d.myself;$('free').value=d.free;$('deeper').open=!!d.deeperOpen||[d.moment,d.myself,d.free].some(Boolean)||d.moods.length>0;document.querySelectorAll('#time-chips button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===d.time)));document.querySelectorAll('#mood-chips button').forEach(b=>b.setAttribute('aria-pressed',String(d.moods.includes(b.dataset.value))));$('save-status').textContent=storageOK?'このブラウザに自動保存されます。':'保存済みの記録を読み込めませんでした。この画面では保存しません。'}
-$('journal-date').onchange=()=>{if(!$('journal-date').value)return;active=$('journal-date').value;render()};
-$('today-button').onclick=()=>{active=dateKey();render()};
-for(let i=0;i<3;i++)$(`gratitude-${i+1}`).oninput=e=>{const g=[...ensure().gratitudes];g[i]=e.target.value;setField('gratitudes',g)};
-['moment','myself','free'].forEach(id=>$(id).oninput=e=>setField(id,e.target.value));
-$('deeper').ontoggle=()=>{if(!blankMode&&state.days[active]){state.days[active].deeperOpen=$('deeper').open;save()}};
-$('time-chips').onclick=e=>{const b=e.target.closest('button');if(!b)return;setField('time',ensure().time===b.dataset.value?'':b.dataset.value);render()};
-$('mood-chips').onclick=e=>{const b=e.target.closest('button');if(!b)return;const moods=new Set(ensure().moods);moods.has(b.dataset.value)?moods.delete(b.dataset.value):moods.add(b.dataset.value);setField('moods',[...moods]);render()};
-function printJournal(emptyTemplate){const snapshot={active,state,open:$('deeper').open};let restored=false;blankMode=true;document.body.classList.toggle('print-blank',emptyTemplate);if(emptyTemplate){active='';state={version:1,days:{'':empty()}}}render();$('deeper').open=true;const restore=()=>{if(restored)return;restored=true;window.removeEventListener('afterprint',restore);document.body.classList.remove('print-blank');active=snapshot.active;state=snapshot.state;render();$('deeper').open=snapshot.open;blankMode=false};window.addEventListener('afterprint',restore);window.print();setTimeout(restore,2000)}
-$('print-page').onclick=()=>printJournal(false);
-$('blank-print').onclick=()=>printJournal(true);
-function wrap(ctx,text,x,y,maxWidth,lineHeight,maxLines){const chars=[...String(text||'')];let line='',lines=[];for(const ch of chars){const test=line+ch;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=ch}else line=test}if(line)lines.push(line);lines.slice(0,maxLines).forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));return Math.min(lines.length,maxLines)*lineHeight}
-async function makeImage(){const button=$('make-image');button.disabled=true;button.textContent='画像を準備しています…';try{await document.fonts.ready;const d=day(),c=document.createElement('canvas');c.width=1080;c.height=1920;const x=c.getContext('2d');x.fillStyle='#FFF9F2';x.fillRect(0,0,c.width,c.height);x.textAlign='center';x.fillStyle='#527363';x.font='30px Georgia,serif';x.fillText('Moca & Kokoron',540,76);x.font='24px Georgia,serif';x.fillText('DAILY GRATITUDE JOURNAL',540,130);x.fillStyle='#684f42';x.font='46px sans-serif';x.fillText('自分に還る、感謝のきろく',540,196);x.font='22px sans-serif';x.fillStyle='#776e65';x.fillText(`${active.replaceAll('-',' / ')}${d.time?'  ·  '+d.time:''}`,540,244);x.textAlign='left';let y=330;x.font='22px Georgia,serif';x.fillStyle='#527363';x.fillText('THREE GRATITUDES',100,y);y+=48;x.font='28px sans-serif';x.fillStyle='#684f42';d.gratitudes.forEach((g,i)=>{x.fillStyle=['#CFE9DD','#F4D8D2','#EAD7A7'][i];x.beginPath();x.arc(124,y-10,27,0,Math.PI*2);x.fill();x.fillStyle='#527363';x.font='20px Georgia,serif';x.textAlign='center';x.fillText(String(i+1).padStart(2,'0'),124,y-3);x.textAlign='left';x.fillStyle='#684f42';x.font='26px sans-serif';y+=wrap(x,g||' ',175,y-17,800,37,2)+45});if(d.moment){x.fillStyle='#527363';x.font='22px Georgia,serif';x.fillText('ONE MOMENT',100,y);y+=43;x.fillStyle='#684f42';x.font='25px sans-serif';y+=wrap(x,d.moment,100,y,880,36,4)+30}if(d.moods.length){x.fillStyle='#527363';x.font='22px Georgia,serif';x.fillText('NOTICE',100,y);x.fillStyle='#684f42';x.font='24px sans-serif';x.fillText(d.moods.join('  ·  '),235,y);y+=55}if(d.myself){x.fillStyle='#527363';x.font='22px Georgia,serif';x.fillText('THANK MYSELF',100,y);y+=43;x.fillStyle='#684f42';x.font='25px sans-serif';y+=wrap(x,d.myself,100,y,880,36,3)+30}if(d.free){x.fillStyle='#527363';x.font='22px Georgia,serif';x.fillText('FREE SPACE',100,y);y+=43;x.fillStyle='#684f42';x.font='25px sans-serif';wrap(x,d.free,100,y,880,36,5)}const mascot=document.querySelector('.kokoron img');if(!mascot.complete)await mascot.decode();x.drawImage(mascot,455,1630,170,170);x.textAlign='center';x.fillStyle='#527363';x.font='22px sans-serif';x.fillText('今日も、ありがとう。',540,1835);x.font='20px Georgia,serif';x.fillText('Loves Life  |  Return to Your Rhythm.',540,1880);const url=c.toDataURL('image/png');$('journal-image').src=url;$('download-image').href=url;$('download-image').download=`gratitude-${active||'blank'}.png`;$('image-result').hidden=false;$('image-result').scrollIntoView({behavior:'smooth',block:'start'})}catch(e){$('save-status').textContent='画像を作成できませんでした。もう一度お試しください。'}finally{button.disabled=false;button.textContent='今日のページを画像にする'}}
-$('make-image').onclick=makeImage;
-render();
-</script></head>
+</style></head>
 <body><main>
   
   <header><p class="brand">Moca & Kokoron</p><p class="eyebrow">Daily Gratitude Journal</p><h1>自分に還る、<br class="mobile-break">感謝のきろく</h1><p class="subtitle">今日の小さな「ありがとう」に、気づく時間。</p></header>
@@ -101,6 +75,34 @@ render();
   
   <footer>Loves Life | Mindfulness & Journaling<span>Return to Your Rhythm.</span></footer>
 </main>
+<script>'use strict';
+const KEY='kokoron-gratitude-v1';
+const $=id=>document.getElementById(id);
+const dateKey=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+const empty=()=>({time:'',gratitudes:['','',''],moment:'',moods:[],myself:'',free:'',deeperOpen:false});
+let state={version:1,days:{}},active=dateKey(),storageOK=true,blankMode=false;
+try{const raw=localStorage.getItem(KEY);if(raw){const p=JSON.parse(raw);if(p.version!==1||!p.days||typeof p.days!=='object')throw Error();state=p}}catch(e){storageOK=false}
+const day=()=>state.days[active]??empty();
+function ensure(){if(!state.days[active])state.days[active]=empty();return state.days[active]}
+function save(){if(blankMode)return;try{localStorage.setItem(KEY,JSON.stringify(state));$('save-status').textContent='このブラウザに保存しました。'}catch(e){storageOK=false;$('save-status').textContent='このブラウザに保存できません。画面を閉じる前に画像またはPDFで保存してください。'}}
+function setField(key,value){ensure()[key]=value;save()}
+function render(){const d=day();$('journal-date').value=active;d.gratitudes.forEach((v,i)=>$(`gratitude-${i+1}`).value=v);$('moment').value=d.moment;$('myself').value=d.myself;$('free').value=d.free;$('deeper').open=!!d.deeperOpen||[d.moment,d.myself,d.free].some(Boolean)||d.moods.length>0;document.querySelectorAll('#time-chips button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.value===d.time)));document.querySelectorAll('#mood-chips button').forEach(b=>b.setAttribute('aria-pressed',String(d.moods.includes(b.dataset.value))));$('save-status').textContent=storageOK?'このブラウザに自動保存されます。':'保存済みの記録を読み込めませんでした。この画面では保存しません。'}
+$('journal-date').onchange=()=>{if(!$('journal-date').value)return;active=$('journal-date').value;render()};
+$('today-button').onclick=()=>{active=dateKey();render()};
+for(let i=0;i<3;i++)$(`gratitude-${i+1}`).oninput=e=>{const g=[...ensure().gratitudes];g[i]=e.target.value;setField('gratitudes',g)};
+['moment','myself','free'].forEach(id=>$(id).oninput=e=>setField(id,e.target.value));
+$('deeper').ontoggle=()=>{if(!blankMode&&state.days[active]){state.days[active].deeperOpen=$('deeper').open;save()}};
+$('time-chips').onclick=e=>{const b=e.target.closest('button');if(!b)return;setField('time',ensure().time===b.dataset.value?'':b.dataset.value);render()};
+$('mood-chips').onclick=e=>{const b=e.target.closest('button');if(!b)return;const moods=new Set(ensure().moods);moods.has(b.dataset.value)?moods.delete(b.dataset.value):moods.add(b.dataset.value);setField('moods',[...moods]);render()};
+function printJournal(emptyTemplate){const snapshot={active,state,open:$('deeper').open};let restored=false;blankMode=true;document.body.classList.toggle('print-blank',emptyTemplate);if(emptyTemplate){active='';state={version:1,days:{'':empty()}}}render();$('deeper').open=true;const restore=()=>{if(restored)return;restored=true;window.removeEventListener('afterprint',restore);document.body.classList.remove('print-blank');active=snapshot.active;state=snapshot.state;render();$('deeper').open=snapshot.open;blankMode=false};window.addEventListener('afterprint',restore);window.print();setTimeout(restore,2000)}
+$('print-page').onclick=()=>printJournal(false);
+$('blank-print').onclick=()=>printJournal(true);
+function wrap(ctx,text,x,y,maxWidth,lineHeight,maxLines){const chars=[...String(text||'')];let line='',lines=[];for(const ch of chars){const test=line+ch;if(ctx.measureText(test).width>maxWidth&&line){lines.push(line);line=ch}else line=test}if(line)lines.push(line);lines.slice(0,maxLines).forEach((l,i)=>ctx.fillText(l,x,y+i*lineHeight));return Math.min(lines.length,maxLines)*lineHeight}
+async function makeImage(){const button=$('make-image');button.disabled=true;button.textContent='画像を準備しています…';try{await document.fonts.ready;const d=day(),c=document.createElement('canvas');c.width=1080;c.height=1920;const x=c.getContext('2d');x.fillStyle='#FFF9F2';x.fillRect(0,0,c.width,c.height);x.textAlign='center';x.fillStyle='#527363';x.font='30px Georgia,serif';x.fillText('Moca & Kokoron',540,76);x.font='24px Georgia,serif';x.fillText('DAILY GRATITUDE JOURNAL',540,130);x.fillStyle='#684f42';x.font='46px sans-serif';x.fillText('自分に還る、感謝のきろく',540,196);x.font='22px sans-serif';x.fillStyle='#776e65';x.fillText(`${active.replaceAll('-',' / ')}${d.time?'  ·  '+d.time:''}`,540,244);x.textAlign='left';let y=330;x.font='22px Georgia,serif';x.fillStyle='#527363';x.fillText('THREE GRATITUDES',100,y);y+=48;x.font='28px sans-serif';x.fillStyle='#684f42';d.gratitudes.forEach((g,i)=>{x.fillStyle=['#CFE9DD','#F4D8D2','#EAD7A7'][i];x.beginPath();x.arc(124,y-10,27,0,Math.PI*2);x.fill();x.fillStyle='#527363';x.font='20px Georgia,serif';x.textAlign='center';x.fillText(String(i+1).padStart(2,'0'),124,y-3);x.textAlign='left';x.fillStyle='#684f42';x.font='26px sans-serif';y+=wrap(x,g||' ',175,y-17,800,37,2)+45});if(d.moment){x.fillStyle='#527363';x.font='22px Georgia,serif';x.fillText('ONE MOMENT',100,y);y+=43;x.fillStyle='#684f42';x.font='25px sans-serif';y+=wrap(x,d.moment,100,y,880,36,4)+30}if(d.moods.length){x.fillStyle='#527363';x.font='22px Georgia,serif';x.fillText('NOTICE',100,y);x.fillStyle='#684f42';x.font='24px sans-serif';x.fillText(d.moods.join('  ·  '),235,y);y+=55}if(d.myself){x.fillStyle='#527363';x.font='22px Georgia,serif';x.fillText('THANK MYSELF',100,y);y+=43;x.fillStyle='#684f42';x.font='25px sans-serif';y+=wrap(x,d.myself,100,y,880,36,3)+30}if(d.free){x.fillStyle='#527363';x.font='22px Georgia,serif';x.fillText('FREE SPACE',100,y);y+=43;x.fillStyle='#684f42';x.font='25px sans-serif';wrap(x,d.free,100,y,880,36,5)}const mascot=document.querySelector('.kokoron img');if(!mascot.complete)await mascot.decode();x.drawImage(mascot,455,1630,170,170);x.textAlign='center';x.fillStyle='#527363';x.font='22px sans-serif';x.fillText('今日も、ありがとう。',540,1835);x.font='20px Georgia,serif';x.fillText('Loves Life  |  Return to Your Rhythm.',540,1880);const url=c.toDataURL('image/png');$('journal-image').src=url;$('download-image').href=url;$('download-image').download=`gratitude-${active||'blank'}.png`;$('image-result').hidden=false;$('image-result').scrollIntoView({behavior:'smooth',block:'start'})}catch(e){$('save-status').textContent='画像を作成できませんでした。もう一度お試しください。'}finally{button.disabled=false;button.textContent='今日のページを画像にする'}}
+$('make-image').onclick=makeImage;
+render();
+</script>
+
 <!-- ===================================================================== -->
 <!-- ▼▼▼ 計測イベント（本体の動きには触れていません） ▼▼▼                 -->
 <script>
