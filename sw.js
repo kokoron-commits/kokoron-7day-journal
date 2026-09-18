@@ -1,4 +1,4 @@
-const CACHE = 'kokoron-journal-v1';
+const CACHE = 'kokoron-journal-v2';
 const ASSETS = [
   './',
   './index.html',
@@ -31,9 +31,16 @@ self.addEventListener('activate', e => {
   self.clients.claim();
 });
 
-// キャッシュファースト（オフラインでも動く）
+// ネットワーク優先（新しい版を先に届ける）・つながらないときはキャッシュで動く
 self.addEventListener('fetch', e => {
+  if (e.request.method !== 'GET') return;
   e.respondWith(
-    caches.match(e.request).then(cached => cached || fetch(e.request))
+    fetch(e.request).then(res => {
+      if (res.ok && new URL(e.request.url).origin === self.location.origin) {
+        const copy = res.clone();
+        caches.open(CACHE).then(cache => cache.put(e.request, copy));
+      }
+      return res;
+    }).catch(() => caches.match(e.request))
   );
 });

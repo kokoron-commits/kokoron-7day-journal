@@ -478,9 +478,34 @@ textarea.write-area::placeholder { color: #c8bfe0; font-size: 11px; }
   .day-nav { gap: 5px; padding: 10px 12px; justify-content: flex-start; }
   .day-nav-btn { padding: 7px 12px; font-size: 13px; }
 }
+
+/* 保存のお知らせ */
+.save-toast {
+  position: fixed; left: 50%; bottom: 20px; transform: translateX(-50%) translateY(20px);
+  background: rgba(123,104,196,.92); color: #fff; font-size: 13px;
+  padding: 8px 18px; border-radius: 999px; opacity: 0; pointer-events: none;
+  transition: opacity .3s, transform .3s; z-index: 1000;
+}
+.save-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.save-warn {
+  display: none; position: sticky; top: 0; z-index: 1001;
+  background: #fff4e5; color: #8a5a1a; border-bottom: 1px solid #f0d2a8;
+  font-size: 13px; line-height: 1.7; padding: 10px 16px; text-align: center;
+}
+.save-warn.show { display: block; }
+.cover-save-note {
+  margin-top: 12px; font-size: 12px; line-height: 1.8; color: var(--text-light);
+}
+@media print { .save-toast, .save-warn { display: none !important; } }
 </style>
 </head>
 <body>
+
+<div class="save-warn no-print" id="saveWarn">
+  ⚠️ この画面では、書いた内容を保存できない状態です。<br>
+  SafariやChromeなど、ふだん使っているブラウザで開きなおしてね。
+</div>
+<div class="save-toast no-print" id="saveToast">✓ 保存しました</div>
 
 <!-- サイズ切り替え -->
 <div class="size-switcher no-print">
@@ -506,6 +531,11 @@ textarea.write-area::placeholder { color: #c8bfe0; font-size: 11px; }
     朝ページ → 今日の気持ちを整える<br>
     夜ページ → 今日を振り返り、自分をねぎらう<br>
     書けない日があっても大丈夫🦥
+    <div class="cover-save-note">
+      📝 書いた内容は、この端末のこのブラウザに自動で保存されます。<br>
+      続きは、いつも同じ端末・同じ開き方で開いてね。<br>
+      （ブラウザで開くか、ホーム画面のアイコンから開くか、どちらか1つに決めておくと安心です）
+    </div>
   </div>
 </div>
 
@@ -568,16 +598,16 @@ const SELF_CARE = ['水を飲んだ','深呼吸した','外の空気を吸った
 
 // ===== HTML生成 =====
 function weatherItems(arr, prefix) {
-  return arr.map(w =>
-    `<div class="weather-item" onclick="selWeather(this,'${prefix}')" data-group="${prefix}">
+  return arr.map((w, i) =>
+    `<div class="weather-item" onclick="selWeather(this,'${prefix}')" data-group="${prefix}" data-idx="${i}">
       ${w.e}<span>${w.l}</span>
     </div>`
   ).join('');
 }
 
-function moodChipHtml() {
-  return MOOD_CHIPS.map(c =>
-    `<div class="chip" onclick="this.classList.toggle('active')">${c}</div>`
+function moodChipHtml(dayNum) {
+  return MOOD_CHIPS.map((c, i) =>
+    `<div class="chip" data-key="d${dayNum}_chip_${i}" onclick="toggleChip(this)">${c}</div>`
   ).join('');
 }
 
@@ -637,7 +667,7 @@ function buildSpread(d, idx) {
 
     <div class="section">
       <div class="section-label">💭 今日の心に近いのは？ <span class="en">/ How are you feeling?</span></div>
-      <div class="mood-chips">${moodChipHtml()}</div>
+      <div class="mood-chips">${moodChipHtml(n)}</div>
     </div>
 
     <div class="section">
@@ -746,9 +776,31 @@ DAYS.forEach((d, idx) => {
 });
 
 // ===== LocalStorage 保存・復元 =====
-function saveKey(key, value) {
-  try { localStorage.setItem('kokoron_' + key, value); } catch(e) {}
+let toastTimer = null;
+function showSaved() {
+  const t = document.getElementById('saveToast');
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 1400);
 }
+function showSaveWarn() {
+  document.getElementById('saveWarn').classList.add('show');
+}
+function saveKey(key, value) {
+  try {
+    localStorage.setItem('kokoron_' + key, value);
+    if (localStorage.getItem('kokoron_' + key) !== String(value)) throw new Error('not saved');
+    return true;
+  } catch(e) { showSaveWarn(); return false; }
+}
+// 開いたときに保存できるか確かめる
+(function checkStorage() {
+  try {
+    localStorage.setItem('kokoron__test', '1');
+    if (localStorage.getItem('kokoron__test') !== '1') throw new Error();
+    localStorage.removeItem('kokoron__test');
+  } catch(e) { showSaveWarn(); }
+})();
 function loadKey(key) {
   try { return localStorage.getItem('kokoron_' + key) || ''; } catch(e) { return ''; }
 }
@@ -758,7 +810,12 @@ document.querySelectorAll('textarea.write-area, input.date-input').forEach(el =>
   const key = el.dataset.key;
   if (!key) return;
   el.value = loadKey(key);
-  el.addEventListener('input', () => saveKey(key, el.value));
+  let t = null;
+  el.addEventListener('input', () => {
+    const ok = saveKey(key, el.value);
+    clearTimeout(t);
+    if (ok) t = setTimeout(showSaved, 700);
+  });
 });
 
 // チェックボックス復元
@@ -774,18 +831,26 @@ document.querySelectorAll('.check-box[data-key]').forEach(el => {
 function selWeather(el, group) {
   document.querySelectorAll(`[data-group="${group}"]`).forEach(e => e.classList.remove('sel'));
   el.classList.add('sel');
+  if (saveKey(`${group}_weather`, el.dataset.idx)) showSaved();
 }
 
 function selDow(el, groupId) {
-  document.querySelectorAll(`#${groupId} .dow`).forEach(e => e.classList.remove('sel'));
+  const items = [...document.querySelectorAll(`#${groupId} .dow`)];
+  items.forEach(e => e.classList.remove('sel'));
   el.classList.add('sel');
+  if (saveKey(groupId, items.indexOf(el))) showSaved();
+}
+
+function toggleChip(el) {
+  el.classList.toggle('active');
+  if (saveKey(el.dataset.key, el.classList.contains('active') ? '1' : '0')) showSaved();
 }
 
 function toggleCheck(el) {
   el.classList.toggle('checked');
   el.textContent = el.classList.contains('checked') ? '✓' : '';
   const key = el.dataset.key;
-  if (key) saveKey(key, el.classList.contains('checked') ? '1' : '0');
+  if (key && saveKey(key, el.classList.contains('checked') ? '1' : '0')) showSaved();
 }
 
 function setStars(el, dayNum) {
@@ -793,7 +858,7 @@ function setStars(el, dayNum) {
   document.querySelectorAll(`#stars${dayNum} .star`).forEach((s,i) => {
     s.classList.toggle('lit', i <= idx);
   });
-  saveKey(`d${dayNum}_stars`, idx);
+  if (saveKey(`d${dayNum}_stars`, idx)) showSaved();
 }
 
 // スター復元
@@ -805,6 +870,24 @@ DAYS.forEach(d => {
       s.classList.toggle('lit', i <= idx);
     });
   }
+});
+
+// 空もよう・心もよう・曜日・気持ちチップの復元
+DAYS.forEach(d => {
+  ['m', 'e'].forEach(p => {
+    const saved = loadKey(`${p}${d.day}_weather`);
+    if (saved === '') return;
+    const el = document.querySelector(`[data-group="${p}${d.day}"][data-idx="${saved}"]`);
+    if (el) el.classList.add('sel');
+  });
+  const dow = loadKey(`dow${d.day}`);
+  if (dow !== '') {
+    const el = document.querySelectorAll(`#dow${d.day} .dow`)[parseInt(dow)];
+    if (el) el.classList.add('sel');
+  }
+});
+document.querySelectorAll('.chip[data-key]').forEach(el => {
+  if (loadKey(el.dataset.key) === '1') el.classList.add('active');
 });
 
 function setSize(mode, btn) {
