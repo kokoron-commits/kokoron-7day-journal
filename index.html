@@ -432,6 +432,23 @@ textarea.write-area::placeholder { color: #c8bfe0; font-size: 11px; }
   cursor: pointer; font-family: 'Zen Maru Gothic', sans-serif;
 }
 
+.finish-guide {
+  max-width: 560px; margin: 24px auto 12px; padding: 20px 22px;
+  background: rgba(255,255,255,.75); border: 1px solid var(--border); border-radius: 16px;
+  font-size: 13px; line-height: 1.9; color: var(--text);
+}
+.finish-guide h3 {
+  font-size: 15px; text-align: center; color: var(--lav-deep); margin: 0 0 10px;
+}
+.finish-guide ol { margin: 0 0 12px; padding-left: 1.4em; }
+.finish-guide .how { font-size: 12px; color: var(--text-light); background: rgba(224,216,240,.35); border-radius: 10px; padding: 10px 14px; margin-top: 8px; }
+.finish-guide .how strong { color: var(--text); }
+.finish-print-btn {
+  display: block; margin: 4px auto 0; padding: 8px 20px; border-radius: 999px;
+  border: 1px solid var(--lav-dark); background: var(--lav-dark); color: #fff;
+  font-size: 13px; cursor: pointer; font-family: 'Zen Maru Gothic', sans-serif;
+}
+
 /* ===== レスポンシブ（スマホ）===== */
 @media (max-width: 680px) {
   /* 横はみ出し防止 */
@@ -544,6 +561,24 @@ textarea.write-area::placeholder { color: #c8bfe0; font-size: 11px; }
 
 <!-- ===== 7日分スプレッド (JSで生成) ===== -->
 <div id="journal"></div>
+
+<!-- 7日間書き終えたら -->
+<div class="finish-guide no-print">
+  <h3>🌿 7日間書き終えたら</h3>
+  <ol>
+    <li><strong>まず保存する</strong>：7日分をPDFで保存するか、印刷します</li>
+    <li><strong>リセットする</strong>：いちばん下の「書いた内容をすべてリセット」を押します</li>
+    <li><strong>新しい1週間へ</strong>：まっさらなノートで、また Day 1 から書けます</li>
+  </ol>
+  <button class="finish-print-btn" onclick="window.print()">🖨 PDFで保存・印刷する</button>
+  <div class="how">
+    <strong>ボタンで開けないときは</strong><br>
+    📱 iPhone：Safariの共有ボタン（□に↑）→「プリント」→ 右上の共有ボタン →「"ファイル"に保存」<br>
+    📱 Android：Chromeの右上「︙」→「共有」→「印刷」→「PDF形式で保存」<br>
+    💻 パソコン：画面上の「🖨 印刷/PDF」→ 送信先を「PDFに保存」<br>
+    ※ リセットすると元に戻せません。保存ができたことを確かめてから押してね🦥
+  </div>
+</div>
 
 <!-- リセット -->
 <div class="reset-bar no-print">
@@ -896,7 +931,7 @@ function setSize(mode, btn) {
 }
 
 function confirmReset() {
-  if (confirm('書いた内容をすべてリセットしますか？\nこの操作は元に戻せません。')) {
+  if (confirm('7日分をPDFや印刷で保存しましたか？\n\nリセットすると、書いた内容はすべて消えて元に戻せません。\n保存がすんでいたら「OK」を押してね。')) {
     try {
       Object.keys(localStorage).filter(k => k.startsWith('kokoron_')).forEach(k => localStorage.removeItem(k));
     } catch(e) {}
