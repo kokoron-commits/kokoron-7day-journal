@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>ことばから、やさしい未来がはじまる。牡羊座満月のジャーナリング｜モカ & こころん</title>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;700&family=Zen+Maru+Gothic:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- アクセス解析（GoatCounter） -->
+<script data-goatcounter="https://moca.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:    #FDF7EE;
+  --border:   #E8D9CC;
+  --text:     #5C4A58;
+  --text-md:  #8A7384;
+  --text-lt:  #B7A2AE;
+  --rose:     #D98C9C;
+  --plum:     #A983B4;
+  --peach:    #D5A27E;
+  --sage:     #9DAE94;
+  --plum-dk:  #8A5F98;
+}
+
+body {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  background: #EFE6EC;
+  color: var(--text);
+}
+
+.page {
+  max-width: 210mm;
+  margin: 0 auto 24px;
+  background: var(--cream);
+  overflow: hidden;
+}
+@media screen {
+  .page { box-shadow: 0 4px 20px rgba(0,0,0,0.10); border-radius: 0 0 18px 18px; }
+}
+
+/* ===== ヘッダー（シートの上半分の画像） ===== */
+.hero img { width: 100%; display: block; }
+
+.body { padding: 6mm 10mm 8mm; }
+
+.save-note {
+  text-align: center;
+  font-size: 10px; color: var(--text-lt);
+  margin-bottom: 5mm; line-height: 1.8;
+}
+
+/* ===== 問いのカード ===== */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5mm;
+}
+.q {
+  background: rgba(255,255,255,0.75);
+  border: 1.5px solid var(--border);
+  border-radius: 16px;
+  padding: 5mm 5mm 4mm;
+  display: flex; flex-direction: column;
+}
+.q-head {
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 2.5mm;
+}
+.q-num {
+  flex-shrink: 0;
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: white;
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 17px; font-weight: 700;
+}
+.q-title {
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 15px; font-weight: 700;
+  color: var(--plum-dk);
+  line-height: 1.5;
+}
+.q-hint {
+  font-size: 10.5px; color: var(--text-md);
+  line-height: 1.8;
+  margin-bottom: 2.5mm;
+}
+textarea {
+  width: 100%;
+  flex: 1;
+  min-height: 120px;
+  border: none;
+  background:
+    repeating-linear-gradient(transparent, transparent 27px, #E6D8D0 27px, #E6D8D0 28px);
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 28px;
+  resize: vertical;
+  outline: none;
+  padding: 0 2px;
+}
+textarea::placeholder { color: #D6C6CC; }
+.q-en {
+  text-align: right;
+  font-family: 'Brush Script MT', 'Snell Roundhand', cursive;
+  font-size: 15px; color: #B49AB8;
+  margin-top: 2mm;
+}
+
+/* ===== 最後のひとこと ===== */
+.closing {
+  margin-top: 6mm;
+  text-align: center;
+  font-size: 11px; color: var(--text-md);
+  line-height: 2;
+}
+.closing .en {
+  font-family: 'Brush Script MT', 'Snell Roundhand', cursive;
+  font-size: 17px; color: #B49AB8;
+}
+
+.ws-footer {
+  text-align: center;
+  margin-top: 5mm;
+  padding-top: 3mm;
+  border-top: 1px dashed var(--border);
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-size: 9.5px; color: var(--text-lt);
+}
+
+/* ===== 印刷ボタン ===== */
+.print-btn {
+  display: block; margin: 20px auto;
+  background: var(--plum); color: white;
+  border: none; border-radius: 24px;
+  padding: 12px 36px;
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 13px; font-weight: 700; cursor: pointer;
+  letter-spacing: 0.05em;
+}
+.print-btn:hover { opacity: 0.85; }
+
+@media (max-width: 600px) {
+  .body { padding: 5mm 4mm 6mm; }
+  .grid { grid-template-columns: 1fr; gap: 4mm; }
+  .q-title { font-size: 14px; }
+  textarea { min-height: 112px; }
+}
+
+@media print {
+  body { background: white; }
+  .print-btn, .save-note { display: none; }
+  .page { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; }
+  .body { padding: 5mm 10mm 6mm; }
+  .q { break-inside: avoid; }
+  textarea { resize: none; min-height: 150px; }
+  @page { size: A4 portrait; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn" style="margin-top:24px;" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<div class="page">
+
+  <div class="hero">
+    <img src="images/mangetsu-2026-09-header.jpg"
+         alt="牡羊座満月 ジャーナリングシート ことばから、やさしい未来がはじまる。このワークシートは、満月のエネルギーを味方にして、自分の本音に気づき、これからの一歩を見つけるためのものです。静かな時間に、心の声を書いてみましょう。">
+  </div>
+
+  <div class="body">
+    <div class="save-note">✍️ そのまま書き込めます。書いた内容は、この端末の中だけに自動で保存されます。</div>
+
+    <div class="grid">
+
+      <div class="q">
+        <div class="q-head">
+          <div class="q-num" style="background:var(--rose);">1</div>
+          <div class="q-title">最近、心が「動いた」瞬間は？</div>
+        </div>
+        <div class="q-hint">嬉しかったこと、やってみたいと思ったこと、気になったことなど、どんなことでも書いてみましょう。</div>
+        <textarea data-key="q1" placeholder="ここに書いてみよう…"></textarea>
+        <div class="q-en">What moved your heart?</div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <div class="q-num" style="background:var(--plum);">2</div>
+          <div class="q-title">そのとき何を考えていた？</div>
+        </div>
+        <div class="q-hint">頭の中に浮かんでいたことを、そのまま書いてみましょう。</div>
+        <textarea data-key="q2" placeholder="ここに書いてみよう…"></textarea>
+        <div class="q-en">What were you thinking?</div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <div class="q-num" style="background:var(--peach);">3</div>
+          <div class="q-title">本当は、何を伝えたかった？</div>
+        </div>
+        <div class="q-hint">誰に、どんな気持ちを伝えたかったのか、自分の本音を探してみましょう。</div>
+        <textarea data-key="q3" placeholder="ここに書いてみよう…"></textarea>
+        <div class="q-en">What did you really want to say?</div>
+      </div>
+
+      <div class="q">
+        <div class="q-head">
+          <div class="q-num" style="background:var(--sage);">4</div>
+          <div class="q-title">どんな小さな行動ができそう？</div>
+        </div>
+        <div class="q-hint">今の気持ちを大切にして、できそうなことをひとつ書いてみましょう。</div>
+        <textarea data-key="q4" placeholder="ここに書いてみよう…"></textarea>
+        <div class="q-en">What's your next small step?</div>
+      </div>
+
+    </div>
+
+    <div class="closing">
+      すべての問いに答えなくても大丈夫です。<br>
+      心に残った問いをひとつ、ゆっくり眺めてみてくださいね 🌿<br>
+      <span class="en">Just be with your words.</span>
+    </div>
+
+    <div class="ws-footer">🦥 モカ & こころん / Loves Life　｜　2026.09.27 牡羊座満月のジャーナリング</div>
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<script>
+// ===== 「実際に書き始めた人」を1回だけ記録 =====
+let wroteOnce = false;
+function trackFirstWrite() {
+  if (wroteOnce) return;
+  wroteOnce = true;
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({ path: 'write-mangetsu-digital', title: '満月WS デジタル版に書き始めた', event: true });
+  }
+}
+
+// ===== 自動保存・復元（保存場所はこの月専用の名前にする） =====
+function grow(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+document.querySelectorAll('textarea[data-key]').forEach(el => {
+  const key = 'fullmoon202609_' + el.dataset.key;
+  let saved = null;
+  try { saved = localStorage.getItem(key); } catch (e) {}
+  if (saved) { el.value = saved; grow(el); }
+  el.addEventListener('input', () => {
+    trackFirstWrite();
+    try { localStorage.setItem(key, el.value); } catch (e) {}
+    grow(el);
+  });
+});
+
+// ===== 印刷／PDF保存も記録 =====
+document.querySelectorAll('.print-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: 'print-mangetsu-digital', title: '満月WS デジタル版を印刷/PDF保存', event: true });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
