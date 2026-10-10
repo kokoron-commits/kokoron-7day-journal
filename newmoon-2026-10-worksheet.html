@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>わたしも、あなたも、大切に。てんびん座新月のジャーナリング｜モカ & こころん</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- アクセス解析（GoatCounter） -->
+<script data-goatcounter="https://moca.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:   #FFFFFF;
+  --line:    #DCD8CC;
+  --text:    #4E4036;
+  --brown:   #6B5444;
+  --text-md: #85766A;
+  --text-lt: #B0A497;
+  --sage:    #7F9579;
+  --sage-dk: #677D62;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #EEEBE4;
+  color: var(--text);
+}
+
+.page {
+  max-width: 210mm;
+  margin: 0 auto 24px;
+  background: var(--paper);
+  overflow: hidden;
+}
+@media screen {
+  .page { box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 0 0 18px 18px; }
+}
+
+/* ===== ヘッダー（シート1枚目の上部の画像） ===== */
+.hero img { width: 100%; display: block; }
+
+.body { padding: 2mm 12mm 10mm; }
+
+.save-note {
+  text-align: center;
+  font-size: 10.5px; color: var(--text-lt);
+  margin: 2mm 0 7mm; line-height: 1.8;
+}
+
+/* ===== 問い ===== */
+.q { margin-bottom: 9mm; }
+.q-head {
+  display: flex; align-items: baseline; gap: 18px;
+  margin-bottom: 3mm;
+}
+.q-num {
+  flex-shrink: 0;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px; color: var(--brown);
+  line-height: 1;
+}
+.q-title {
+  font-size: 16px; font-weight: 500;
+  color: var(--text);
+  line-height: 1.7;
+}
+textarea {
+  width: 100%;
+  min-height: 176px;
+  border: none;
+  background:
+    repeating-linear-gradient(transparent, transparent 34px, var(--line) 34px, var(--line) 35px);
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 35px;
+  resize: vertical;
+  outline: none;
+  padding: 0 2px;
+}
+textarea::placeholder { color: #CFC8BE; }
+
+/* ===== 最後のひとこと ===== */
+.closing {
+  margin-top: 4mm;
+  text-align: center;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 12px; color: var(--text-md);
+  line-height: 2.1;
+}
+.closing .key { color: var(--sage-dk); font-size: 11px; letter-spacing: 0.1em; }
+
+.ws-footer {
+  display: flex; justify-content: space-between;
+  margin-top: 8mm;
+  padding-top: 3mm;
+  border-top: 1px solid var(--line);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 11px; color: var(--brown);
+}
+.ws-footer span:last-child { color: var(--text-lt); }
+
+/* ===== 印刷ボタン ===== */
+.print-btn {
+  display: block; margin: 20px auto;
+  background: var(--sage); color: white;
+  border: none; border-radius: 24px;
+  padding: 12px 36px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  letter-spacing: 0.05em;
+}
+.print-btn:hover { opacity: 0.85; }
+
+@media (max-width: 600px) {
+  .body { padding: 2mm 5mm 8mm; }
+  .q-head { gap: 12px; }
+  .q-num { font-size: 24px; }
+  .q-title { font-size: 15px; }
+  textarea { min-height: 140px; }
+}
+
+@media print {
+  body { background: white; }
+  .print-btn, .save-note { display: none; }
+  .page { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; }
+  .body { padding: 2mm 14mm 8mm; }
+  .q { break-inside: avoid; }
+  textarea { resize: none; min-height: 210px; }
+  @page { size: A4 portrait; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn" style="margin-top:24px;" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<div class="page">
+
+  <div class="hero">
+    <img src="images/shingetsu-2026-10-header.jpg"
+         alt="New Moon 2026.10.11 てんびん座新月 ジャーナリングシート わたしも、あなたも、大切に。調和・バランス・つながり。すべての問いに答えなくても大丈夫。今の自分に残った問いから、自由に書いてみてください。">
+  </div>
+
+  <div class="body">
+    <div class="save-note">✍️ そのまま書き込めます。書いた内容は、この端末の中だけに自動で保存されます。</div>
+
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">1</div>
+        <div class="q-title">今、心地よさを感じているつながりは？</div>
+      </div>
+      <textarea data-key="q1" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">2</div>
+        <div class="q-title">その関係の中で、自分が大切にしたいことは？</div>
+      </div>
+      <textarea data-key="q2" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">3</div>
+        <div class="q-title">時間や関わり方を、少し調整するとしたら？</div>
+      </div>
+      <textarea data-key="q3" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">4</div>
+        <div class="q-title">これから育てたいつながりのために、<br>できる小さな一歩は？</div>
+      </div>
+      <textarea data-key="q4" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="closing">
+      わたしも、あなたも、大切に。<br>
+      <span class="key">調和・バランス・つながり</span>
+    </div>
+
+    <div class="ws-footer"><span>Moca &amp; Kokoron</span><span>2026.10.11 てんびん座新月</span></div>
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<script>
+// ===== 「実際に書き始めた人」を1回だけ記録 =====
+let wroteOnce = false;
+function trackFirstWrite() {
+  if (wroteOnce) return;
+  wroteOnce = true;
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({ path: 'write-shingetsu-digital', title: '新月WS デジタル版に書き始めた', event: true });
+  }
+}
+
+// ===== 自動保存・復元（保存場所はこの月専用の名前にする） =====
+function grow(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+document.querySelectorAll('textarea[data-key]').forEach(el => {
+  const key = 'newmoon202610_' + el.dataset.key;
+  let saved = null;
+  try { saved = localStorage.getItem(key); } catch (e) {}
+  if (saved) { el.value = saved; grow(el); }
+  el.addEventListener('input', () => {
+    trackFirstWrite();
+    try { localStorage.setItem(key, el.value); } catch (e) {}
+    grow(el);
+  });
+});
+
+// ===== 印刷／PDF保存も記録 =====
+document.querySelectorAll('.print-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: 'print-shingetsu-digital', title: '新月WS デジタル版を印刷/PDF保存', event: true });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
