@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>私の豊かさを、残す。牡牛座満月のジャーナリング｜モカ & こころん</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400&display=swap" rel="stylesheet">
+
+<!-- アクセス解析（GoatCounter） -->
+<script data-goatcounter="https://moca.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:    #FFFFFF;
+  --line:     #E4E2E8;
+  --text:     #4A4650;
+  --text-md:  #7B7782;
+  --text-lt:  #A9A5AE;
+  --lav:      #7E74B0;
+}
+
+body {
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 300;
+  background: #ECEAF1;
+  color: var(--text);
+}
+
+.page {
+  max-width: 210mm;
+  margin: 0 auto 24px;
+  background: var(--paper);
+  overflow: hidden;
+}
+@media screen {
+  .page { box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 0 0 18px 18px; }
+}
+
+/* ===== ヘッダー（シートの上部の画像） ===== */
+.hero img { width: 100%; display: block; }
+
+.body { padding: 4mm 6mm 10mm; }
+
+.save-note {
+  font-size: 10.5px; color: var(--text-lt);
+  margin: 2mm 0 8mm; line-height: 1.8;
+}
+
+/* ===== 問い ===== */
+.q { margin-bottom: 9mm; }
+.q-head {
+  display: flex; align-items: baseline; gap: 16px;
+  margin-bottom: 3mm;
+}
+.q-num { flex-shrink: 0; font-size: 14px; color: var(--text-lt); }
+.q-title { font-size: 16px; font-weight: 400; color: var(--text); line-height: 1.6; }
+
+textarea {
+  width: 100%;
+  min-height: 138px;
+  border: none;
+  background:
+    repeating-linear-gradient(transparent, transparent 45px, var(--line) 45px, var(--line) 46px);
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 46px;
+  resize: vertical;
+  outline: none;
+  padding: 0 2px;
+}
+textarea::placeholder { color: #CFCBD4; }
+
+/* ===== 最後のひとこと ===== */
+.closing {
+  margin-top: 4mm;
+  font-size: 11.5px; color: var(--text-md);
+  line-height: 2;
+}
+
+.ws-footer {
+  margin-top: 8mm;
+  font-size: 10px; color: var(--text-lt);
+}
+
+/* ===== 印刷ボタン ===== */
+.print-btn {
+  display: block; margin: 20px auto;
+  background: var(--lav); color: white;
+  border: none; border-radius: 24px;
+  padding: 12px 36px;
+  font-family: inherit;
+  font-size: 13px; font-weight: 400; cursor: pointer;
+  letter-spacing: 0.05em;
+}
+.print-btn:hover { opacity: 0.85; }
+
+@media (max-width: 600px) {
+  .body { padding: 3mm 5mm 8mm; }
+  .q-head { gap: 12px; }
+  .q-title { font-size: 15px; }
+  textarea { min-height: 138px; }
+}
+
+@media print {
+  body { background: white; }
+  .print-btn, .save-note { display: none; }
+  .page { max-width: 100%; margin: 0; box-shadow: none; border-radius: 0; }
+  .body { padding: 4mm 12mm 6mm; }
+  .q { break-inside: avoid; margin-bottom: 6mm; }
+  textarea { resize: none; min-height: 138px; }
+  @page { size: A4 portrait; margin: 8mm 0; }
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn" style="margin-top:24px;" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<div class="page">
+
+  <div class="hero">
+    <img src="images/mangetsu-2026-10-header.jpg"
+         alt="Full Moon Journaling / Hunter's Moon 私の豊かさを、残す。2026.10.26 牡牛座満月">
+  </div>
+
+  <div class="body">
+    <div class="save-note">✍️ そのまま書き込めます。書いた内容は、この端末の中だけに自動で保存されます。</div>
+
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">01</div>
+        <div class="q-title">いま、私を満たしてくれているものは？</div>
+      </div>
+      <textarea data-key="q1" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">02</div>
+        <div class="q-title">「仕方ない」で、がまんしていることは？</div>
+      </div>
+      <textarea data-key="q2" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">03</div>
+        <div class="q-title">その中で、少しゆるめられそうなことは？</div>
+      </div>
+      <textarea data-key="q3" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">04</div>
+        <div class="q-title">これからも、そばに残したい豊かさは？</div>
+      </div>
+      <textarea data-key="q4" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="closing">
+      すべての問いに答えなくても大丈夫です。<br>
+      心に残った問いをひとつ、ゆっくり眺めてみてくださいね 🌿
+    </div>
+
+    <div class="ws-footer">Moca & Kokoron　｜　2026.10.26 牡牛座満月のジャーナリング</div>
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<script>
+// ===== 「実際に書き始めた人」を1回だけ記録 =====
+let wroteOnce = false;
+function trackFirstWrite() {
+  if (wroteOnce) return;
+  wroteOnce = true;
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({ path: 'write-mangetsu-digital', title: '満月WS デジタル版に書き始めた', event: true });
+  }
+}
+
+// ===== 自動保存・復元（保存場所はこの月専用の名前にする） =====
+function grow(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+document.querySelectorAll('textarea[data-key]').forEach(el => {
+  const key = 'fullmoon202610_' + el.dataset.key;
+  let saved = null;
+  try { saved = localStorage.getItem(key); } catch (e) {}
+  if (saved) { el.value = saved; grow(el); }
+  el.addEventListener('input', () => {
+    trackFirstWrite();
+    try { localStorage.setItem(key, el.value); } catch (e) {}
+    grow(el);
+  });
+});
+
+// ===== 印刷／PDF保存も記録 =====
+document.querySelectorAll('.print-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: 'print-mangetsu-digital', title: '満月WS デジタル版を印刷/PDF保存', event: true });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
