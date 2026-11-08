@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>今の気持ちに、そっと居場所を。さそり座新月のジャーナリング｜モカ & こころん</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500&family=Noto+Serif+JP:wght@400;500&family=Noto+Serif:ital@1&display=swap" rel="stylesheet">
+
+<!-- アクセス解析（GoatCounter） -->
+<script data-goatcounter="https://moca.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
+
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --paper:   #FFFFFF;
+  --line:    #DCD8CC;
+  --text:    #4E4036;
+  --brown:   #6B5444;
+  --text-md: #85766A;
+  --text-lt: #B0A497;
+  --sage:    #7F9579;
+  --sage-dk: #677D62;
+  --star:    #E8CF8E;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background: #EEEBE4;
+  color: var(--text);
+}
+
+.page {
+  max-width: 210mm;
+  margin: 0 auto 24px;
+  background: var(--paper);
+  overflow: hidden;
+}
+@media screen {
+  .page { box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-radius: 18px; }
+}
+
+/* ===== ヘッダー ===== */
+.hero {
+  position: relative;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  padding: 12mm 12mm 0;
+}
+.hero-text { flex: 1; min-width: 0; }
+.nm {
+  display: flex; align-items: baseline; gap: 16px;
+  margin-bottom: 6mm;
+}
+.nm-en {
+  font-family: 'Noto Serif', serif; font-style: italic;
+  font-size: 40px; color: var(--brown); line-height: 1;
+}
+.nm-date { font-size: 13px; color: var(--sage); letter-spacing: 0.04em; }
+.h-title {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 24px; font-weight: 400; color: var(--brown);
+  line-height: 1.4; margin-bottom: 3mm;
+}
+.h-sub {
+  font-family: 'Noto Serif JP', serif;
+  font-size: 18px; color: var(--text-md);
+  margin-bottom: 3mm; letter-spacing: 0.04em;
+}
+.h-key { font-size: 13px; color: var(--sage); letter-spacing: 0.06em; }
+.h-intro {
+  font-size: 12.5px; color: var(--text);
+  line-height: 1.9; margin-top: 7mm;
+}
+
+.hero-art {
+  position: relative;
+  position: absolute; right: 10mm; top: 33mm;
+  width: 78mm;
+}
+.hero-art img { width: 100%; display: block; }
+.star {
+  position: absolute; color: var(--star);
+  line-height: 1; font-family: serif;
+}
+.s1 { top: -6mm;  left: -6mm; font-size: 18px; }
+.s2 { top: 2mm;   right: -6mm; font-size: 13px; }
+.s3 { top: -10mm; right: 4mm; font-size: 10px; }
+.s4 { top: 14mm;  left: -2mm; font-size: 9px; }
+
+.body { padding: 5mm 12mm 10mm; }
+
+.save-note {
+  text-align: center;
+  font-size: 10.5px; color: var(--text-lt);
+  margin: 0 0 6mm; line-height: 1.8;
+}
+
+/* ===== 問い ===== */
+.q { margin-bottom: 9mm; }
+.q-head {
+  display: flex; align-items: baseline; gap: 18px;
+  margin-bottom: 1.5mm;
+}
+.q-num {
+  flex-shrink: 0;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 28px; color: var(--brown);
+  line-height: 1;
+}
+.q-title {
+  font-size: 16px; font-weight: 500;
+  color: var(--text);
+  line-height: 1.7;
+}
+.q-hint {
+  font-size: 11.5px; color: var(--text-md);
+  line-height: 1.8;
+  margin: 0 0 2mm 34px;
+}
+textarea {
+  width: 100%;
+  min-height: 176px;
+  border: none;
+  background-image: linear-gradient(to bottom, transparent calc(100% - 1px), var(--line) calc(100% - 1px));
+  background-size: 100% 35px;
+  background-repeat: repeat-y;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--text);
+  line-height: 35px;
+  resize: vertical;
+  outline: none;
+  padding: 0 2px;
+}
+textarea::placeholder { color: #CFC8BE; }
+.print-lines { display: none; }
+
+/* ===== 最後のひとこと ===== */
+.closing {
+  margin-top: 2mm;
+  text-align: center;
+  font-family: 'Noto Serif JP', serif;
+  font-size: 13px; color: var(--text-md);
+  line-height: 2.1;
+}
+.closing .key { color: var(--sage-dk); font-size: 11px; letter-spacing: 0.1em; }
+
+.ws-footer {
+  display: flex; justify-content: space-between;
+  margin-top: 6mm;
+  padding-top: 3mm;
+  border-top: 1px solid var(--line);
+  font-family: 'Noto Serif JP', serif;
+  font-size: 11px; color: var(--brown);
+}
+.ws-footer span:last-child { color: var(--text-lt); }
+
+/* ===== 印刷ボタン ===== */
+.print-btn {
+  display: block; margin: 20px auto;
+  background: var(--sage); color: white;
+  border: none; border-radius: 24px;
+  padding: 12px 36px;
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  letter-spacing: 0.05em;
+}
+.print-btn:hover { opacity: 0.85; }
+
+@media (max-width: 600px) {
+  .hero { padding: 8mm 5mm 0; }
+  .nm-en { font-size: 30px; }
+  .h-title { font-size: 20px; }
+  .h-sub { font-size: 15px; }
+  .hero-art { position: static; width: 38mm; margin: 14mm -2mm 0 2mm; flex-shrink: 0; }
+  .body { padding: 4mm 5mm 8mm; }
+  .q-head { gap: 12px; }
+  .q-num { font-size: 24px; }
+  .q-title { font-size: 15px; }
+  .q-hint { margin-left: 28px; }
+  textarea { min-height: 140px; }
+}
+
+@media print {
+  body { background: white; }
+  .print-btn, .save-note { display: none; }
+  .page {
+    max-width: 100%; height: 297mm; margin: 0;
+    box-shadow: none; border-radius: 0;
+    break-after: page; position: relative;
+  }
+  .page:last-of-type { break-after: auto; }
+  .hero { padding: 14mm 16mm 0; }
+  .hero-art { right: 12mm; top: 35mm; }
+  .body { padding: 6mm 16mm 0; }
+  .q { break-inside: avoid; margin-bottom: 8mm; }
+  .write { position: relative; }
+  textarea {
+    position: relative; z-index: 1;
+    resize: none; height: 63mm; min-height: 63mm;
+    line-height: 9mm; background: none; overflow: hidden;
+  }
+  textarea::placeholder { color: transparent; }
+  .page:last-of-type textarea { height: 54mm; min-height: 54mm; }
+  .print-lines { display: block; position: absolute; left: 0; right: 0; top: 0; }
+  .print-lines div { height: 9mm; border-bottom: 0.25mm solid var(--line); }
+  .closing { position: absolute; left: 16mm; right: 16mm; bottom: 22mm; }
+  .ws-footer { position: absolute; left: 16mm; right: 16mm; bottom: 12mm; }
+  @page { size: A4 portrait; margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<button class="print-btn" style="margin-top:24px;" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<!-- ===== 1ページ目 ===== -->
+<div class="page">
+  <div class="hero">
+    <div class="hero-text">
+      <div class="nm"><span class="nm-en">New Moon</span><span class="nm-date">2026.11.9</span></div>
+      <h1 class="h-title">さそり座新月 ジャーナリングシート</h1>
+      <div class="h-sub">今の気持ちに、そっと居場所を。</div>
+      <div class="h-key">手放す前に、自分の声を聴く</div>
+      <p class="h-intro">すべての問いに答えなくても大丈夫。<br>今の自分に残った問いから、自由に書いてみてください。</p>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <img src="images/shingetsu-2026-11-header-art.png" alt="">
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="save-note">✍️ そのまま書き込めます。書いた内容は、この端末の中だけに自動で保存されます。</div>
+
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">1</div>
+        <div class="q-title">いま、心に残っている気持ちは？</div>
+      </div>
+      <p class="q-hint">「もう気にしない」と思っても、残っていること。<br>言葉にならなければ、色や天気にたとえても。</p>
+      <textarea data-key="q1" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">2</div>
+        <div class="q-title">その気持ちは、何を大切にしたくて<br>そこにいるのだと思う？</div>
+      </div>
+      <p class="q-hint">寂しさや悔しさの奥にある「本当はこうしたかった」に、そっと目を向けて。</p>
+      <textarea data-key="q2" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="ws-footer"><span>Moca &amp; Kokoron</span><span>1 / 2</span></div>
+  </div>
+</div>
+
+<!-- ===== 2ページ目 ===== -->
+<div class="page">
+  <div class="hero">
+    <div class="hero-text">
+      <div class="nm"><span class="nm-en">New Moon</span><span class="nm-date">2026.11.9</span></div>
+      <h1 class="h-title">さそり座新月 ジャーナリングシート</h1>
+      <div class="h-sub">今の気持ちに、そっと居場所を。</div>
+      <div class="h-key">手放す前に、自分の声を聴く</div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <img src="images/shingetsu-2026-11-header-art.png" alt="">
+    </div>
+  </div>
+
+  <div class="body">
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">3</div>
+        <div class="q-title">今の気持ちにやさしく声をかけるなら、<br>どんな言葉を届けたい？</div>
+      </div>
+      <p class="q-hint">「寂しかったね」「よくがんばってきたね」「少し休もうか」</p>
+      <textarea data-key="q3" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="q">
+      <div class="q-head">
+        <div class="q-num">4</div>
+        <div class="q-title">今夜、自分のためにできる<br>小さなことは？</div>
+      </div>
+      <p class="q-hint">手放すかどうかは、あとから決めて大丈夫です。</p>
+      <textarea data-key="q4" placeholder="ここに書いてみよう…"></textarea>
+    </div>
+
+    <div class="closing">
+      感じたままで大丈夫。<br>
+      <span class="key">今の気持ちに、そっと居場所を。</span>
+    </div>
+
+    <div class="ws-footer"><span>Moca &amp; Kokoron</span><span>2 / 2</span></div>
+  </div>
+</div>
+
+<button class="print-btn" onclick="window.print()">🖨️ PDFで保存 / 印刷する</button>
+
+<script>
+// ===== 「実際に書き始めた人」を1回だけ記録 =====
+let wroteOnce = false;
+function trackFirstWrite() {
+  if (wroteOnce) return;
+  wroteOnce = true;
+  if (window.goatcounter && window.goatcounter.count) {
+    window.goatcounter.count({ path: 'write-shingetsu-digital', title: '新月WS デジタル版に書き始めた', event: true });
+  }
+}
+
+// ===== 印刷用の罫線（1本ずつ同じ太さ・同じ間隔で引く） =====
+document.querySelectorAll('textarea[data-key]').forEach(el => {
+  const wrap = document.createElement('div');
+  wrap.className = 'write';
+  el.parentNode.insertBefore(wrap, el);
+  wrap.appendChild(el);
+  const lines = document.createElement('div');
+  lines.className = 'print-lines';
+  const n = el.closest('.page') === document.querySelector('.page:last-of-type') ? 6 : 7;
+  for (let i = 0; i < n; i++) lines.appendChild(document.createElement('div'));
+  wrap.appendChild(lines);
+});
+
+// ===== 自動保存・復元（保存場所はこの月専用の名前にする） =====
+function grow(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
+document.querySelectorAll('textarea[data-key]').forEach(el => {
+  const key = 'newmoon202611_' + el.dataset.key;
+  let saved = null;
+  try { saved = localStorage.getItem(key); } catch (e) {}
+  if (saved) { el.value = saved; grow(el); }
+  el.addEventListener('input', () => {
+    trackFirstWrite();
+    try { localStorage.setItem(key, el.value); } catch (e) {}
+    grow(el);
+  });
+});
+
+// ===== 印刷／PDF保存も記録 =====
+document.querySelectorAll('.print-btn').forEach(btn => {
+  btn.addEventListener('click', function () {
+    if (window.goatcounter && window.goatcounter.count) {
+      window.goatcounter.count({ path: 'print-shingetsu-digital', title: '新月WS デジタル版を印刷/PDF保存', event: true });
+    }
+  });
+});
+</script>
+
+</body>
+</html>
